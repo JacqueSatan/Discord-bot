@@ -52,7 +52,7 @@ De la même façon, remplacer "Spam ?" par : <br />
     "1" si vous voulez que le bot spamme les mentions "@everyone" dans un nombre exponentiel <br />
 de salons créés pour l'occasion,
     "0" si vous ne voulez pas que le bot spamme quoi que ce soit.
-Pour lancer le bot, il vous suffit de lancer le fichier "start.bat".
+Pour lancer le bot, il vous suffit de lancer le fichier "start.bat". Le lien d'invitation du bot s'affichera dans le bloc de commande.
 
 #### Commandes
 
