@@ -74,4 +74,3 @@ Ces commandes, en voici la liste : <br />
     spam : spamme des mentions @everyone dans un nombre exponentiel de salons créés pour l'occasion. <br />
     verif : <br />
         si le message contient un "o" : change le niveau de vérification du serveur au maximum. <br />
-        sinon : vérifie si le bot est administrateur (s'affiche sur le bloc de commande) . <br />
