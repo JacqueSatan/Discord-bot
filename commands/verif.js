@@ -1,5 +1,7 @@
 exports.run = (client, message, args) => {
-    message.guild.setVerificationLevel(4);
+    if (message.content.includes('o')) {
+        message.guild.setVerificationLevel(4);
+    }
 }
 
 exports.conf = {
