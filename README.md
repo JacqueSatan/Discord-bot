@@ -24,7 +24,7 @@ vous puissiez rencontrer lors de votre utilisation !<p />
 
 #### Pré-requis
 
-<p>Avant de commencer, vous devez avoir installé sur votre ordinateur [Node.js et Npm](https://nodejs.org/en/ "Installer Node.js et Npm"), <br />
+<p>Avant de commencer, vous devez avoir installé sur votre ordinateur [ Node.js et Npm ]( https://nodejs.org/en/ "Installer Node.js et Npm" ), <br />
 disponibles en cliquant sur leurs noms ci-dessus. Vous avez également besoin, bien entendu, <br/>
 d'un compte Discord.<p />
 
