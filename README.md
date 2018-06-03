@@ -40,11 +40,11 @@ c'est le token de votre bot qui s'affiche. Gardez-le pour la suite.<p />
 
 <p>Dans le fichier "settings.json", remplacer "Votre token" par le token de votre bot. <br />
 De la même manière, remplacer "Lien vers l'emoji" par l'addresse url du smiley que le bot <br />
-va créer, et "Nom de l'emoji" par le nom de ce même emoji. <br />
+va créer, et "Nom de l'emoji" par le nom de ce même emoji. Ne touchez pas aux autres valeurs, elles doivent rester vierges.
 <br />
 Maintenant, dans le fichier "config.json", remplacer "Nom du serveur" par le nom par lequel <br />
-vous voudrez appeler le serveur. Remplacez "Type du salon" par : <br />
-    "1" si vous voulez que le bot crée des salons textuels (il sera plus simple de bannir <br />
+vous voudrez appeler le serveur. Remplacez "Type du salon" par :
+    "1" si vous voulez que le bot crée des salons textuels (il sera plus simple de bannir
 le bot) , <br />
     "2" si vous voulez que le bot crée des salons vocaux, <br />
     "3" si vous voulez que le bot crée des catégories. <br />
