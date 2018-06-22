@@ -1,5 +1,5 @@
-# Bot Anti Discord v1.2
-(En cours de modification)
+# Bot Anti Discord v1.1 (Lanceur non fonctionnel)
+(Veuillez utiliser une version plus récente en navigant dans les branches.)
 
 
 ##    Sommaire :
