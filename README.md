@@ -52,11 +52,11 @@ De la même façon, remplacer "Spam ?" par : <br />
 de salons créés pour l'occasion,
     "0" si vous ne voulez pas que le bot spamme quoi que ce soit.
 
-Dans le dossier où se situent tous les fichiers du bot, effectuez un Clic droit tout en appuyant sur la touche Maj (Clic droit + Shift), puis sélectionnez "Ouvrir la fenêtre PowerShell ici". Dans la fenêtre PowerShell, vous écrirez chacune à son tour les commandes suivantes :
-npm i fs
-npm i discord.js
-npm i ms
-npm i moment
+Dans le dossier où se situent tous les fichiers du bot, effectuez un Clic droit tout en appuyant sur la touche Maj (Clic droit + Shift), puis sélectionnez "Ouvrir la fenêtre PowerShell ici". Dans la fenêtre PowerShell, vous écrirez chacune à son tour les commandes suivantes :<br />
+npm i fs<br />
+npm i discord.js<br />
+npm i ms<br />
+npm i moment<br />
 npm i chalk
 
 #### Commandes
