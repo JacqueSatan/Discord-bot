@@ -32,7 +32,7 @@ d'un compte Discord.<p />
 
 <p>Rendez-vous sur [ce site](https://discordapp.com/developers/applications/me/create "Vos applications Discord") et créez une nouvelle application. Une fois créée, cliquez sur <br />
 "Créer un utilisateur Bot". <br />
-Vous avez créé votre application.
+Vous avez créé votre application. 
 Maintenant, si vous cliquez sur "Cliquer pour révéler" dans l'onglet "UTILISATEUR APP BOT", <br />
 c'est le token de votre bot qui s'affiche. Gardez-le pour la suite.<p />
 
