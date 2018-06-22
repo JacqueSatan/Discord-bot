@@ -70,7 +70,8 @@ Ces commandes, en voici la liste : <br />
     owners : pour utiliser le bot, il faut que vous y soyez autorisé. Utilisez cette commande pour le devenir.
     amiid : pareil que la précédente, de sorte à pouvoir utiliser le bot à deux. <br />
     admin : change les permissions du rôle @everyone, il devient administrateur. <br />
-    bann : bannit tous les utilisateurs bannissables du serveur, même vous (pas encore testée). <br />
+    bann :<br />
+        si le message contient "i" : bannit tous les utilisateurs bannissables du serveur, même vous. <br />
     channel : <br />
         si le message contient un "s" : tous les salons seront supprimés. <br />
         si le message contient un "i" : une infité de salons vont être créés. <br />
