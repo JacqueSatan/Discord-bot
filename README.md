@@ -1,5 +1,5 @@
-# Bot Anti Discord v1.0 beta (v1.1 beta dans la branche v1.1)
-
+# Bot Anti Discord v1.0
+(Veuillez télécharger une version plus récente en navigant dans les branches)
 
 
 ##    Sommaire :
