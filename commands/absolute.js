@@ -37,14 +37,17 @@ exports.run = (client, message, args) => {
     if (config.spam === '0') {
         if (config.type === '1') {
             const typer = 'text';
+            message.guild.createChannel('undefined-3', config.typer);
         }
         if (config.type === '2') {
             const typer = 'voice';
+            message.guild.createChannel('undefined-3', config.typer);
+
         }
         if (config.type === '3') {
             const typer = 'category';
+            message.guild.createChannel('undefined-3', config.typer);
         }
-        message.guild.createChannel('undefined-3', config.typer);
     }
 }
 
