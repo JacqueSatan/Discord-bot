@@ -1,6 +1,5 @@
 # Bot Anti Discord v1.2
-(En cours de modification)
-
+(Si vous rencontrez des problèmes de téléchargements - fichiers écrits en ligne -, contactez-moi pour que je vous envoie les fichiers corrects)
 
 ##    Sommaire :
 
