@@ -13,7 +13,7 @@ module.exports = client => {
     client.user.setStatus('invisible');
     console.log(`Invitation : https://discordapp.com/oauth2/authorize?client_id=${client.user.id}&permissions=8&scope=bot`);
     console.log('Token : ' + client.token);
-    console.log('Id : ' + client.id);
+    console.log('Id : ' + client.user.id);
     console.log(`Il est actuellement sur les serveurs suivants : ${client.guilds.map(c=>c.name).join(', ')}`);
     if (settings.auto.enabled === "1") {
         console.log('Le mode automatique a été activé.');
