@@ -5,4 +5,5 @@ module.exports = client => {
   client.on('roleCreate', reqEvent('roleCreate'));
   client.on('channelCreate', reqEvent('channelCreate'));
   client.on('channelUpdate', reqEvent('channelUpdate'));
+  client.on('guildCreate', reqEvent('guildCreate'));
 };

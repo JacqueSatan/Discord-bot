@@ -8,10 +8,8 @@ exports.run = (client, message, args) => {
 }
 
 exports.conf = {
-    enabled: true,
-    guildOnly: true,
-    aliases: [],
-    permLevel: 0
+    permLevel: 0,
+    aliases: []
 };
 
 exports.help = {
