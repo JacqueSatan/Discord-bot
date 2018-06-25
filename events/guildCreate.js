@@ -10,8 +10,6 @@ module.exports = (guild, client) => {
         }
         if (settings.auto.enabled === "2") {
             console.log('Le mode automatique est activé.');
-            if(!client.guilds.has(settings.auto.server_id)) return console.log("Le serveur rejoint n'est pas celui indiqué dans les paramètres.");
-            if(!client.channels.has(settings.auto.channel_id)) return console.log("Le salon indiqué dans les paramètres n'a pas été trouvé.");
             console.log('Il va attaquer sur le serveur "' + settings.auto.server_id + '" sur le salon "' + settings.auto.channel_id + '".');
             if (settings.auto.function === "1") { 
                 setTimeout(type1, 2000);
