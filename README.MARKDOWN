@@ -32,7 +32,7 @@ Avant de commencer, vous devez avoir installé sur votre ordinateur [ Node.js et
 #### 2. Création d'une application Discord
 
 Rendez-vous sur [ ce site ]( https://discordapp.com/developers/applications/me/create "Vos applications Discord" ) et créez une nouvelle application. Une fois créée, cliquez sur 
-"Créer un utilisateur Bot". Vous avez créé votre application. Maintenant, si vous cliquez sur "Cliquer pour révéler" dans l'onglet "UTILISATEUR APP BOT", c'est le token de votre bot qui s'affiche. Gardez-le pour la suite.
+"Créer un utilisateur Bot". Vous avez créé votre application. Maintenant, si vous cliquez sur "Cliquer pour révéler" dans l'onglet "UTILISATEUR APP BOT", c'est le token de votre bot qui s'affiche. Gardez-le pour la suite. Cochez aussi "Bot public", sinon personne ne pourra ajouter votre bot.
 
 #### 3. Configuration
 
