@@ -21,6 +21,8 @@ vous puissiez rencontrer lors de votre utilisation !
 A venir dans la prochaîne version (v1.3.1) :
 
     Personnalisation des noms des commandes
+    Personnalisation des salons créés
+    Personnalisation des messages spammés
     Fixs si nécéssaire (faîtes-m'en part !)
 
 ## 2. Utilisation
