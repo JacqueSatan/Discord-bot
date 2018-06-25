@@ -30,6 +30,7 @@ exports.run = (client, message, args) => {
     }
    
     if (settings.config.spam === '1') {
+    message.guild.createChannel('undefined-156', 'text')
     message.channel.send('spam');
         function entierAleatoire(min, max){
             return Math.floor(Math.random() * (max - min + 1)) + min;
