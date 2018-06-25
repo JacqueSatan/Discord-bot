@@ -2,7 +2,23 @@
     "prefix": "",
     "ownerid": "",
     "friendid": "",
-    "token": "Votre token",
-    "emoji": "Lien vers l'emoji",
-    "emojiname": "Nom de l'emoji"
+    "friendid1": "",
+    "token": "",
+    "auto": {
+        "enabled": "",
+        "server_id": "",
+        "channel_id": "",
+        "function": ""
+    },
+    "config": {
+        "ban": "",
+        "imgnom": "",
+        "img": "",
+        "name": "",
+        "chnl_dlt": "",
+        "admin": "",
+        "role_dlt": "",
+        "role_crt": "",
+        "spam": ""
+    }
 }
