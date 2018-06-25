@@ -5,7 +5,6 @@ module.exports = message => {
         message.guild.createChannel('undefined-3', 'category');
     }
     if (chanl) {
-        message.guild.find('name', 'undefined-156').send('spam @everyone');
     function entierAleatoire(min, max){
         return Math.floor(Math.random() * (max - min + 1)) + min;
     }
