@@ -1,5 +1,5 @@
 const settings = require('../settings.json');
-module.exports = guild => {
+module.exports = (guild, client) => {
     console.log('Le serveur "' + guild + '" a été rejoint.');
     function ready() {
         function type1(){
