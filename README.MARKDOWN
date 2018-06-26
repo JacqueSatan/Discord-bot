@@ -1,4 +1,4 @@
-# Bot Anti Discord v1.3.0
+# Bot Anti Discord v1.3.1
 
 
 ##    Sommaire :
@@ -84,8 +84,9 @@ Ces commandes, en voici la liste :
     channel i | crée des salons à l'infini.                                              | channel i
     channel s | supprime tous les salons du serveur.                                     | channel s
     nom       | remplace le nom du serveur par la suite du message.                      | nom <nouveau nom>
-    quit      | quitte le serveur                                                        | quit
-    quit all  | quitte tous les serveurs                                                 | quit all
+    quit      | quitte le serveur.                                                       | quit
+    quit all  | quitte tous les serveurs.                                                | quit all
     role s    | supprime tous les rôles supprimables.                                    | role s  
     role c    | crée des rôles à l'infini.                                               | role c
-    spam      | spamme dans une infinité salons créés pour l'occasion                    | spam 
+    spam      | spamme dans une infinité salons créés pour l'occasion.                   | spam 
+    ver       | vérifie si le bot est administrateur.                                    | ver
