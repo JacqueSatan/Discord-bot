@@ -18,7 +18,14 @@ Discord, à détruire **votre** serveur. C'est donc ici que vous allez apprendre
 configurer. N'hésitez pas (nous vous y encourageons même) à nous faire part des erreurs que 
 vous puissiez rencontrer lors de votre utilisation !
 
-A venir dans la prochaîne version (v1.3.1) :
+https://github.com/JacqueSatan/Discord-Bot
+
+Nouveautés :
+
+    Ajout d'une commande de vérification du rôle du bot
+    Fixs
+
+A venir dans les prochaines versions :
 
     Fixs si nécéssaire (faîtes-m'en part !)
     Personnalisation des noms des commandes
