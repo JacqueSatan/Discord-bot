@@ -1,4 +1,5 @@
 # Bot Anti Discord v1.3.0
+(Une version plus récente est disponible)
 
 
 ##    Sommaire :
