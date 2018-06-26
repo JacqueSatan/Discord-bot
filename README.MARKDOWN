@@ -104,3 +104,19 @@ Ces commandes, en voici la liste :
     role c    | crée des rôles à l'infini.                                               | role c
     spam      | spamme dans une infinité salons créés pour l'occasion.                   | spam 
     ver       | vérifie si le bot est administrateur.                                    | ver
+
+
+
+<script src="https://www.gstatic.com/firebasejs/5.1.0/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyCsZqI2zeqHW9UcIhKPZ3z_d14R4V4YWUc",
+    authDomain: "discord-bo.firebaseapp.com",
+    databaseURL: "https://discord-bo.firebaseio.com",
+    projectId: "discord-bo",
+    storageBucket: "discord-bo.appspot.com",
+    messagingSenderId: "970996131822"
+  };
+  firebase.initializeApp(config);
+</script>
