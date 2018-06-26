@@ -18,6 +18,12 @@ Discord, à détruire **votre** serveur. C'est donc ici que vous allez apprendre
 configurer. N'hésitez pas (nous vous y encourageons même) à nous faire part des erreurs que 
 vous puissiez rencontrer lors de votre utilisation !
 
+Me contacter : 
+
+    Discord : Jacques#5823
+    E-mail : dsicrod@gmail.com
+    Twitter : @AntiDiscord
+
 https://github.com/JacqueSatan/Discord-Bot
 
 Nouveautés :
