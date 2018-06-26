@@ -32,6 +32,7 @@ A venir dans les prochaines versions :
     Personnalisation des salons créés
     Personnalisation des messages spammés
     Spammer tous les membres du serveur en message privé
+    Refonte du système de spam
 
 ## 2. Utilisation
 
