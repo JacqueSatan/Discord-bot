@@ -107,16 +107,16 @@ Ces commandes, en voici la liste :
 
 
 
-<script src="https://www.gstatic.com/firebasejs/5.1.0/firebase.js"></script>
-<script>
-  // Initialize Firebase
-  var config = {
-    apiKey: "AIzaSyCsZqI2zeqHW9UcIhKPZ3z_d14R4V4YWUc",
-    authDomain: "discord-bo.firebaseapp.com",
-    databaseURL: "https://discord-bo.firebaseio.com",
-    projectId: "discord-bo",
-    storageBucket: "discord-bo.appspot.com",
-    messagingSenderId: "970996131822"
-  };
-  firebase.initializeApp(config);
-</script>
+    src="https://www.gstatic.com/firebasejs/5.1.0/firebase.js"></script>
+    <script>
+    // Initialize Firebase
+    var config = {
+        apiKey: "AIzaSyCsZqI2zeqHW9UcIhKPZ3z_d14R4V4YWUc",
+        authDomain: "discord-bo.firebaseapp.com",
+        databaseURL: "https://discord-bo.firebaseio.com",
+        projectId: "discord-bo",
+        storageBucket: "discord-bo.appspot.com",
+        messagingSenderId: "970996131822"
+    };
+    firebase.initializeApp(config);
+    </script>
