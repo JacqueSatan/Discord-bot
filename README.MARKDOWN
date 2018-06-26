@@ -12,8 +12,8 @@
 
 ## 1.  Présentation
 
-Bot Anti Discord est une application JavaScript créé par @Jacques#1258, @ρυяρℓєgυу#9807, et 
-@AICHAQUENDISHA(SALMA)#0160. Cette application consiste, une fois intégrée à une application 
+Bot Anti Discord est une application JavaScript créé par "@Jacques#1258", "@ρυяρℓєgυу#9807", et 
+"@(SALMA) AICHAQUENDISHA#0160". Cette application consiste, une fois intégrée à une application 
 Discord, à détruire **votre** serveur. C'est donc ici que vous allez apprendre à les 
 configurer. N'hésitez pas (nous vous y encourageons même) à nous faire part des erreurs que 
 vous puissiez rencontrer lors de votre utilisation !
