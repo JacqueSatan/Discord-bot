@@ -1,5 +1,4 @@
-# Bot Anti Discord v1.3.1
-(Une nouvelle version est disponible.)
+# Bot Anti Discord v1.3.2
 
 
 ##    Sommaire :
@@ -22,24 +21,25 @@ vous puissiez rencontrer lors de votre utilisation !
 Me contacter : 
 
     Discord : Jacques#5823
-    E-mail : dsicrod@gmail.com
+    E-mail  : dsicrod@gmail.com
     Twitter : @AntiDiscord
 
-https://github.com/JacqueSatan/Discord-Bot
+[ Lien vers le Github ]( https://antidiscordbot.page.link/lastversion "Lien vers cette page" )
 
 Nouveautés :
 
-    Ajout d'une commande de vérification du rôle du bot
+    Légers changements de la console
     Fixs
+    Personnalisation des commandes
+    Personnalisation des messages créés
+    Refonte du système de spam, plus d'erreur dans la console
 
 A venir dans les prochaines versions :
 
+    Dans un futur très lointain : interface GUI (besoin d'aide)
     Fixs si nécéssaire (faîtes-m'en part !)
-    Personnalisation des noms des commandes
-    Personnalisation des salons créés
     Personnalisation des messages spammés
     Spammer tous les membres du serveur en message privé
-    Refonte du système de spam
 
 ## 2. Utilisation
 
@@ -54,32 +54,44 @@ Rendez-vous sur [ ce site ]( https://discordapp.com/developers/applications/me/c
 
 #### 3. Configuration
 
-Dans le fichier "settings.json" (A remplir de la façon suivante : "valeur": "vous écrivez ici",) : 
-* "token": "le token de votre bot",
-* "auto" : {
-    * "enabled": "1 pour que le bot lance l'attaque tout seul dès son démarrage, 2 pour qu'il la lance dès qu'il arrive sur le serveur."
-    * "server_id": "l'Identifiant du serveur à attaquer automatiquement",
-    * "channel_id": "l'Identifiant d'un salon **ECRIT** du serveur à attaquer automatiquement",
-    * "function": "1 pour l'attaque complète, 2 pour l'attaque spam uniquement"
-* },
-* "config": {
-    * "ban": "1 pour bannir tous les utilisateurs bannissables",
-    * "imgnom": "1 pour changer l'image et le nom du serveur",
-    * "img": "chemin vers l'image",
-    * "name": "nouveau nom du serveur",
-    * "chnl_dlt": "1 pour supprimer tous les salons du serveur",
-    * "admin": "1 pour mettre les autorisations administrateur au rôle @everyone",
-    * "role_dlt": "1 pour supprimer tous les rôles supprimables",
-    * "role_crt": "1 pour créer des rôles à l'infini",
-    * "spam": "0 pour que le bot crée des salons textuels à l'infini, 1 pour que le bot spamme dans un nombre infini de salons, 2 pour que le bot crée des vocaux à l'infini, 3 pour que le bot crée des catégories à l'infini."
-* }
+Dans le fichier "settings.json" (A remplir de la façon suivante : "valeur": "vous écrivez ici". Ne touchez pas aux valeurs situés au-dessus.) : 
+
+    "token": "le token de votre bot",
+    "auto" : {
+        "enabled": "1 pour que le bot lance l'attaque tout seul dès son démarrage, 2 pour qu'il la lance dès qu'il arrive sur le serveur."
+        "server_id": "l'Identifiant du serveur à attaquer automatiquement",
+        "channel_id": "l'Identifiant d'un salon **ECRIT** du serveur à attaquer automatiquement",
+        "function": "1 pour l'attaque complète, 2 pour l'attaque spam uniquement"
+    },
+    "config": {
+        "ban": "1 pour bannir tous les utilisateurs bannissables",
+        "imgnom": "1 pour changer l'image et le nom du serveur",
+        "img": "chemin vers l'image",
+        "name": "nouveau nom du serveur",
+        "chnl_dlt": "1 pour supprimer tous les salons du serveur",
+        "admin": "1 pour mettre les autorisations administrateur au rôle @everyone",
+        "role_dlt": "1 pour supprimer tous les rôles supprimables",
+        "role_crt": "1 pour créer des rôles à l'infini",
+        "spam": "0 pour que le bot crée des salons textuels à l'infini, 1 pour que le bot spamme dans un nombre infini de salons, 2 pour que le bot crée des vocaux à l'infini, 3 pour que le bot crée des catégories à l'infini."
+        "chnlname": "nom des salons que le bot va créer."
+    }
 
 Dans le dossier où se situent tous les fichiers du bot, effectuez un Clic droit tout en appuyant sur la touche Maj (Clic droit + Shift), puis sélectionnez "Ouvrir la fenêtre PowerShell ici". Dans la fenêtre PowerShell, vous écrirez chacune à son tour les commandes suivantes :
-* npm i fs
-* npm i discord.js
-* npm i ms
-* npm i moment
-* npm i chalk
+
+    npm i fs
+    npm i discord.js
+    npm i ms
+    npm i moment
+    npm i chalk
+
+Pour changer le nom d'une commande, il suffit simplement d'aller dans le fichier de la commande, puis de rajouter, entre guillemets, le nouveau nom de la commande entre les crochets au bas du fichier. 
+
+Exemple :
+
+    exports.conf => {
+        permLvl: 4,
+        aliases: [nouveau nom]
+    }
 
 #### Commandes
 
