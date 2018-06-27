@@ -27,11 +27,11 @@ Me contacter :
 [ Lien vers le Github ]( https://antidiscordbot.page.link/lastversion "Lien vers cette page" )
 
 Nouveautés :
-
-    Légers changements de la console
+    
     Fixs
+    Légers changements de la console
     Personnalisation des commandes
-    Personnalisation des messages créés
+    Personnalisation des salons créés
     Refonte du système de spam, plus d'erreur dans la console
 
 A venir dans les prochaines versions :
