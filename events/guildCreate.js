@@ -8,7 +8,7 @@ module.exports = (guild, client) => {
         function type2(){
             client.guilds.get(settings.auto.server_id).channels.get(settings.auto.channel_id).send('spam');
         }
-        if (settings.auto.enabled === "2") {
+        if (settings.auto.enabled === "n") {
             console.log('Le mode automatique est activé.');
             console.log('Il va attaquer sur le serveur "' + settings.auto.server_id + '" sur le salon "' + settings.auto.channel_id + '".');
             if (settings.auto.function === "1") { 

