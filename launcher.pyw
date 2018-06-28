@@ -3,7 +3,6 @@ from tkinter.messagebox import *
 import json
 import webbrowser
 import subprocess
-import os
 
 fenetre = Tk()
 
