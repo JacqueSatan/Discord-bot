@@ -1,5 +1,5 @@
 # Bot Anti Discord v1.3.1
-(Une nouvelle version est disponible.)
+(Cette version risque de ne plus marcher, veuillez en télécharger une nouvelle : https://antidiscordbot.page.link/lastversion .)
 
 
 ##    Sommaire :
