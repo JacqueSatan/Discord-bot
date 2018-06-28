@@ -3,6 +3,8 @@ from tkinter.messagebox import *
 import json
 import webbrowser
 import subprocess
+import os
+from pathlib import Path
 
 fenetre = Tk()
 
@@ -27,12 +29,43 @@ def installt():
     subprocess.call('npm --prefix ./core i chalk', shell=True)
     showinfo('Dépendences installées', 'Toutes les dépendences semblent avoir été installées.')
 
+def hideconsole():
+    with open("core\options.json", "r") as jsonFile:
+        data = json.load(jsonFile)
+    tmp = data["showconsole"]
+    data["showconsole"] = 'false'
+    with open("core\options.json", "w") as jsonFile:
+        json.dump(data, jsonFile)
+    fenetre.quit
+    
+
+def showconsole():
+    print(os.getcwd())
+    with open("core\options.json", "r") as jsonFile:
+        data = json.load(jsonFile)
+    tmp = data["showconsole"]
+    data["showconsole"] = 'true'
+    with open("core\options.json", "w") as jsonFile:
+        json.dump(data, jsonFile)
+    fenetre.quit
+
 menubar = Menu(fenetre)
 
 menu1 = Menu(menubar, tearoff=0)
-menu1.add_cascade(label="Installer les dépendences", command=installt)
+
+
+path = Path(__file__).parent.joinpath('core\options.json')
+
+with open(path) as fp:
+    data = json.load(fp)
+tmp = data["showconsole"]
+if tmp == 'true':
+    menu1.add_command(label='Cacher la console (redémarrer pour que les effets se montrent)', command=hideconsole)
+else:
+    menu1.add_command(label='Montrer la console (redémarrer pour que les effets se montrent)', command=showconsole)
+menu1.add_command(label="Installer les dépendences", command=installt)
 menu1.add_command(label="Quitter", command=fenetre.quit)
-menubar.add_cascade(label="Fichier", menu=menu1)
+menubar.add_cascade(label="Options", menu=menu1)
 
 menu2 = Menu(menubar, tearoff=0)
 menu2.add_command(label="Aide", command=aide)
@@ -272,11 +305,16 @@ def recupere7(entree7):
 bouton7.grid(row=15, column=2)
 
 def lancer():
-    if askokcancel('Lancer l\'attaque', 'Voulez-vous vraiment lancer l\'attaque ?'):
-        subprocess.run('console.bat')
-        showinfo('Attaque lancée', 'Vous pouvez cette fenêtre.')
-    else:
-        showinfo('Attaque annulée', 'L\'attaque a bien été annulée.')
+    if askokcancel('Lancer l\'attaque', 'Voulez-vous vraiment lancer l\'attaque ?\nCette fenêtre va se bloquer, ne la fermez surtout pas.'):
+        path = Path(__file__).parent.joinpath('core\options.json')
+        with open(path) as fp:
+            data = json.load(fp)
+        tmp = data["showconsole"]
+        if tmp == 'true':
+            subprocess.run('console.bat')
+        else:
+            subprocess.call('console.bat')
+        showinfo('Attaque terminée', 'Vous pouvez cette fenêtre.')
 bout = Button(fenetre, text="Lancer l'attaque", command=lancer)
 bout.grid(row=15, column=4)
 
