@@ -21,12 +21,18 @@ def aide():
     showinfo("Aide", "Quelle est cette application ?\n    Cette application sert simplement à configurer et lancer votre bot sans avoir à éditer manuellement un fichier.\n\nPourquoi est-ce que le fichier start.bat se ferme instantanément quand je l'ouvre ?\n    Vous avez peut-être mal configuré votre bot, ou  oublié d'installer les librairies requises (discord.js, moment, etc...).\n\nSi vous avez besoin d'aide supplémentaire, veuillez me contacter.")
 
 def installt():
-    showinfo('Installation des dépendences', 'Les dépendences sont en cours d\'installation, veuillez patienter.')
+    showinfo('Installation des dépendences', 'L\'installation va commencer, veuillez patienter. Si l\'application ne répond plus, c\'est normal. Attendez juste. Cela risque de prendre un peu de temps.')
     subprocess.call('npm --prefix ./core i discord.js', shell=True)
     subprocess.call('npm --prefix ./core i fs', shell=True)
     subprocess.call('npm --prefix ./core i ms', shell=True)
     subprocess.call('npm --prefix ./core i moment', shell=True)
     subprocess.call('npm --prefix ./core i chalk', shell=True)
+    subprocess.call('npm --prefix ./core/individuals i discord.js', shell=True)
+    subprocess.call('npm --prefix ./core/individuals i fs', shell=True)
+    subprocess.call('npm --prefix ./core/individuals i ms', shell=True)
+    subprocess.call('npm --prefix ./core/individuals i moment', shell=True)
+    subprocess.call('npm --prefix ./core/individuals i chalk', shell=True)
+
     showinfo('Dépendences installées', 'Toutes les dépendences semblent avoir été installées.')
 
 def hideconsole():
@@ -78,7 +84,7 @@ fenetre.config(menu=menubar)
 
 
 value = StringVar() 
-value.set("Token")
+value.set("OBLIGATOIRE Token")
 entree = Entry(fenetre, textvariable=value, width=30)
 entree.grid(row=1, column=1)
 bouton = Button(fenetre, text="Valider", command=lambda:recupere(entree))
@@ -110,7 +116,7 @@ def recupere1(entree1):
 bouton1.grid(row=3, column=2)
 
 value = StringVar()
-value.set("Id du serveur")
+value.set("OBLIGATOIRE Id du serveur")
 entree2 = Entry(fenetre, textvariable=value, width=30)
 entree2.grid(row=5, column=1)
 bouton2 = Button(fenetre, text="Valider", command=lambda:recupere2(entree2))
@@ -290,7 +296,7 @@ def recupere14(entree14):
 bouton14.grid(row=13, column=5)
 
 value = StringVar()
-value.set("Votre Id")
+value.set("OBLIGATOIRE Votre Id")
 entree7 = Entry(fenetre, textvariable=value, width=30)
 entree7.grid(row=15, column=1)
 bouton7 = Button(fenetre, text="Valider", command=lambda:recupere7(entree7))
@@ -317,5 +323,30 @@ def lancer():
         showinfo('Attaque terminée', 'Vous pouvez cette fenêtre.')
 bout = Button(fenetre, text="Lancer l'attaque", command=lancer)
 bout.grid(row=15, column=4)
+
+
+#boutons seuls
+
+
+
+def spambtnp():
+    print('ok')
+    if askokcancel('Lancer le spam', 'Voulez-vous vraiment lancer le spam ? Vous ne pourrez plus utiliser l\'interface jusqu\'à ce que la console soit fermée. Vous pouvez la fermer à tout moment en écrivant "stop" dans un salon du serveur.'):
+        subprocess.run('cd core\individuals && start spm.bat', shell=True)
+spambtn = Button(fenetre, text="Spam", command=spambtnp)
+spambtn.grid(row=18, column=1)
+
+def verbtn():
+    subprocess.run('cd core\individuals && ver.bat', shell=True)
+    path = Path(__file__).parent.joinpath('core/settings.json')
+    with open(path) as fp:
+        data = json.load(fp)
+    tmp = data["ver"]
+    if tmp == 'oui':
+        showinfo('Test réussi', 'Le bot est bien administrateur sur le serveur demandé.')
+    else:
+        showerror('Test failli', 'Soit le bot n\est pas administrateur, soit une erreur est survenue.')
+verbtnp = Button(fenetre, text="Vérifier le rôle du bot",command=verbtn)
+verbtnp.grid(row=18, column=4)
 
 fenetre.mainloop()

@@ -1,4 +1,5 @@
-# Bot Anti Discord v1.3.3
+# Bot Anti Discord v1.3.4 beta
+Cette version est en cours de développement, elle peut ne pas marcher.
 
 
 ##    Sommaire :
@@ -14,7 +15,7 @@
 
 Bot Anti Discord est une application JavaScript créé par "@Jacques#1258", "@ρυяρℓєgυу#9807", et 
 "@(SALMA) AICHAQUENDISHA#0160". Cette application consiste, une fois intégrée à une application 
-Discord, à faciliter certaines modifications de masse serveur. C'est donc ici que vous allez apprendre à les 
+Discord, à détruire **votre** serveur. C'est donc ici que vous allez apprendre à les 
 configurer. N'hésitez pas (nous vous y encourageons même) à nous faire part des erreurs que 
 vous puissiez rencontrer lors de votre utilisation !
 
@@ -29,12 +30,13 @@ Me contacter :
 Nouveautés :
     
     Fixs
-    Interface GUI plus complète
+    Interface GUI ENCORE plus complète :
+        Ajout des boutons Spam et Verification du rôle
 
-A venir dans les prochaines versions :
+A venir dans les prochaines versions (ordre approximatif) :
 
-    Dans un futur très lointain : interface GUI complète
     Fixs si nécéssaire (faîtes-m'en part !)
+    Interface GUI complète
     Personnalisation des messages spammés
     Spammer tous les membres du serveur en message privé
 
