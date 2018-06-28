@@ -1,4 +1,4 @@
-# Bot Anti Discord v1.3.3 (beta)
+# Bot Anti Discord v1.3.3
 
 
 ##    Sommaire :
@@ -71,7 +71,7 @@ Exemple :
 
 #### Commandes
 
-Pour lancer le bot, lancez simplement le fichier 'start.bat'.
+Pour lancer le bot, appuyez simplement sur "Lancer l'attaque".
 
 Pour utiliser le bot, il faut utiliser des commandes. Ces commandes, doivent se trouver 
 en début de message sans préfixe, et collées à aucun autre caractère qu'un espace. Seul la personne à qui appartient l'Identifiant que vous avez entré pendant la configuration peut les utiliser. Ces commandes, en voici la liste : 
