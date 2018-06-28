@@ -51,7 +51,7 @@ Rendez-vous sur [ ce site ]( https://discordapp.com/developers/applications/me/c
 
 #### 3. Configuration
 
-Pour configurer le bot, lancez le fichier "configure.py" ; note sur la partie spam :
+Pour configurer le bot, lancez le fichier "launcher.pyw" ; note sur la partie spam :
 * n pour créer des salons à l'infini
 * y pour lancer le superspam
 * v pour créer des salons vocaux à l'infini
