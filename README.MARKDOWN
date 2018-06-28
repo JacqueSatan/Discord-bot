@@ -42,7 +42,7 @@ A venir dans les prochaines versions :
 
 #### 1.Pré-requis
 
-Avant de commencer, vous devez avoir installé sur votre ordinateur [ Node.js et Npm ]( https://nodejs.org/en/ "Installer Node.js et Npm" ), disponibles en cliquant sur leurs noms ci-dessus. Vous avez également besoin, bien entendu, d'un compte Discord. Il est très fortement recommandé d'utiliser [ Visual Studio Code ]( https://code.visualstudio.com/download "Installer Visual Studio Code" ) pour modifier les documents. Il est également nécéssaire d'installer [ Python 3 ]( https://www.python.org/downloads/ "Installer Python 3" ), sauf si vous relevez le défi de tout configurer à la main.
+Avant de commencer, vous devez avoir installé sur votre ordinateur [ Node.js et Npm ]( https://nodejs.org/en/ "Installer Node.js et Npm" ), disponibles en cliquant sur leurs noms ci-dessus. Vous avez également besoin, bien entendu, d'un compte Discord. Il est très fortement recommandé d'utiliser [ Visual Studio Code ]( https://code.visualstudio.com/download "Installer Visual Studio Code" ) pour modifier les documents. Il est également nécéssaire d'installer [ Python 3 ]( https://www.python.org/downloads/ "Installer Python 3" ), sauf si vous relevez le défi de tout configurer à la main. Pendant l'installation de Python, veillez à ce que l'extension Tkinter soit cochée.
 
 #### 2. Création d'une application Discord
 
@@ -52,20 +52,15 @@ Rendez-vous sur [ ce site ]( https://discordapp.com/developers/applications/me/c
 #### 3. Configuration
 
 Pour configurer le bot, lancez le fichier "configure.py" ; note sur la partie spam :
-* 0 pour créer des salons à l'infini
-* 1 pour lancer le superspam
-* 2 pour créer des salons vocaux à l'infini
-* 3 pour créer des catégories à l'infini
+* n pour créer des salons à l'infini
+* y pour lancer le superspam
+* v pour créer des salons vocaux à l'infini
+* c pour créer des catégories à l'infini
+* Laissez vide pour ne rien faire
 
-Dans le dossier où se situent tous les fichiers du bot, effectuez un Clic droit tout en appuyant sur la touche Maj (Clic droit + Shift), puis sélectionnez "Ouvrir la fenêtre PowerShell ici". Dans la fenêtre PowerShell, vous écrirez chacune à son tour les commandes suivantes :
+Pour installer les dépendences, il vous suffit maintenant simplement de cliquer sur 'Installer les dépendences', dans l'onglet Fichier.
 
-    npm i fs
-    npm i discord.js
-    npm i ms
-    npm i moment
-    npm i chalk
-
-Pour changer le nom d'une commande, il suffit simplement d'aller dans le fichier de la commande, puis de rajouter, entre guillemets, le nouveau nom de la commande entre les crochets au bas du fichier. 
+Pour changer le nom d'une commande, il suffit simplement d'aller dans le fichier de la commande (dans core/commande/nomdelacommande), puis de rajouter, entre guillemets, le nouveau nom de la commande entre les crochets au bas du fichier. 
 
 Exemple :
 
@@ -79,8 +74,7 @@ Exemple :
 Pour lancer le bot, lancez simplement le fichier 'start.bat'.
 
 Pour utiliser le bot, il faut utiliser des commandes. Ces commandes, doivent se trouver 
-en début de message sans préfixe, et collées à aucun autre caractère qu'un espace. 
-Ces commandes, en voici la liste : 
+en début de message sans préfixe, et collées à aucun autre caractère qu'un espace. Seul la personne à qui appartient l'Identifiant que vous avez entré pendant la configuration peut les utiliser. Ces commandes, en voici la liste : 
 
 
     Nom       | Description                                                              | Utilisation
@@ -97,4 +91,5 @@ Ces commandes, en voici la liste :
     role s    | supprime tous les rôles supprimables.                                    | role s  
     role c    | crée des rôles à l'infini.                                               | role c
     spam      | spamme dans une infinité salons créés pour l'occasion.                   | spam 
-    ver       | vérifie que le bot est administrateur.                                    | ver
+    stop      | le bot arrête tout ce qu'il fait.
+    ver       | vérifie que le bot est administrateur.                                   | ver
