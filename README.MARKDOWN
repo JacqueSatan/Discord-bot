@@ -1,5 +1,6 @@
 # Bot Anti Discord v1.3.4 beta
 Cette version est en cours de développement, elle peut ne pas marcher.
+# **LE DEVELOPPEMENT DE CETTE APPLICATION RISQUE D'ÊTRE INTERROMPU DURANT 2 SEMAINES**
 
 
 ##    Sommaire :
@@ -31,7 +32,7 @@ Nouveautés :
     
     Fixs
     Interface GUI ENCORE plus complète :
-        Ajout des boutons Spam et Verification du rôle
+        Ajout des boutons Spam ; Verification du rôle ; Supprimer tous les salons
 
 A venir dans les prochaines versions (ordre approximatif) :
 
