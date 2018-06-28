@@ -29,7 +29,7 @@ Me contacter :
 Nouveautés :
     
     Fixs
-    Interface GUI pour la configuration
+    Interface GUI plus complète
 
 A venir dans les prochaines versions :
 
