@@ -274,8 +274,8 @@ bouton7.grid(row=15, column=2)
 
 def lancer():
     if askokcancel('Lancer l\'attaque', 'Voulez-vous vraiment lancer l\'attaque ?'):
-        showinfo('Attaque lancée', 'Cette fenêtre ne répondra plus veuillez ne pas la fermer.')
-        os.system('core/start.bat')
+        showinfo('Attaque lancée', 'Cette fenêtre ne répondra plus, veuillez ne pas la fermer.')
+        subprocess.run('.console.bat')
     else:
         showinfo('Attaque annulée', 'L\'attaque a bien été annulée.')
 bout = Button(fenetre, text="Lancer l'attaque", command=lancer)
