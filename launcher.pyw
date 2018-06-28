@@ -15,7 +15,13 @@ def contact():
     showinfo("Me contacter", "Discord : @Jacques#5823\nE-mail  : dsicrod@gmail.com\nTwitter : @AntiDiscord")
 
 def git():
-        webbrowser.open_new(r"https://antidiscordbot.page.link/lastversion")
+        webbrowser.open_new_tab(r"https://antidiscordbot.page.link/lastversionfromapp")
+
+def dscrdc():
+    webbrowser.open_new_tab(r"https://antidiscordbot.page.link/discordcreatefromapp")
+
+def dscrdv():
+    webbrowser.open_new_tab(r"https://antidiscordbot.page.link/discordappsfromapp")
 
 def aide():
     showinfo("Aide", "Quelle est cette application ?\n    Cette application sert simplement à configurer et lancer votre bot sans avoir à éditer manuellement un fichier.\n\nPourquoi est-ce que le fichier start.bat se ferme instantanément quand je l'ouvre ?\n    Vous avez peut-être mal configuré votre bot, ou  oublié d'installer les librairies requises (discord.js, moment, etc...).\n\nSi vous avez besoin d'aide supplémentaire, veuillez me contacter.")
@@ -73,9 +79,14 @@ menu1.add_command(label="Installer les dépendences", command=installt)
 menu1.add_command(label="Quitter", command=fenetre.quit)
 menubar.add_cascade(label="Options", menu=menu1)
 
+menu3 = Menu(menubar, tearoff=0)
+menu3.add_command(label="Page Github", command=git)
+menu3.add_command(label="Créer une application Discord", command=dscrdc)
+menu3.add_command(label="Vos applications Discord", command=dscrdv)
+menubar.add_cascade(label='Liens', menu=menu3)
+
 menu2 = Menu(menubar, tearoff=0)
 menu2.add_command(label="Aide", command=aide)
-menu2.add_command(label="Page Github", command=git)
 menu2.add_command(label="Me contacter", command=contact)
 menubar.add_cascade(label="A propos", menu=menu2)
 
@@ -330,7 +341,6 @@ bout.grid(row=15, column=4)
 
 
 def spambtnp():
-    print('ok')
     if askokcancel('Lancer le spam', 'Voulez-vous vraiment lancer le spam ? Vous ne pourrez plus utiliser l\'interface jusqu\'à ce que la console soit fermée. Vous pouvez la fermer à tout moment en écrivant "stop" dans un salon du serveur.'):
         subprocess.run('cd core\individuals && start spm.bat', shell=True)
 spambtn = Button(fenetre, text="Spam", command=spambtnp)
@@ -348,5 +358,11 @@ def verbtn():
         showerror('Test failli', 'Soit le bot n\est pas administrateur, soit une erreur est survenue.')
 verbtnp = Button(fenetre, text="Vérifier le rôle du bot",command=verbtn)
 verbtnp.grid(row=18, column=4)
+
+def supprchnlc():
+    showinfo('Suppression des salon', 'Tous les salons du serveur vont être supprimés, cela risque de prendre un peu de temps.')
+    subprocess.run('cd core\individuals && start chnldlt.bat', shell=True)
+supprchnl = Button(fenetre, text="Supprimer tous les salons", command=supprchnlc)
+supprchnl.grid(row=21, column=1)
 
 fenetre.mainloop()
