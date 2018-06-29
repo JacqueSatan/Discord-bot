@@ -328,9 +328,9 @@ def lancer():
             data = json.load(fp)
         tmp = data["showconsole"]
         if tmp == 'true':
-            subprocess.run('console.bat')
+            subprocess.run('start console.bat', shell=True)
         else:
-            subprocess.call('console.bat')
+            subprocess.run('cd core && node bot.js', shell=True)
         showinfo('Attaque terminée', 'Vous pouvez cette fenêtre.')
 bout = Button(fenetre, text="Lancer l'attaque", command=lancer)
 bout.grid(row=15, column=4)
@@ -342,7 +342,7 @@ bout.grid(row=15, column=4)
 
 def spambtnp():
     if askokcancel('Lancer le spam', 'Voulez-vous vraiment lancer le spam ? Vous ne pourrez plus utiliser l\'interface jusqu\'à ce que la console soit fermée. Vous pouvez la fermer à tout moment en écrivant "stop" dans un salon du serveur.'):
-        subprocess.run('cd core\individuals && start spm.bat', shell=True)
+        subprocess.run('cd core\individuals && node spm.js', shell=True)
 spambtn = Button(fenetre, text="Spam", command=spambtnp)
 spambtn.grid(row=18, column=1)
 
@@ -361,7 +361,8 @@ verbtnp.grid(row=18, column=4)
 
 def supprchnlc():
     showinfo('Suppression des salon', 'Tous les salons du serveur vont être supprimés, cela risque de prendre un peu de temps.')
-    subprocess.run('cd core\individuals && start chnldlt.bat', shell=True)
+    subprocess.run('cd core\individuals && node chnldlt.js', shell=True)
+    showinfo('ok')
 supprchnl = Button(fenetre, text="Supprimer tous les salons", command=supprchnlc)
 supprchnl.grid(row=21, column=1)
 

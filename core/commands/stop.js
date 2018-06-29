@@ -1,5 +1,4 @@
 exports.run = client => {
-    client.guilds.map(c=>c.leave());
     process.exit();
 }
 
