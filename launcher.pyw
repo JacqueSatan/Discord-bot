@@ -9,7 +9,7 @@ from pathlib import Path
 fenetre = Tk()
 
 #fenetre.geometry("460x205")
-fenetre.title('Discord-Bot v1.3.3')
+fenetre.title('Discord-Bot v1.3.4 beta')
 
 def contact():
     showinfo("Me contacter", "Discord : @Jacques#5823\nE-mail  : dsicrod@gmail.com\nTwitter : @AntiDiscord")
