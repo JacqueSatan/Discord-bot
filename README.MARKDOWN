@@ -31,7 +31,7 @@ Nouveautés :
     
     Fixs
     Interface GUI ENCORE plus complète :
-        Ajout des boutons Spam et Verification du rôle
+        Ajout des boutons Spam ; Verification du rôle ; Supprimer tous les salons
 
 A venir dans les prochaines versions (ordre approximatif) :
 
