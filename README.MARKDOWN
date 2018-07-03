@@ -24,7 +24,7 @@ Me contacter :
 
     Discord : Jacques#5823
     E-mail  : dsicrod@gmail.com
-    [ Serveur de support ]( https://discord.gg/HxRCUng "Serveur de support" )
+    Serveur de support : https://discord.gg/HxRCUng 
     Twitter : @AntiDiscord
     
 
