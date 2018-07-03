@@ -21,9 +21,12 @@ vous puissiez rencontrer lors de votre utilisation !
 
 Me contacter : 
 
+
     Discord : Jacques#5823
     E-mail  : dsicrod@gmail.com
+    [ Serveur de support ]( https://discord.gg/HxRCUng "Serveur de support" )
     Twitter : @AntiDiscord
+    
 
 [ Lien vers le Github ]( https://antidiscordbot.page.link/lastversion "Lien vers cette page" )
 
