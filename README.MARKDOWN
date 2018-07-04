@@ -27,7 +27,7 @@ Me contacter :
     Twitter : @AntiDiscord
     
     
-[ Serveur de support ]( https://discord.gg/HxRCUng "Serveur de support" )<br />
+[ Serveur de support ]( https://discord.gg/ngrdmkN "Serveur de support" )<br />
 [ Lien vers le Github ]( https://antidiscordbot.page.link/lastversion "Lien vers cette page" )
 
 Nouveautés :
