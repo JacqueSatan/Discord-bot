@@ -33,13 +33,12 @@ Me contacter :
 Nouveautés :
     
     Fixs
-    Interface GUI ENCORE plus complète :
-        Ajout des boutons Spam ; Verification du rôle ; Supprimer tous les salons
+    Ajout des boutons changer le nom du serveur et bannir tous les membres
 
 A venir dans les prochaines versions (ordre approximatif) :
 
     Fixs si nécéssaire (faîtes-m'en part !)
-    Interface GUI complète
+    Changement de l'interface GUI, très peu ergonomique
     Personnalisation des messages spammés
     Spammer tous les membres du serveur en message privé
 
