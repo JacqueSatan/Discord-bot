@@ -1,10 +1,10 @@
+import json
+import os
+import subprocess
+import webbrowser
+from pathlib import Path
 from tkinter import *
 from tkinter.messagebox import *
-import json
-import webbrowser
-import subprocess
-import os
-from pathlib import Path
 
 fenetre = Tk()
 
@@ -321,6 +321,7 @@ def recupere7(entree7):
         json.dump(data, jsonFile)
 bouton7.grid(row=15, column=2)
 
+
 def lancer():
     if askokcancel('Lancer l\'attaque', 'Voulez-vous vraiment lancer l\'attaque ?\nCette fenêtre va se bloquer, ne la fermez surtout pas.'):
         path = Path(__file__).parent.joinpath('core\options.json')
@@ -328,10 +329,12 @@ def lancer():
             data = json.load(fp)
         tmp = data["showconsole"]
         if tmp == 'true':
-            subprocess.run('start console.bat', shell=True)
+            showinfo('Remarque', 'Pour terminer l\'attaque, fermez la console.')
+            subprocess.run('cd core && start console.bat', shell=True)
         else:
+            showinfo('Remarque', 'Pour terminer l\'attaque, écrivez "stop" dans n\'importe quel salon du serveur.')
             subprocess.run('cd core && node bot.js', shell=True)
-        showinfo('Attaque terminée', 'Vous pouvez cette fenêtre.')
+            showinfo('Attaque terminée', 'Vous pouvez fermer cette fenêtre.')
 bout = Button(fenetre, text="Lancer l'attaque", command=lancer)
 bout.grid(row=15, column=4)
 
@@ -362,8 +365,31 @@ verbtnp.grid(row=18, column=4)
 def supprchnlc():
     showinfo('Suppression des salon', 'Tous les salons du serveur vont être supprimés, cela risque de prendre un peu de temps.')
     subprocess.run('cd core\individuals && node chnldlt.js', shell=True)
-    showinfo('ok')
+    showinfo('Terminé', 'Vous pouvez fermer cette fenêtre.')
 supprchnl = Button(fenetre, text="Supprimer tous les salons", command=supprchnlc)
 supprchnl.grid(row=21, column=1)
+
+def banp():
+    showinfo('Bannissement de tout le monde', 'Le bot va bannir tous les gens du serveur, le temps que ça prendra peut varier')
+    subprocess.run('cd core\individuals && node ban.js', shell=True)
+    showinfo('Terminé', 'Vous pouvez fermer cette fenêtre.')
+ban = Button(fenetre, text="Bannir tous les membres", command=banp)
+ban.grid(row=21, column=4)
+
+value = StringVar()
+value.set("Nouveau nom")
+nouveaunom = Entry(fenetre, textvariable=value, width=30)
+nouveaunom.grid(row=22, column=1)
+nouveaunomb = Button(fenetre, text="Changer le nom du serveur", command=lambda:nouveaunomd(nouveaunom))
+def nouveaunomd(nouveaunom):
+    text = nouveaunom.get()
+    with open("core/settings.json", "r") as jsonFile:
+        data = json.load(jsonFile)
+    tmp = data["config"]["name"]
+    data["config"]["name"] = nouveaunom.get()
+    with open("core/settings.json", "w") as jsonFile:
+        json.dump(data, jsonFile)
+    subprocess.run("cd core\individuals && node name.js", shell=True)
+nouveaunomb.grid(row=22, column=3)
 
 fenetre.mainloop()
