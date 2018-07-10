@@ -24,7 +24,7 @@ module.exports = client => {
     console.log(chalk.inverse('Token :               ') + chalk.black.bgGreen(client.token));
     console.log(chalk.inverse('Id :                  ') + chalk.black.bgGreen(client.user.id));
     console.log(`Il est actuellement sur les serveurs suivants : \n\n    ${client.guilds.map(c=>c.name).join(' ' + client.guilds.map(c=>c.id + '\n'))}\n`);
-    if (settings.auto.enabled === "y") {
+    if (settings.auto.enabled === 1) {
         console.log('Le mode automatique est activé.');
         
         if(!client.guilds.has(settings.auto.server_id)) return console.log("Le bot n'est pas sur le serveur demandé.");
@@ -37,7 +37,7 @@ module.exports = client => {
         if (settings.auto.function === "2") {
             setTimeout(type2, 2000);
         }
-    } else if (settings.auto.enabled === "n") {
+    } else if (settings.auto.enabled === 0) {
         console.log('Le mode automatique est activé, mais il se lancera lorsque le bot aura rejoint le serveur cible.');
     }
 }

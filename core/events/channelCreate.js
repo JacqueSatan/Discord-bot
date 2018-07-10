@@ -4,9 +4,14 @@ module.exports = (channel, client) => {
         if (channel.name === "undefined-156") {
             settings.sp = "1";
             fs.writeFile('../settings.json', JSON.stringify(settings), (err) => console.error);
+            setTimeout(createChanne, 1000);
         }
         if (settings.sp === "1") {
             channel.send('spam @everyone');
+        }
+
+        function createChanne(){
+            client.guilds.get(settings.auto.server_id).createChannel(settings.config.chnlname, 'text');
         }
 
 

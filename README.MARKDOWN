@@ -1,5 +1,4 @@
-# Bot Anti Discord v1.3.4 beta
-Cette version est en cours de développement, elle peut ne pas marcher.
+# Bot Anti Discord v1.3.4
 
 
 ##    Sommaire :
@@ -21,24 +20,22 @@ vous puissiez rencontrer lors de votre utilisation !
 
 Me contacter : 
 
-
     Discord : Jacques#5823
     E-mail  : dsicrod@gmail.com
     Twitter : @AntiDiscord
-    
-    
-[ Serveur de support ]( https://discord.gg/ngrdmkN "Serveur de support" )<br />
+
+[ Serveur de support ]( https://discord.gg/HxRCUng "Serveur de support" )
 [ Lien vers le Github ]( https://antidiscordbot.page.link/lastversion "Lien vers cette page" )
 
 Nouveautés :
     
     Fixs
-    Ajout des boutons changer le nom du serveur et bannir tous les membres
+    Interface GUI complète :
+        Ajout de tous les boutons manquants
 
 A venir dans les prochaines versions (ordre approximatif) :
 
     Fixs si nécéssaire (faîtes-m'en part !)
-    Changement de l'interface GUI, très peu ergonomique
     Personnalisation des messages spammés
     Spammer tous les membres du serveur en message privé
 
@@ -55,12 +52,7 @@ Rendez-vous sur [ ce site ]( https://discordapp.com/developers/applications/me/c
 
 #### 3. Configuration
 
-Pour configurer le bot, lancez le fichier "launcher.pyw" ; note sur la partie spam :
-* n pour créer des salons à l'infini
-* y pour lancer le superspam
-* v pour créer des salons vocaux à l'infini
-* c pour créer des catégories à l'infini
-* Laissez vide pour ne rien faire
+Pour configurer et lancer le bot, lancez le fichier "launcher.pyw".
 
 Pour installer les dépendences, il vous suffit maintenant simplement de cliquer sur 'Installer les dépendences', dans l'onglet Fichier.
 
@@ -70,30 +62,5 @@ Exemple :
 
     exports.conf => {
         permLvl: 4,
-        aliases: [nouveau nom]
+        aliases: ["nouveau nom"]
     }
-
-#### Commandes
-
-Pour lancer le bot, appuyez simplement sur "Lancer l'attaque".
-
-Pour utiliser le bot, il faut utiliser des commandes. Ces commandes, doivent se trouver 
-en début de message sans préfixe, et collées à aucun autre caractère qu'un espace. Seul la personne à qui appartient l'Identifiant que vous avez entré pendant la configuration peut les utiliser. Ces commandes, en voici la liste : 
-
-
-    Nom       | Description                                                              | Utilisation
-              |                                                                          |
-    admin     | change les permissions du rôle @everyone, il devient administrateur.     | admin
-    attack    | effectue des changements sur le serveur en fonction de settings.json.    | attack
-    ban       | bannit l'utilisateur mentionné.                                          | ban <mention>
-    bann      | bannit tous les utilisateurs bannissables du serveur, même vous.         | bann
-    channel i | crée des salons à l'infini.                                              | channel i
-    channel s | supprime tous les salons du serveur.                                     | channel s
-    nom       | remplace le nom du serveur par la suite du message.                      | nom <nouveau nom>
-    quit      | quitte le serveur.                                                       | quit
-    quit all  | quitte tous les serveurs.                                                | quit all
-    role s    | supprime tous les rôles supprimables.                                    | role s  
-    role c    | crée des rôles à l'infini.                                               | role c
-    spam      | spamme dans une infinité salons créés pour l'occasion.                   | spam 
-    stop      | le bot arrête tout ce qu'il fait.
-    ver       | vérifie que le bot est administrateur.                                   | ver
