@@ -20,7 +20,7 @@ vous puissiez rencontrer lors de votre utilisation !
 
 Me contacter : 
 
-    Discord : Jacques#5823
+    Discord : J͋ͣá̝c̥̩ͭͤͮ͟q̍u̧͂ͬͯ͒̊ͨ̆eͣ̎š#5823
     E-mail  : dsicrod@gmail.com
     Twitter : @AntiDiscord
 
