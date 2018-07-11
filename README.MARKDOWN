@@ -1,4 +1,4 @@
-# Bot Anti Discord v1.3.4
+# Bot Anti Discord v1.3.5
 
 
 ##    Sommaire :
@@ -24,14 +24,16 @@ Me contacter :
     E-mail  : dsicrod@gmail.com
     Twitter : @AntiDiscord
 
-[ Serveur de support ]( https://discord.gg/HxRCUng "Serveur de support" )<br />
+[ Serveur de support ]( https://discord.gg/ngrdmkN "Serveur de support" )<br />
 [ Lien vers le Github ]( https://antidiscordbot.page.link/lastversion "Lien vers cette page" )
 
 Nouveautés :
     
     Fixs
-    Interface GUI complète :
-        Ajout de tous les boutons manquants
+    Interface GUI optimisée :
+        Ajout de boutons manquants
+        Refonte de la mise en page
+        
 
 A venir dans les prochaines versions (ordre approximatif) :
 
@@ -43,7 +45,7 @@ A venir dans les prochaines versions (ordre approximatif) :
 
 #### 1.Pré-requis
 
-Avant de commencer, vous devez avoir installé sur votre ordinateur [ Node.js et Npm ]( https://nodejs.org/en/ "Installer Node.js et Npm" ), disponibles en cliquant sur leurs noms ci-dessus. Vous avez également besoin, bien entendu, d'un compte Discord. Il est très fortement recommandé d'utiliser [ Visual Studio Code ]( https://code.visualstudio.com/download "Installer Visual Studio Code" ) pour modifier les documents. Il est également nécéssaire d'installer [ Python 3 ]( https://www.python.org/downloads/ "Installer Python 3" ), sauf si vous relevez le défi de tout configurer à la main. Pendant l'installation de Python, veillez à ce que l'extension Tkinter soit cochée.
+Avant de commencer, vous devez avoir installé sur votre ordinateur [ Node.js et Npm ]( https://nodejs.org/en/ "Installer Node.js et Npm" ), disponibles en cliquant sur leurs noms ci-dessus. Vous avez également besoin, bien entendu, d'un compte Discord. Il est très fortement recommandé d'utiliser [ Visual Studio Code ]( https://code.visualstudio.com/download "Installer Visual Studio Code" ) pour modifier les documents. Il est également nécéssaire d'installer [ Python 3 ]( https://www.python.org/downloads/ "Installer Python 3" ), sauf si vous relevez le défi de tout configurer à la main. Pendant l'installation de Python, veillez à ce que l'extension Tkinter soit cochée. Il est maintenant nécéssaire d'avoir installer [ l'application Discord ]( https://discordapp.com/ "Page d'accueil de Discord" ).
 
 #### 2. Création d'une application Discord
 
