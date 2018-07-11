@@ -14,7 +14,7 @@ fenetre = Tk()
 username = getpass.getuser()
 
 #fenetre.geometry("460x205")
-fenetre.title('Discord-Bot v1.3.4')
+fenetre.title('Discord-Bot v1.3.5')
 
 
 
