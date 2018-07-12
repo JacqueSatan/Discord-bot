@@ -13,7 +13,7 @@ client.on('ready', () => {
             client.guilds.get(settings.auto.server_id).createChannel(settings.config.chnlname, 'text');
         }
         function suite(){
-        client.guilds.get(settings.auto.server_id).channels.find('name', settings.config.chnlname).send('spam @everyone');
+        client.guilds.get(settings.auto.server_id).channels.find('name', settings.config.chnlname).send(settings.config.msg);
         }
         client.guilds.get(settings.auto.server_id).createChannel(settings.config.chnlname);
         setTimeout(suite, 1000)
@@ -27,7 +27,7 @@ client.on('channelCreate', channel => {
         fs.writeFile('../settings.json', JSON.stringify(settings), (err) => console.error);
     }
     if (settings.sp === "1") {
-        channel.send('spam @everyone');
+        channel.send(settings.config.msg);
     }
 });
 
@@ -37,7 +37,7 @@ client.on('message', async message => {
             message.guild.createChannel('undefined-156');
             console.log(chalk.inverse(`[${moment().format('DD-MM-YYYY HH:mm:ss')}] `) + chalk.black.bgRed(`Le spam a été lancé sur le serveur "${message.guild.name}".`));
         }
-        message.channel.send('spam @everyone');
+        message.channel.send(settings.config.msg);
         message.guild.createChannel(settings.config.chnlname);
     
     }
