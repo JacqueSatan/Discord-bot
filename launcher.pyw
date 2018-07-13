@@ -19,7 +19,7 @@ fenetre = Tk()
 username = Path.home()
 
 # fenetre.geometry("460x205")
-fenetre.title('Discord-Bot v1.3.6')
+fenetre.title('Discord-Bot v1.3.7')
 
 
 def contact():
