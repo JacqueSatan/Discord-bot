@@ -1,4 +1,4 @@
-# Bot Anti Discord v1.3.8
+# Bot Anti Discord v1.3.9
 
 ## Sommaire
 
@@ -28,10 +28,10 @@ Me contacter :
 
 Nouveautés :
 
+    Ajout du Soft Spam : spam dans tous les salons textuels déjà présents
     Fixs
-    Interface GUI optimisée
-    Possibilité de réparer certains fichiers
-    Très légère optimisation
+    Interface GUI optimisée :
+        meilleur système de confirmation des CGU
 
 A venir dans les prochaines versions (ordre approximatif) :
 
