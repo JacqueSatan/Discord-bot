@@ -1,4 +1,4 @@
-# Bot Anti Discord v1.3.7
+# Bot Anti Discord v1.3.8
 
 ## Sommaire
 
@@ -28,10 +28,8 @@ Me contacter :
 
 Nouveautés :
 
-    Correction d'un autre bug
     Fixs
-    Interface GUI optimisée :
-        Ajout de boutons manquants
+    Interface GUI optimisée
     Possibilité de réparer certains fichiers
     Très légère optimisation
 

