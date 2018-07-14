@@ -54,12 +54,17 @@ if data["cgu"] == "false":
         data["pseudo"] = oui.get()
         with open('core/options.json', 'w') as jsonFile:
             json.dump(data, jsonFile)
-        cgu.quit()
+        os.startfile('launcher.pyw')
+        sys.exit()
     yess = Button(accepter, text='Valider', command=lambda:valider(accept, oui))
     yess.pack(anchor=W)
     cgu.mainloop()
 
-fenetre = Tk()
+
+with open('core/options.json', 'r') as jsonFile:
+    data = json.load(jsonFile)
+if data["cgu"] == "true":
+    fenetre = Tk()
 user = getpass.getuser()
 
 username = Path.home()
