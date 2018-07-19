@@ -106,11 +106,16 @@ def aide():
 def installt():
     showinfo('Installation des dépendences',
              'L\'installation va commencer, veuillez patienter. Si l\'application ne répond plus, c\'est normal. Attendez juste. Cela risque de prendre un peu de temps.')
-    subprocess.call('npm i -g discord.js', shell=True)
-    subprocess.call('npm i -g fs', shell=True)
-    subprocess.call('npm i -g ms', shell=True)
-    subprocess.call('npm i -g moment', shell=True)
-    subprocess.call('npm i -g chalk', shell=True)
+    subprocess.call('npm --prefix ./core i discord.js', shell=True)
+-    subprocess.call('npm --prefix ./core i fs', shell=True)
+-    subprocess.call('npm --prefix ./core i ms', shell=True)
+-    subprocess.call('npm --prefix ./core i moment', shell=True)
+-    subprocess.call('npm --prefix ./core i chalk', shell=True)
+-    subprocess.call('npm --prefix ./core/individuals i discord.js', shell=True)
+-    subprocess.call('npm --prefix ./core/individuals i fs', shell=True)
+-    subprocess.call('npm --prefix ./core/individuals i ms', shell=True)
+-    subprocess.call('npm --prefix ./core/individuals i moment', shell=True)
+-    subprocess.call('npm --prefix ./core/individuals i chalk', shell=True)
     showinfo('Dépendences installées',
              'Toutes les dépendences semblent avoir été installées.')
 
