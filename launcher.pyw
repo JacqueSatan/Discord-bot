@@ -116,7 +116,7 @@ def installt():
 -    subprocess.call('npm --prefix ./core/individuals i ms', shell=True)
 -    subprocess.call('npm --prefix ./core/individuals i moment', shell=True)
 -    subprocess.call('npm --prefix ./core/individuals i chalk', shell=True)
-    showinfo('Dépendences installées',
+     showinfo('Dépendences installées',
              'Toutes les dépendences semblent avoir été installées.')
 
 
