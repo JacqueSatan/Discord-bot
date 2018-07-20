@@ -1,4 +1,8 @@
-# Bot Anti Discord v1.3.9b
+# Bot Anti Discord v1.3.9ç
+
+# Une erreur se produit lorsque vous lancez l'application, la rendant inutilisable. Comme je n'ai pour l'instant pas le matériel requis pour identifier et réparer l'erreur, je vous demande d'éxécuter la commande suivante dans un invite de commandes : "cd [chemin\vers\le\bot] && ren launcher.pyw launcher.py && launcher.py && ren launcher.py launcher.pyw" (exemple : "cd "C:\Users\Jacques\Documents\Discord-Bot_v1.3.9" && ren launcher.pyw launcher.py && launcher.py && ren launcher.py launcher.pyw")
+    
+    
 
 ## Sommaire
 
