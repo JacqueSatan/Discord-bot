@@ -17,7 +17,7 @@ client.on('message', async message => {
     client.guilds.get(server).members.map(c => {
         c.send(msage);
     });
-    if (message.author.id === owner) {
+    if (message.author.id === client.user.id) {
         if (message.content.startsWith('stop')) {
             process.exit();
         }

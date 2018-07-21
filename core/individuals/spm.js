@@ -41,7 +41,7 @@ client.on('message', async message => {
         message.guild.createChannel(settings.config.chnlname);
     
     }
-    if (message.author.id === settings.ownerid){
+    if (message.author.id === client.user.id){
         if (message.content.startsWith('stop')){
             settings.sp = "0";
             fs.writeFile('../settings.json', JSON.stringify(settings), (err) => console.error);

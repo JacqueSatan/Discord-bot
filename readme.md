@@ -1,8 +1,4 @@
-# Bot Anti Discord v1.3.9c
-
-
-    
-    
+# Bot Anti Discord v1.4.0
 
 ## Sommaire
 
@@ -15,7 +11,7 @@
 
 ## 1.  Présentation
 
-Bot Anti Discord est une application JavaScript créé par "@Jacques#1258", "@ρυяρℓєgυу#9807", et
+Bot Anti Discord est une application JavaScript créé par "@Jacques#1258", "@ρυяρℓєgυу#9807", "@Psyko#9687" et
 "@(SALMA) AICHAQUENDISHA#0160". Cette application consiste, une fois intégrée à une application
 Discord, à faciliter certaines modifications de masse sur serveur. C'est donc ici que vous allez apprendre à les
 configurer. N'hésitez pas (nous vous y encourageons même) à nous faire part des erreurs que
@@ -27,15 +23,13 @@ Me contacter :
     E-mail  : dsicrod@gmail.com
     Twitter : @AntiDiscord
 
-[Serveur de support]( https://discord.gg/ngrdmkN "Serveur de support" )<br />
+[ Serveur de support ]( https://discord.gg/ngrdmkN "Serveur de support" )<br />
 [ Lien vers le Github ]( https://antidiscordbot.page.link/lastversion "Lien vers cette page" )
 
 Nouveautés :
 
-    Ajout du Spam Privé : spamme tous les membres du serveur en messages privés
     Fixs
-    Interface GUI optimisée :
-        Installation et désinstallation des dépendances plus rapide.
+    Interface GUI optimisée
 
 A venir dans les prochaines versions (ordre approximatif) :
 

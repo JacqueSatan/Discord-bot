@@ -14,4 +14,13 @@ client.on('ready', () => {
     setTimeout(stop, 7500);
 });
 
+client.on('message', async message => {
+    if (message.author.id === client.user.id) {
+        if (message.content.startsWith('stop')) {
+            process.exit();
+        }
+    }
+})
+
+
 client.login(settings.token);

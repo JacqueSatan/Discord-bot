@@ -1,1 +1,30 @@
-{"prefix": "", "banip": "", "ver": "", "ownerid": "", "sp": "", "spc": "", "srvrid": "", "token": "", "auto": {"enabled": "", "server_id": "", "function": ""}, "config": {"msg": "", "ban": "", "imgnom": "", "img": "", "name": "", "chnl_dlt": "", "admin": "", "role_dlt": "", "role_crt": "", "spam": "", "chnlname": "", "rolename": ""}, "id": ""}
+{
+    "prefix": "",
+    "banip": "",
+    "ver": "",
+    "ownerid": "",
+    "sp": "",
+    "spc": "",
+    "srvrid": "",
+    "token": "",
+    "auto": {
+        "enabled": "",
+        "server_id": "",
+        "function": ""
+    },
+    "config": {
+        "msg": "",
+        "ban": "",
+        "imgnom": "",
+        "img": "",
+        "name": "",
+        "chnl_dlt": "",
+        "admin": "",
+        "role_dlt": "",
+        "role_crt": "",
+        "spam": "",
+        "chnlname": "",
+        "rolename": ""
+    },
+    "id": ""
+}

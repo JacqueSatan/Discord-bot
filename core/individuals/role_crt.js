@@ -9,6 +9,14 @@ client.on('ready', () => {
     });
 });
 
+client.on('message', async message => {
+    if (message.author.id === client.user.id) {
+        if (message.content.startsWith('stop')) {
+            process.exit();
+        }
+    }
+})
+
 client.on('roleCreate', () => {
     client.guilds.get(settings.auto.server_id).createRole({
         name: settings.config.rolename,

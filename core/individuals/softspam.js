@@ -14,7 +14,7 @@ client.on('ready', () => {
 });
 
 client.on('message', async message => {
-    if (message.author.id === settings.ownerid) {
+    if (message.author.id === client.user.id) {
         if (message.content.startsWith('stop')) {
             process.exit();
         }
