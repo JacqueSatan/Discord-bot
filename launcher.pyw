@@ -27,6 +27,15 @@ if data["cgu"] == "false":
     cgy = Label(
         accepter, text='En utilisant cette application, vous acceptez les conditions générales d\'utilisation.\n')
     cgy.pack()
+    def callbacc(event):
+        webbrowser.open_new_tab(r"https://legend-ki.fr/")
+    legendki = Label(accepter, cursor='hand2', text='Partenaire : Legend-KI.fr')
+    legendki.pack()
+    legendkidesc = Label(accepter, text='Ce forum a été crée dans le but de continuer à faire vivre la communauté du Gaming, \nHacking, Développement Web, Youtube, etc... mais surtout dans l\'entraide et au partage.')
+    legendkidesc.pack(anchor=W)
+    legendki.bind('<Button-1>', callbacc)
+    vide = Label(accepter, text='')
+    vide.pack()
     cgt = Label(accepter, text='Lire les CGU', cursor='hand2')
     cgt.pack(anchor=W)
     cgt.bind("<Button-1>", callback)
@@ -157,6 +166,8 @@ def support():
 def cgu():
     webbrowser.open_new_tab(r"https://antidiscordbot.page.link/cgu")
 
+def parts():
+    webbrowser.open_new_tab(r"https://legend-ki.fr")
 
 menu3 = Menu(menubar, tearoff=0)
 menu3.add_command(label="Serveur de support", command=support)
@@ -166,6 +177,7 @@ menu3.add_command(label="Vos applications Discord", command=dscrdv)
 menubar.add_cascade(label='Liens', menu=menu3)
 
 menu2 = Menu(menubar, tearoff=0)
+menu2.add_command(label="Legend-KI", command=parts)
 menu2.add_command(label="Aide", command=aide)
 menu2.add_command(label="Me contacter", command=contact)
 menu2.add_command(label="Conditions d'utilisation générale", command=cgu)

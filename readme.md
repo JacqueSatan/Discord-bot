@@ -17,6 +17,8 @@ Discord, à faciliter certaines modifications de masse sur serveur. C'est donc i
 configurer. N'hésitez pas (nous vous y encourageons même) à nous faire part des erreurs que
 vous puissiez rencontrer lors de votre utilisation !
 
+### Partenariat avec la [ Legend KI ]( https://legend-ki.fr "Site officiel")
+
 Me contacter :
 
     Discord : J͋ͣá̝c̥̩ͭͤͮ͟q̍u̧͂ͬͯ͒̊ͨ̆eͣ̎š#5823
