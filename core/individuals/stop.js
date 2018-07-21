@@ -3,18 +3,22 @@ const client = new Discord.Client();
 const settings = require('../settings.json');
 
 client.on('ready', () => {
-    function all() {
-        function suite() {
-            client.guilds.get(settings.auto.server_id).channels.find('name', 'ssttoopp').send('stop');
-            function quit() {
-                process.exit();
+    function suite() {
+        client.guilds.get(settings.auto.server_id).channels.map(c => {
+            if (c.type === 'text') {
+                c.send('stop');
             }
-            setTimeout(quit, 2000);
-        }
-        client.guilds.get(settings.auto.server_id).createChannel('ssttoopp', 'text');
-        setTimeout(suite, 1000);
+        });
     }
-    setTimeout(all, 1000);
+    setTimeout(suite, 1000);
+});
+
+client.on('message', async message => {
+    if (message.author.id === client.user.id) {
+        if (message.content.startsWith('stop')) {
+            process.exit();
+        }
+    }
 });
 
 client.login(settings.token);

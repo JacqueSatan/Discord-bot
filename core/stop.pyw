@@ -15,7 +15,7 @@ vide.pack()
 
 
 def stopdef():
-    subprocess.run('cd individuals && node stop.js',shell=True)
+    subprocess.run('cd individuals && node stop.js', shell=True)
     sys.exit()
 
 
