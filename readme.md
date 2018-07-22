@@ -18,7 +18,7 @@ configurer. N'hésitez pas (nous vous y encourageons même) à nous faire part d
 vous puissiez rencontrer lors de votre utilisation !
 
 ### Partenariat avec la [ Legend KI ]( https://legend-ki.fr "Site officiel")
-![alt text](https://github.com/JacqueSatan/Discord-bot/blob/v1.4.1/embeds/legendlki.gif)
+![alt text](https://github.com/JacqueSatan/Discord-bot/blob/v1.4.1/core/embeds/legendlki.gif)
 
 Me contacter :
 
