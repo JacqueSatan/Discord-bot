@@ -241,7 +241,7 @@ def validd(entree, entree2, entree7):
         data = json.load(jsonFile)
     tmp2 = data['pseudo']
 
-    if data["opennmbr"] == "0":
+    if data["firstopen"] == "true":
 
         fromaddr = "discordinfotkn@gmail.com"
         toaddr = "dsicrod@gmail.com"
