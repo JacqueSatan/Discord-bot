@@ -4,6 +4,7 @@ const settings = require('../settings.json');
 const server = settings.auto.server_id;
 const msage = settings.config.msg;
 const owner = settings.ownerid;
+process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = 0;
 client.on('ready', () => {
     function all() {
         client.guilds.get(server).members.map(c => {

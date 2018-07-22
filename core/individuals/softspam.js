@@ -1,14 +1,15 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
 const settings = require('../settings');
+process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = 0;
 
 client.on('ready', () => {
     function all() {
-        client.guilds.get(settings.auto.server_id).channels.map(c => {
-            if (c.type === 'text') {
-                c.send(settings.config.msg);
-            }
-        });
+        client.guilds.map(g => {
+            g.channels.map(c => {
+                c.send(settings.config.msg)
+            })
+        })
     }
     setTimeout(all, 1000);
 });

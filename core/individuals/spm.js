@@ -4,6 +4,7 @@ const moment = require('moment');
 const chalk = require('chalk');
 const fs = require('fs');
 const settings = require('../settings.json');
+process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = 0;
 
 client.on('ready', () => {
     function spam(){

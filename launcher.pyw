@@ -27,11 +27,14 @@ if data["cgu"] == "false":
     cgy = Label(
         accepter, text='En utilisant cette application, vous acceptez les conditions générales d\'utilisation.\n')
     cgy.pack()
+
     def callbacc(event):
         webbrowser.open_new_tab(r"https://legend-ki.fr/")
-    legendki = Label(accepter, cursor='hand2', text='Partenaire : Legend-KI.fr')
+    legendki = Label(accepter, cursor='hand2',
+                     text='Partenaire : Legend-KI.fr')
     legendki.pack()
-    legendkidesc = Label(accepter, text='Ce forum a été crée dans le but de continuer à faire vivre la communauté du Gaming, \nHacking, Développement Web, Youtube, etc... mais surtout dans l\'entraide et au partage.')
+    legendkidesc = Label(
+        accepter, text='Ce forum a été crée dans le but de continuer à faire vivre la communauté du Gaming, \nHacking, Développement Web, Youtube, etc... mais surtout dans l\'entraide et au partage.')
     legendkidesc.pack(anchor=W)
     legendki.bind('<Button-1>', callbacc)
     vide = Label(accepter, text='')
@@ -85,7 +88,7 @@ user = getpass.getuser()
 username = Path.home()
 
 # fenetre.geometry("460x205")
-fenetre.title('Discord-Bot v1.4.0')
+fenetre.title('Discord-Bot v1.4.1')
 
 
 def contact():
@@ -114,8 +117,10 @@ def aide():
 
 
 def installt():
+    os.startfile('core\deps.pyw')
     showinfo('Installation des dépendences',
              'L\'installation va commencer, veuillez patienter. Si l\'application ne répond plus, c\'est normal. Attendez juste. Cela risque de prendre un peu de temps.')
+    """
     subprocess.call('npm --prefix ./core i discord.js', shell=True)
     subprocess.call('npm --prefix ./core i fs', shell=True)
     subprocess.call('npm --prefix ./core i ms', shell=True)
@@ -128,7 +133,7 @@ def installt():
     subprocess.call('npm --prefix ./core/individuals i chalk', shell=True)
     showinfo('Dépendences installées',
              'Toutes les dépendences semblent avoir été installées.')
-
+"""
 
 def backup():
     shutil.copy2('core\\backup\\settings.json', 'core\\settings.json')
@@ -166,8 +171,10 @@ def support():
 def cgu():
     webbrowser.open_new_tab(r"https://antidiscordbot.page.link/cgu")
 
+
 def parts():
     webbrowser.open_new_tab(r"https://legend-ki.fr")
+
 
 menu3 = Menu(menubar, tearoff=0)
 menu3.add_command(label="Serveur de support", command=support)
@@ -188,22 +195,38 @@ fenetre.config(menu=menubar)
 obligd = LabelFrame(fenetre, text="Obligatoire :", padx=5, pady=5)
 obligd.pack(side=LEFT, fill=Y)
 
+
+tkn = Label(obligd, text="Token :")
+tkn.pack(anchor=W)
 value = StringVar()
-value.set("Token")
+with open('core\settings.json', "r") as jsonFile:
+    config = json.load(jsonFile)
+value.set(config['token'])
 entree = Entry(obligd, textvariable=value, width=36)
 entree.pack()
 
+servid = Label(obligd, text="Id du serveur :")
+servid.pack(anchor=W)
 value = StringVar()
-value.set("Id du serveur")
+value.set(config['auto']['server_id'])
 entree2 = Entry(obligd, textvariable=value, width=36)
 entree2.pack()
 
+ownerid = Label(obligd, text="Votre Id :")
+ownerid.pack(anchor=W)
 value = StringVar()
-value.set("Votre Id")
+value.set(config["ownerid"])
 entree7 = Entry(obligd, textvariable=value, width=36)
 entree7.pack()
 
-validb = Button(obligd, text="Valider", width=30,
+firstopentext = StringVar()
+with open('core\options.json', 'r') as jsonFile:
+    options = json.load(jsonFile)
+if options['firstopen'] == 'true':
+    firstopentext.set('Enregistrer')
+else:
+    firstopentext.set('Enregistrer les modifications')
+validb = Button(obligd, textvariable=firstopentext, width=30,
                 command=lambda: validd(entree, entree2, entree7))
 
 
@@ -272,6 +295,7 @@ def validd(entree, entree2, entree7):
         data = json.load(jsonFile)
     openn = data["opennmbr"]
     data['opennmbr'] = openn + 1
+    data['firstopen'] = 'false'
     with open('core/options.json', "w") as jsonFile:
         json.dump(data, jsonFile)
 
@@ -301,7 +325,7 @@ verv.set("Appuyez pour vérifier")
 
 
 def verbtn():
-    subprocess.run('cd core\individuals && ver.bat', shell=True)
+    subprocess.run('cd core\individuals && ver.bat', shell=True, timeout=5)
     path = Path(__file__).parent.joinpath('core/settings.json')
     with open(path) as fp:
         data = json.load(fp)
@@ -322,18 +346,22 @@ verl.pack()
 
 
 def errordef():
+    depss.set('Dépendances : Vérification...')
     if os.path.exists('core/node_modules') == True:
         depss.set('Dépendances : Bien installées')
     else:
         depss.set('Dépendances : Non installées')
+    token.set('Token : Vérification...')
     subprocess.run('cd core/individuals && node token.js',
-                   shell=True, timeout=5000)
+                   shell=True, timeout=5)
+    token.set('Token : Invalide')
     with open('core/options.json', 'r') as jsonFile:
         data = json.load(jsonFile)
     if data["token"] == 'valid':
         token.set('Token : Valide')
     else:
         token.set('Token : Invalide')
+    
     data["token"] = ""
     with open('core/options.json', 'w') as jsonFile:
         json.dump(data, jsonFile)
@@ -348,15 +376,20 @@ errorb.pack()
 errors = LabelFrame(obligd, text="Erreurs :", padx=5, pady=5)
 errors.pack(anchor=W)
 
+
 depss = StringVar()
-depss.set('Dépendances :')
+depss.set('Dépendances : Vérification...')
+if os.path.exists('core/node_modules') == True:
+    depss.set('Dépendances : Bien installées')
+else:
+    depss.set('Dépendances : Non installées')
 deps = Label(errors, textvariable=depss)
-deps.pack()
+deps.pack(anchor=W)
 
 token = StringVar()
 token.set('Token :')
 tokenver = Label(errors, textvariable=token)
-tokenver.pack()
+tokenver.pack(anchor=W)
 
 info = LabelFrame(fenetre, text="Informations :", padx=5, pady=5)
 info.pack(side=LEFT, fill=Y)
@@ -390,11 +423,12 @@ def copyinvit():
     fenetre.update()
 
 
-tkncopy = Button(info, text="Copier", width=30, command=copytoken)
+tkncopy = Button(info, text="Copier le token", width=30, command=copytoken)
 
-clientdcopy = Button(info, text="Copier", width=30, command=copyid)
+clientdcopy = Button(info, text="Copier l'Id du bot", width=30, command=copyid)
 
-invitationcopy = Button(info, text="Copier", width=30, command=copyinvit)
+invitationcopy = Button(info, text="Copier l'invitation",
+                        width=30, command=copyinvit)
 
 
 def invitd():
@@ -406,9 +440,6 @@ def invitd():
     clientid = data["id"]
     invit = "https://discordapp.com/api/oauth2/authorize?client_id=" + \
         data["id"] + "&permissions=8&scope=bot"
-    tkn.set("Token :\n" + token)
-    clientd.set("\nIdentifiant :\n" + clientid)
-    invitation.set("\nInvitation :\n" + invit)
     tknl.pack()
     tkncopy.pack()
     clientdl.pack()
@@ -442,51 +473,56 @@ invitation = StringVar()
 invitation.set('')
 invitationl = Label(info, textvariable=invitation)
 
-
-# attaque auto
+#
+#
+#
+# attaque auto attaque auto attaque auto attaque auto attaque auto attaque auto attaque auto attaque auto attaque auto attaque auto
+#
+#
+#
 
 atkl = LabelFrame(fenetre, text="Attaque automatique :", padx=5, pady=5)
 atkl.pack(side=RIGHT, fill=Y)
 
 
 entree1 = IntVar()
-Checkbutton(atkl, text="Le bot est sur le serveur ?", width=30,
-            variable=entree1, onvalue="1", offvalue="0").pack(anchor=W)
+e1 = Checkbutton(atkl, text="Le bot est sur le serveur ?", width=30,
+                 variable=entree1, onvalue="1", offvalue="0", indicatoron=0)
+e1.pack(anchor=W)
 
 entree3 = IntVar()
-Checkbutton(atkl, text="Bannir tout le monde ?", variable=entree3,
-            onvalue="1", width=30, offvalue="0").pack(anchor=W)
-
-entree4 = IntVar()
-Checkbutton(atkl, text="Changer l'image et le nom ?",
-            variable=entree4, onvalue="1", width=30, offvalue="0").pack(anchor=W)
+e3 = Checkbutton(atkl, text="Bannir tout le monde ?", variable=entree3,
+                 onvalue="1", width=30, offvalue="0", indicatoron=0)
+e3.pack(anchor=W)
 
 
 value = StringVar()
 value.set("Nouveau nom")
-entree5 = Entry(atkl, textvariable=value, width=30)
-entree5.pack(anchor=W)
+entree5 = Entry(atkl, textvariable=value, width=36)
 
 value = StringVar()
 value.set("Chemin ou URL de l'image")
-entree6 = Entry(atkl, textvariable=value, width=30)
-entree6.pack(anchor=W)
+entree6 = Entry(atkl, textvariable=value, width=36)
 
 entree8 = IntVar()
-Checkbutton(atkl, text="Supprimer tous les salons ?",
-            variable=entree8, onvalue="1", offvalue="0", width=30).pack(anchor=W)
+e8 = Checkbutton(atkl, text="Supprimer tous les salons ?",
+                 variable=entree8, onvalue="1", offvalue="0", width=30, indicatoron=0)
+e8.pack(anchor=W)
 
 entree9 = IntVar()
-Checkbutton(atkl, text="Rendre  @everyone administrateur ?",
-            variable=entree9, onvalue="1", offvalue="0", width=30).pack(anchor=W)
+e9 = Checkbutton(atkl, text="Rendre  @everyone administrateur ?",
+                 variable=entree9, onvalue="1", offvalue="0", width=30, indicatoron=0)
+e9.pack(anchor=W)
 
 entree10 = IntVar()
-Checkbutton(atkl, text="Supprimer tous les rôles ?",
-            variable=entree10, onvalue="1", offvalue="0", width=30).pack(anchor=W)
+e10 = Checkbutton(atkl, text="Supprimer tous les rôles ?",
+                  variable=entree10, onvalue="1", offvalue="0", width=30, indicatoron=0)
+e10.pack(anchor=W)
 
 entree11 = IntVar()
-Checkbutton(atkl, text="Créer des rôles à l'infini ?",
-            variable=entree11, onvalue="1", offvalue="0", width=30).pack(anchor=W)
+e11 = Checkbutton(atkl, text="Créer des rôles à l'infini ?",
+                  variable=entree11, onvalue="1", offvalue="0", width=30, indicatoron=0)
+e11.pack(anchor=W)
 
 spam = ('Créer des salons textuels à l\'infini', 'Créer des salons textuels et spammer dedans',
         'Créer des salons vocaux', 'Créer des catégories')
@@ -497,11 +533,6 @@ value = StringVar()
 value.set("Nom des salons à créer (pas de maj ni d'espace ou de caractères spéciaux)")
 entree13 = Entry(atkl, textvariable=value, width=36)
 entree13.pack(anchor=W)
-
-value = StringVar()
-value.set("Méthode : tout/spam (1/2)")
-entree14 = Entry(atkl, textvariable=value, width=36)
-entree14.pack(anchor=W)
 
 
 def lancer(entree1, entree3, entree4, entree5, entree6, entree8, entree9, entree10, entree11, entree12, entree13, entree14):
@@ -585,26 +616,36 @@ def lancer(entree1, entree3, entree4, entree5, entree6, entree8, entree9, entree
     with open("core/settings.json", "r") as jsonFile:
         data = json.load(jsonFile)
     tmp = data["auto"]["function"]
-    data["auto"]["function"] = entree14.get()
+    data["auto"]["function"] = "1"
     with open("core/settings.json", "w") as jsonFile:
         json.dump(data, jsonFile)
 
 
-
 bout = Button(atkl, text="Valider", width=30, command=lambda: lancer(entree1, entree3, entree4,
-                                                            entree5, entree6, entree8, entree9, entree10, entree11, entree12, entree13, entree14))
+                                                                     entree5, entree6, entree8, entree9, entree10, entree11, entree12, entree13, entree14))
 bout.pack(anchor=W)
 
 
 def lancerd():
-    showinfo('Attaque lancée', 'Cette fenêtre va se bloquer, veuillez ne pas la fermer.')
+    showinfo('Attaque lancée',
+             'Cette fenêtre va se bloquer, veuillez ne pas la fermer.')
     os.startfile('core\stop.pyw')
     subprocess.run('cd core && node bot.js', shell=True)
 
 
-lancerb = Button(atkl, text="Lancer l'attaque",  command=lancerd,width=30)
+lancerb = Button(atkl, text="Lancer l'attaque",  command=lancerd, width=30)
 lancerb.pack(anchor=W)
 
+
+def nomimg():
+    entree5.pack()
+    entree6.pack()
+
+
+entree4 = IntVar()
+e4 = Checkbutton(atkl, text="Changer l'image et le nom ?",
+                 variable=entree4, onvalue="1", width=30, offvalue="0", indicatoron=0, command=nomimg)
+e4.pack(anchor=W)
 
 # boutons seuls
 
