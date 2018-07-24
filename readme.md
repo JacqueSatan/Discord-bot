@@ -26,7 +26,7 @@ Me contacter :
     E-mail  : dsicrod@gmail.com
     Twitter : @AntiDiscord
 
-[ Serveur de support ]( https://discord.gg/ngrdmkN "Serveur de support" )<br />
+[ Serveur de support ]( https://discord.gg/d2hMt8r "Serveur de support" )<br />
 [ Lien vers le Github ]( https://antidiscordbot.page.link/lastversion "Lien vers cette page" )
 
 Nouveautés :
