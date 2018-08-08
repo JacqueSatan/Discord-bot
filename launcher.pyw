@@ -82,6 +82,7 @@ if data["cgu"] == "false":
             data = json.load(jsonFile)
         data["cgu"] = accept.get()
         data["pseudo"] = oui.get()
+        data["firstopen"] = 'false'
         with open('core/options.json', 'w') as jsonFile:
             json.dump(data, jsonFile)
         os.startfile('launcher.pyw')
@@ -132,9 +133,8 @@ def dscrdv():
 
 
 def aide():
-    showinfo("Aide",
-             "Si rien ne se passe lorque vous appuyez sur les boutons, vérifiez que vous ayez bien rempli tous les champs nécéssaires.\n\nSi malgré tout le problème persiste, vous pouvez essayer de cliquer sur réparer dans l'onglet options.\n\nSi vous avez besoin d'aide supplémentaire, veuillez me contacter.")
-
+    webbrowser.open_new_tab(r"https://github.com/JacqueSatan/Discord-bot/issues")
+    webbrowser.open_new_tab(r"https://github.com/JacqueSatan/Discord-bot/wiki")
 
 def installt():
     os.startfile('core\deps.pyw')
@@ -186,7 +186,7 @@ menubar.add_cascade(label="Options", menu=menu1)
 
 
 def support():
-    webbrowser.open_new_tab(r"https://discord.gg/ngrdmkN")
+    webbrowser.open_new_tab(r"https://discord.gg/ZMWerE6")
 
 
 def cgu():
@@ -308,7 +308,7 @@ verv.set("Appuyez pour vérifier")
 
 
 def verbtn():
-    subprocess.run('cd core\individuals && ver.bat', shell=True, timeout=5)
+    subprocess.run('cd core\individuals && ver.bat', shell=True, timeout=10)
     path = Path(__file__).parent.joinpath('core/settings.json')
     with open(path) as fp:
         data = json.load(fp)
@@ -330,13 +330,10 @@ verl.pack()
 
 def errordef():
     depss.set('Dépendances : Vérification...')
-    if os.path.exists('core/node_modules') == True:
-        depss.set('Dépendances : Bien installées')
-    else:
-        depss.set('Dépendances : Non installées')
     token.set('Token : Vérification...')
+    fenetre.update()
     subprocess.run('cd core/individuals && node token.js',
-                   shell=True, timeout=5)
+                   shell=True, timeout=15)
     token.set('Token : Invalide')
     with open('core/options.json', 'r') as jsonFile:
         data = json.load(jsonFile)
@@ -358,16 +355,6 @@ errorb.pack()
 
 errors = LabelFrame(obligd, text="Erreurs :", padx=5, pady=5)
 errors.pack(anchor=W)
-
-
-depss = StringVar()
-depss.set('Dépendances : Vérification...')
-if os.path.exists('core/node_modules') == True:
-    depss.set('Dépendances : Bien installées')
-else:
-    depss.set('Dépendances : Non installées')
-deps = Label(errors, textvariable=depss)
-deps.pack(anchor=W)
 
 token = StringVar()
 token.set('Token :')
@@ -415,7 +402,7 @@ invitationcopy = Button(info, text="Copier l'invitation",
 
 
 def invitd():
-    subprocess.run('cd core\\individuals && node gene.js', shell=True)
+    subprocess.run('cd core\\individuals && node gene.js', shell=True, timeout=15)
     status.set('Informations générées :')
     with open('core\\settings.json', "r") as jsonFile:
         data = json.load(jsonFile)
@@ -509,7 +496,7 @@ e11.pack(anchor=W)
 
 spam = ('Créer des salons textuels à l\'infini', 'Créer des salons textuels et spammer dedans',
         'Créer des salons vocaux', 'Créer des catégories')
-entree12 = Spinbox(atkl, values=sorted(spam), width=30)
+entree12 = Spinbox(atkl, values=sorted(spam), width=34)
 entree12.pack(anchor=W)
 
 value = StringVar()
@@ -716,14 +703,12 @@ def spambtnp(spame, spmchnl):
 
 
 def softspam(spame):
-    if askokcancel('Lancer le spam', 'Voulez-vous vraiment lancer le soft spam ? Vous ne pourrez plus utiliser l\'interface jusqu\'à ce que la console soit fermée. Vous pouvez la fermer à tout moment en écrivant "stop" dans un salon du serveur.'):
         with open("core/settings.json", "r") as jsonFile:
             data = json.load(jsonFile)
         data["config"]["msg"] = spame.get()
         with open("core/settings.json", "w") as jsonFile:
             json.dump(data, jsonFile)
-        os.startfile('core\stop.pyw')
-        subprocess.run('cd core\individuals && node softspam.js', shell=True)
+        os.startfile('core\individuals\softspam.pyw')
 
 
 def spampv(spame):
@@ -741,7 +726,7 @@ spampvbutton = Button(spam, text='Spam Privé', width=30,
                       command=lambda: spampv(spame))
 spampvbutton.pack()
 
-softspambutton = Button(spam, text="Heavy Spam (self bot)", width=30,
+softspambutton = Button(spam, text="Heavy Spam", width=30,
                         command=lambda: softspam(spame))
 softspambutton.pack()
 

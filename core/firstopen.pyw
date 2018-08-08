@@ -4,6 +4,9 @@ import subprocess
 
 
 deps = Tk()
+
+deps.title('Installation de dépendances...')
+
 def install():
     deps1 = LabelFrame(
         deps, text='Progression de l\'installation', padx=20, pady=20)

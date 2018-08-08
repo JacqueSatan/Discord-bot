@@ -1,4 +1,4 @@
-# Bot Anti Discord v1.4.1.1
+# Bot Anti Discord v1.4.2
 
 ## Sommaire
 
@@ -7,7 +7,7 @@
         1. Pré-requis
         2. Création d'une application Discord
         3. Configuration
-        4. Commandes
+        4. Fonctionnalités
 
 ## 1.  Présentation
 
@@ -20,13 +20,14 @@ vous puissiez rencontrer lors de votre utilisation !
 ### Partenariat avec la [ Legend KI ]( https://legend-ki.fr "Site officiel")
 ![alt text](https://github.com/JacqueSatan/Discord-bot/blob/v1.4.1/core/embed/banierelki.gif)
 
+
 Me contacter :
 
-    Discord : J͋ͣá̝c̥̩ͭͤͮ͟q̍u̧͂ͬͯ͒̊ͨ̆eͣ̎š#5823
+    Discord : @Jacques#8493
     E-mail  : dsicrod@gmail.com
     Twitter : @AntiDiscord
 
-[ Serveur de support ]( https://discord.gg/d2hMt8r "Serveur de support" )<br />
+[ Serveur de support ]( https://discord.gg/ZMWerE6 "Serveur de support" )<br />
 [ Lien vers le Github ]( https://antidiscordbot.page.link/lastversion "Lien vers cette page" )
 
 Nouveautés :
@@ -42,12 +43,11 @@ A venir dans les prochaines versions (ordre approximatif) :
 
 ### 1.Pré-requis
 
-Avant de commencer, vous devez avoir installé sur votre ordinateur [ Node.js et Npm ]( https://nodejs.org/en/ "Installer Node.js et Npm" ), disponibles en cliquant sur leurs noms ci-dessus. Vous avez également besoin, bien entendu, d'un compte Discord. Il est très fortement recommandé d'utiliser [ Visual Studio Code ]( https://code.visualstudio.com/download "Installer Visual Studio Code" ) pour modifier les documents. Il est également nécéssaire d'installer [ Python 3 ]( https://www.python.org/downloads/ "Installer Python 3" ), sauf si vous relevez le défi de tout configurer à la main. Pendant l'installation de Python, veillez à ce que l'extension Tkinter soit cochée. Il est maintenant nécéssaire d'avoir installer [ l'application Discord ]( https://discordapp.com/ "Page d'accueil de Discord" ).
+Avant de commencer, vous devez avoir installé sur votre ordinateur [ Node.js et Npm ]( https://nodejs.org/en/ "Installer Node.js et Npm" ), disponibles en cliquant sur leurs noms ci-dessus. Vous avez également besoin, bien entendu, d'un compte Discord. Il est très fortement recommandé d'utiliser [ Visual Studio Code ]( https://code.visualstudio.com/download "Installer Visual Studio Code" ) pour modifier les documents. Il est également nécéssaire d'installer [ Python 3 ]( https://www.python.org/downloads/ "Installer Python 3" ), sauf si vous relevez le défi de tout configurer à la main. Pendant l'installation de Python, veillez à ce que l'extension Tkinter soit cochée. Il est maintenant nécéssaire d'avoir installé [ l'application Discord ]( https://discordapp.com/ "Page d'accueil de Discord" ).
 
 ### 2. Création d'une application Discord
 
-Rendez-vous sur [ ce site ]( https://discordapp.com/developers/applications/me/create "Vos applications Discord" ) et créez une nouvelle application. Une fois créée, cliquez sur
-"Créer un utilisateur Bot". Vous avez créé votre application. Maintenant, si vous cliquez sur "Cliquer pour révéler" dans l'onglet "UTILISATEUR APP BOT", c'est le token de votre bot qui s'affiche. Gardez-le pour la suite. Cochez aussi "Bot public", sinon personne ne pourra ajouter votre bot.
+Veuillez lire la page suivante : "https://github.com/JacqueSatan/Discord-bot/wiki/Création-d'une-application-Discord"
 
 ### 3. Configuration
 
