@@ -22,7 +22,7 @@ from pip._internal import main
 with open('core/options.json', 'r') as jsonFile:
     data = json.load(jsonFile)
 if data['firstopen'] == 'true':
-    os.startfile('core\\firstopen.pyw')
+    os.startfile('core\\firstopen.bat')
 
 # CGU
 
@@ -52,7 +52,17 @@ if data["cgu"] == "false":
     legendki.bind('<Button-1>', callbacc)
     vide = Label(accepter, text='')
     vide.pack()
+
+    la = Label(accepter, cursor='hand2', text='Partenaire : El Traficante')
+    la.pack()
+    ladesc = Label(accepter, text='Un serveur joyeux, un staff à l\'écoute, \ndes membres respectueux, muni d\'une superbe ambiance.')
+    ladesc.pack()
+    def callbakk(event):
+        webbrowser.open_new_tab(r"https://discord.gg/WptSxHq")
+    la.bind('<Button-1>', callbakk)
     cgt = Label(accepter, text='Lire les CGU', cursor='hand2')
+    vide = Label(accepter, text='')
+    vide.pack()
     cgt.pack(anchor=W)
     cgt.bind("<Button-1>", callback)
     vide = Label(accepter, text="")
@@ -82,6 +92,7 @@ if data["cgu"] == "false":
             data = json.load(jsonFile)
         data["cgu"] = accept.get()
         data["pseudo"] = oui.get()
+        data["firstopen"] = 'false'
         with open('core/options.json', 'w') as jsonFile:
             json.dump(data, jsonFile)
         os.startfile('launcher.pyw')
@@ -132,12 +143,11 @@ def dscrdv():
 
 
 def aide():
-    showinfo("Aide",
-             "Si rien ne se passe lorque vous appuyez sur les boutons, vérifiez que vous ayez bien rempli tous les champs nécéssaires.\n\nSi malgré tout le problème persiste, vous pouvez essayer de cliquer sur réparer dans l'onglet options.\n\nSi vous avez besoin d'aide supplémentaire, veuillez me contacter.")
-
+    webbrowser.open_new_tab(r"https://github.com/JacqueSatan/Discord-bot/issues")
+    webbrowser.open_new_tab(r"https://github.com/JacqueSatan/Discord-bot/wiki")
 
 def installt():
-    os.startfile('core\deps.pyw')
+    os.startfile('core\\firstopen.bat')
     showinfo('Installation des dépendences',
              'L\'installation va commencer, veuillez patienter. Si l\'application ne répond plus, c\'est normal. Attendez juste. Cela risque de prendre un peu de temps.')
     """
@@ -186,7 +196,7 @@ menubar.add_cascade(label="Options", menu=menu1)
 
 
 def support():
-    webbrowser.open_new_tab(r"https://discord.gg/ngrdmkN")
+    webbrowser.open_new_tab(r"https://discord.gg/DhWJNC8")
 
 
 def cgu():
@@ -197,6 +207,10 @@ def parts():
     webbrowser.open_new_tab(r"https://legend-ki.fr")
 
 
+def parts2():
+    webbrowser.open_new_tab(r"https://discord.gg/WptSxHq")
+
+
 menu3 = Menu(menubar, tearoff=0)
 menu3.add_command(label="Serveur de support", command=support)
 menu3.add_command(label="Page Github", command=git)
@@ -205,6 +219,7 @@ menu3.add_command(label="Vos applications Discord", command=dscrdv)
 menubar.add_cascade(label='Liens', menu=menu3)
 
 menu2 = Menu(menubar, tearoff=0)
+menu2.add_command(label="El Traficante", command=parts2)
 menu2.add_command(label="Legend-KI", command=parts)
 menu2.add_command(label="Aide", command=aide)
 menu2.add_command(label="Me contacter", command=contact)
@@ -308,9 +323,8 @@ verv.set("Appuyez pour vérifier")
 
 
 def verbtn():
-    subprocess.run('cd core\individuals && ver.bat', shell=True, timeout=5)
-    path = Path(__file__).parent.joinpath('core/settings.json')
-    with open(path) as fp:
+    subprocess.run('cd core\individuals && ver.bat', shell=True)
+    with open('core/settings.json', 'r') as fp:
         data = json.load(fp)
     tmp = data["ver"]
     if tmp == 'oui':
@@ -319,6 +333,9 @@ def verbtn():
         verv.set('Le bot n\'est pas administrateur')
     else:
         verv.set("Une erreur s'est produite")
+    tmp = ''
+    with open('core/settings.json', 'w') as fp:
+        json.dump(data, fp)
 
 
 verbtnp = Button(obligd, text="Vérifier le rôle du bot",
@@ -329,26 +346,35 @@ verl.pack()
 
 
 def errordef():
-    depss.set('Dépendances : Vérification...')
+    depss.set('Recherche...')
+    print('1')
+    token.set('Veuillez patienter...')
+    print('2')
+    fenetre.update()
+    print('3')
+    if os.path.exists('core/node_modules') == False:
+        depss.set('Dépendances : Non installées')
     if os.path.exists('core/node_modules') == True:
         depss.set('Dépendances : Bien installées')
-    else:
-        depss.set('Dépendances : Non installées')
-    token.set('Token : Vérification...')
+    print('4')
     subprocess.run('cd core/individuals && node token.js',
-                   shell=True, timeout=5)
-    token.set('Token : Invalide')
+                   shell=True)
+    print('5')
     with open('core/options.json', 'r') as jsonFile:
         data = json.load(jsonFile)
+    print('6')
+    print('7')
     if data["token"] == 'valid':
         token.set('Token : Valide')
+        print('8')
     else:
         token.set('Token : Invalide')
-
+        print('9')
     data["token"] = ""
     with open('core/options.json', 'w') as jsonFile:
         json.dump(data, jsonFile)
-
+    fenetre.update()
+    print('10')
 
 vide = Label(obligd, text="")
 vide.pack()
@@ -359,18 +385,11 @@ errorb.pack()
 errors = LabelFrame(obligd, text="Erreurs :", padx=5, pady=5)
 errors.pack(anchor=W)
 
-
 depss = StringVar()
-depss.set('Dépendances : Vérification...')
-if os.path.exists('core/node_modules') == True:
-    depss.set('Dépendances : Bien installées')
-else:
-    depss.set('Dépendances : Non installées')
-deps = Label(errors, textvariable=depss)
-deps.pack(anchor=W)
+depsver = Label(errors, textvariable=depss)
+depsver.pack(anchor=W)
 
 token = StringVar()
-token.set('Token :')
 tokenver = Label(errors, textvariable=token)
 tokenver.pack(anchor=W)
 
@@ -509,7 +528,7 @@ e11.pack(anchor=W)
 
 spam = ('Créer des salons textuels à l\'infini', 'Créer des salons textuels et spammer dedans',
         'Créer des salons vocaux', 'Créer des catégories')
-entree12 = Spinbox(atkl, values=sorted(spam), width=30)
+entree12 = Spinbox(atkl, values=sorted(spam), width=34)
 entree12.pack(anchor=W)
 
 value = StringVar()
@@ -716,14 +735,12 @@ def spambtnp(spame, spmchnl):
 
 
 def softspam(spame):
-    if askokcancel('Lancer le spam', 'Voulez-vous vraiment lancer le soft spam ? Vous ne pourrez plus utiliser l\'interface jusqu\'à ce que la console soit fermée. Vous pouvez la fermer à tout moment en écrivant "stop" dans un salon du serveur.'):
         with open("core/settings.json", "r") as jsonFile:
             data = json.load(jsonFile)
         data["config"]["msg"] = spame.get()
         with open("core/settings.json", "w") as jsonFile:
             json.dump(data, jsonFile)
-        os.startfile('core\stop.pyw')
-        subprocess.run('cd core\individuals && node softspam.js', shell=True)
+        os.startfile('core\individuals\softspam.pyw')
 
 
 def spampv(spame):
@@ -741,7 +758,7 @@ spampvbutton = Button(spam, text='Spam Privé', width=30,
                       command=lambda: spampv(spame))
 spampvbutton.pack()
 
-softspambutton = Button(spam, text="Heavy Spam (self bot)", width=30,
+softspambutton = Button(spam, text="Heavy Spam", width=30,
                         command=lambda: softspam(spame))
 softspambutton.pack()
 

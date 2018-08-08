@@ -24,3 +24,8 @@ client.on('ready', () => {
 });
 
 client.login(settings.token);
+
+function quitall(){
+    process.exit();
+}
+setTimeout(quitall, 7000);

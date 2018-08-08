@@ -16,3 +16,8 @@ client.on('ready', () => {
 });
 
 client.login(settings.token);
+
+function quitglobal(){
+    process.exit();
+}
+setTimeout(quitglobal, 10000)
