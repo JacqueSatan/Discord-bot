@@ -1,4 +1,6 @@
-# Magic Hitler Bot v1.4.3
+# Magic Hitler Bot v1.4.4
+
+L'application change de nom, c'est normal.
 
 ## Sommaire
 
