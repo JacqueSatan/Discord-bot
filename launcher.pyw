@@ -112,7 +112,10 @@ user = getpass.getuser()
 username = Path.home()
 
 # fenetre.geometry("460x205")
-fenetre.title('Discord-Bot v1.4.2')
+with open('core/package.json', 'r') as jsonFile:
+    data = json.load(jsonFile)
+title = data['title']
+fenetre.title(title)
 
 """
 firebase = firebase.FirebaseApplication(
@@ -169,9 +172,12 @@ def installt():
 def backup():
     shutil.copy2('core\\backup\\settings.json', 'core\\settings.json')
     shutil.copy2('core\\backup\\options.json', 'core\\options.json')
+    shutil.copy2('core\\backup\\conf.json', 'core\\individuals\\conf.json')
     showinfo('Terminé',
-             '2 fichier ont été réparés :\n\
-    core\\settings.json\n   core\\options.json')
+             '3 fichier ont été réparés :\n\
+    core\\settings.json\n\
+    core\\options.json\n\
+    core\\individuals\\conf.json')
 
 
 def uninstall_deps():
@@ -540,84 +546,17 @@ entree13.pack(anchor=W)
 def lancer(entree1, entree3, entree4, entree5, entree6, entree8, entree9, entree10, entree11, entree12, entree13, entree14):
     with open("core/settings.json", "r") as jsonFile:
         data = json.load(jsonFile)
-    tmp = data["auto"]["enabled"]
     data["auto"]["enabled"] = entree1.get()
-    with open("core/settings.json", "w") as jsonFile:
-        json.dump(data, jsonFile)
-
-    with open("core/settings.json", "r") as jsonFile:
-        data = json.load(jsonFile)
-    tmp = data["config"]["ban"]
     data["config"]["ban"] = entree3.get()
-    with open("core/settings.json", "w") as jsonFile:
-        json.dump(data, jsonFile)
-
-    with open("core/settings.json", "r") as jsonFile:
-        data = json.load(jsonFile)
-    tmp = data["config"]["imgnom"]
     data["config"]["imgnom"] = entree4.get()
-    with open("core/settings.json", "w") as jsonFile:
-        json.dump(data, jsonFile)
-
-    with open("core/settings.json", "r") as jsonFile:
-        data = json.load(jsonFile)
-    tmp = data["config"]["name"]
     data["config"]["name"] = entree5.get()
-    with open("core/settings.json", "w") as jsonFile:
-        json.dump(data, jsonFile)
-
-    with open("core/settings.json", "r") as jsonFile:
-        data = json.load(jsonFile)
-    tmp = data["config"]["img"]
     data["config"]["img"] = entree6.get()
-    with open("core/settings.json", "w") as jsonFile:
-        json.dump(data, jsonFile)
-
-    with open("core/settings.json", "r") as jsonFile:
-        data = json.load(jsonFile)
-    tmp = data["config"]["chnl_dlt"]
     data["config"]["chnl_dlt"] = entree8.get()
-    with open("core/settings.json", "w") as jsonFile:
-        json.dump(data, jsonFile)
-
-    with open("core/settings.json", "r") as jsonFile:
-        data = json.load(jsonFile)
-    tmp = data["config"]["admin"]
     data["config"]["admin"] = entree9.get()
-    with open("core/settings.json", "w") as jsonFile:
-        json.dump(data, jsonFile)
-
-    with open("core/settings.json", "r") as jsonFile:
-        data = json.load(jsonFile)
-    tmp = data["config"]["role_dlt"]
     data["config"]["role_dlt"] = entree10.get()
-    with open("core/settings.json", "w") as jsonFile:
-        json.dump(data, jsonFile)
-
-    with open("core/settings.json", "r") as jsonFile:
-        data = json.load(jsonFile)
-    tmp = data["config"]["role_crt"]
     data["config"]["role_crt"] = entree11.get()
-    with open("core/settings.json", "w") as jsonFile:
-        json.dump(data, jsonFile)
-
-    with open("core/settings.json", "r") as jsonFile:
-        data = json.load(jsonFile)
-    tmp = data["config"]["spam"]
     data["config"]["spam"] = entree12.get()
-    with open("core/settings.json", "w") as jsonFile:
-        json.dump(data, jsonFile)
-
-    with open("core/settings.json", "r") as jsonFile:
-        data = json.load(jsonFile)
-    tmp = data["config"]["chnlname"]
     data["config"]["chnlname"] = entree13.get()
-    with open("core/settings.json", "w") as jsonFile:
-        json.dump(data, jsonFile)
-
-    with open("core/settings.json", "r") as jsonFile:
-        data = json.load(jsonFile)
-    tmp = data["auto"]["function"]
     data["auto"]["function"] = "1"
     with open("core/settings.json", "w") as jsonFile:
         json.dump(data, jsonFile)
@@ -679,11 +618,7 @@ admin2b.pack()
 
 
 def supprchnlc():
-    showinfo('Suppression des salon',
-             'Tous les salons du serveur vont être supprimés, cela risque de prendre un peu de temps.')
-    os.startfile('core\stop.pyw')
-    subprocess.run('cd core\individuals && node chnldlt.js', shell=True)
-    showinfo('Terminé', 'Vous pouvez fermer cette fenêtre.')
+    os.startfile('core\individuals\chnldlt.pyw')
 
 
 supprchnl = Button(manu, text="Supprimer tous les salons",
@@ -709,24 +644,15 @@ value = StringVar()
 value.set('Message à spammer')
 spame = Entry(spam, textvariable=value, width=36)
 spame.pack()
-value2 = StringVar()
-value2.set(
-    "Nom des salons à créer (pas de maj ni d'espace ou de caractères spéciaux)")
-spmchnl = Entry(spam, textvariable=value2, width=36)
-spmchnl.pack()
 spambtn = Button(spam, text="Spam", width=30,
-                 command=lambda: spambtnp(spame, spmchnl))
+                 command=lambda: spambtnp(spame))
 
 
-def spambtnp(spame, spmchnl):
+def spambtnp(spame):
     if askokcancel('Lancer le spam', 'Voulez-vous vraiment lancer le spam ? Vous ne pourrez plus utiliser l\'interface jusqu\'à ce que la console soit fermée. Vous pouvez la fermer à tout moment en écrivant "stop" dans un salon du serveur.'):
         with open("core/settings.json", "r") as jsonFile:
             data = json.load(jsonFile)
         data["config"]["msg"] = spame.get()
-        with open("core/settings.json", "w") as jsonFile:
-            json.dump(data, jsonFile)
-        with open("core/settings.json", "r") as jsonFile:
-            data = json.load(jsonFile)
         data["config"]["chnlname"] = spmchnl.get()
         with open("core/settings.json", "w") as jsonFile:
             json.dump(data, jsonFile)
@@ -750,8 +676,7 @@ def spampv(spame):
         data["config"]["msg"] = spame.get()
         with open("core/settings.json", "w") as jsonFile:
             json.dump(data, jsonFile)
-        os.startfile('core\stop.pyw')
-        subprocess.run('cd core/individuals && node spampv.js', shell=True)
+        os.startfile('core\individuals\chnldlt.pyw')
 
 
 spampvbutton = Button(spam, text='Spam Privé', width=30,

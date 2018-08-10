@@ -1,4 +1,4 @@
-# Anti Discord Bot v1.4.3
+# Magic Hitler Bot v1.4.3
 
 ## Sommaire
 

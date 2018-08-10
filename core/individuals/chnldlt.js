@@ -4,13 +4,30 @@ const settings = require('../settings.json');
 process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = 0;
 
 client.on('ready', () => {
-    console.log('ok');
-    Promise.all(client.guilds.get(settings.auto.server_id).channels.map(c => c.delete()));
-    console.log('ok2');
-    function suite(){
-        process.exit();
+    function all() {
+        client.guilds.get(settings.auto.server_id).channels.map(c => {
+            if (settings.config.chnlsuppr.text === 1) {
+                if (c.type === 'text') {
+                    c.delete();
+                }
+            }
+            if (settings.config.chnlsuppr.vocal === 1) {
+                if (c.type === 'voice') {
+                    c.delete();
+                }
+            }
+            if (settings.config.chnlsuppr.text === 1) {
+                if (c.type === 'category') {
+                    c.delete();
+                }
+            }
+        });
+        function quit(){
+            process.exit();
+        }
+        setTimeout(quit, 15000)
     }
-    setTimeout(suite, 5000);
+    setTimeout(all, 1000);
 });
 
 client.login(settings.token);
