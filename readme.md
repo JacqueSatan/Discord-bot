@@ -20,7 +20,7 @@ vous puissiez rencontrer lors de votre utilisation !
 ### Partenariat avec la [ Legend KI ]( https://legend-ki.fr "Site officiel")
 ![alt text](https://github.com/JacqueSatan/Discord-bot/blob/v1.4.1/core/embed/banierelki.gif)
 
-### Partenariat avec le serveur [ El Traficante ]( https://discord.gg/ZMWerE6 "Leur serveur" )
+### Partenariat avec le serveur [ Flic & Stup ]( https://discord.gg/7bzvtM5 "Leur serveur" )
 
 Me contacter :
 
