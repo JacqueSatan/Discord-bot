@@ -53,12 +53,12 @@ if data["cgu"] == "false":
     vide = Label(accepter, text='')
     vide.pack()
 
-    la = Label(accepter, cursor='hand2', text='Partenaire : El Traficante')
+    la = Label(accepter, cursor='hand2', text='Partenaire : Flic & Stup')
     la.pack()
     ladesc = Label(accepter, text='Un serveur joyeux, un staff à l\'écoute, \ndes membres respectueux, muni d\'une superbe ambiance.')
     ladesc.pack()
     def callbakk(event):
-        webbrowser.open_new_tab(r"https://discord.gg/WptSxHq")
+        webbrowser.open_new_tab(r"https://discord.gg/7bzvtM5")
     la.bind('<Button-1>', callbakk)
     cgt = Label(accepter, text='Lire les CGU', cursor='hand2')
     vide = Label(accepter, text='')
