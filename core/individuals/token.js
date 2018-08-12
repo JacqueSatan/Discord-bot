@@ -10,7 +10,7 @@ client.on('ready', () => {
         process.exit()
     }
     options.token = "valid";
-    fs.writeFile('../options.json', JSON.stringify(options), (err) => console.error);
+    fs.writeFileSync('../options.json', JSON.stringify(options), (err) => console.error);
     setTimeout(quit, 4000)
 
 });
