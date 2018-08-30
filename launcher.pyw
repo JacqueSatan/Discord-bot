@@ -16,8 +16,7 @@ from tkinter import *
 from tkinter import ttk
 from tkinter.messagebox import *
 
-import pip
-from pip._internal import main
+
 
 with open('core/options.json', 'r') as jsonFile:
     data = json.load(jsonFile)
@@ -42,23 +41,23 @@ if data["cgu"] == "false":
     cgy.pack()
 
     def callbacc(event):
-        webbrowser.open_new_tab(r"https://legend-ki.fr/")
+        webbrowser.open_new_tab(r"https://discord.gg/va5uHY8")
     legendki = Label(accepter, cursor='hand2',
-                     text='Partenaire : Legend-KI.fr')
+                     text='Partenaire : FC HAGRA')
     legendki.pack()
     legendkidesc = Label(
-        accepter, text='Ce forum a été crée dans le but de continuer à faire vivre la communauté du Gaming, \nHacking, Développement Web, Youtube, etc... mais surtout dans l\'entraide et au partage.')
-    legendkidesc.pack(anchor=W)
+        accepter, text='Le célèbre groupe de raid Discord. Pas de règles.')
+    legendkidesc.pack()
     legendki.bind('<Button-1>', callbacc)
     vide = Label(accepter, text='')
     vide.pack()
 
-    la = Label(accepter, cursor='hand2', text='Partenaire : Flic & Stup')
+    la = Label(accepter, cursor='hand2', text='Partenaire : La 6T')
     la.pack()
     ladesc = Label(accepter, text='Un serveur joyeux, un staff à l\'écoute, \ndes membres respectueux, muni d\'une superbe ambiance.')
     ladesc.pack()
     def callbakk(event):
-        webbrowser.open_new_tab(r"https://discord.gg/7bzvtM5")
+        webbrowser.open_new_tab(r"https://discord.gg/WptSxHq")
     la.bind('<Button-1>', callbakk)
     cgt = Label(accepter, text='Lire les CGU', cursor='hand2')
     vide = Label(accepter, text='')
@@ -78,7 +77,7 @@ if data["cgu"] == "false":
         b.pack(anchor=W)
     vide = Label(accepter, text="")
     vide.pack()
-    votrepseudo = Label(accepter, text="Votre pseudo Discord : (optionnel)")
+    votrepseudo = Label(accepter, text="Votre pseudo Discord : (optionnel mais recommandé)")
     votrepseudo.pack(anchor=W)
     pseudo = StringVar()
     pseudo.set('')
@@ -112,7 +111,10 @@ user = getpass.getuser()
 username = Path.home()
 
 # fenetre.geometry("460x205")
-fenetre.title('Discord-Bot v1.4.2')
+with open('core/package.json', 'r') as jsonFile:
+    data = json.load(jsonFile)
+title = data['title']
+fenetre.title(title)
 
 """
 firebase = firebase.FirebaseApplication(
@@ -169,9 +171,12 @@ def installt():
 def backup():
     shutil.copy2('core\\backup\\settings.json', 'core\\settings.json')
     shutil.copy2('core\\backup\\options.json', 'core\\options.json')
+    shutil.copy2('core\\backup\\conf.json', 'core\\individuals\\conf.json')
     showinfo('Terminé',
-             '2 fichier ont été réparés :\n\
-    core\\settings.json\n   core\\options.json')
+             '3 fichier ont été réparés :\n\
+    core\\settings.json\n\
+    core\\options.json\n\
+    core\\individuals\\conf.json')
 
 
 def uninstall_deps():
@@ -486,167 +491,11 @@ invitationl = Label(info, textvariable=invitation)
 atkl = LabelFrame(fenetre, text="Attaque automatique :", padx=5, pady=5)
 atkl.pack(side=RIGHT, fill=Y)
 
-
-entree1 = IntVar()
-e1 = Checkbutton(atkl, text="Le bot est sur le serveur ?", width=30,
-                 variable=entree1, onvalue="1", offvalue="0", indicatoron=0)
-e1.pack(anchor=W)
-
-entree3 = IntVar()
-e3 = Checkbutton(atkl, text="Bannir tout le monde ?", variable=entree3,
-                 onvalue="1", width=30, offvalue="0", indicatoron=0)
-e3.pack(anchor=W)
-
-
-value = StringVar()
-value.set("Nouveau nom")
-entree5 = Entry(atkl, textvariable=value, width=36)
-
-value = StringVar()
-value.set("Chemin ou URL de l'image")
-entree6 = Entry(atkl, textvariable=value, width=36)
-
-entree8 = IntVar()
-e8 = Checkbutton(atkl, text="Supprimer tous les salons ?",
-                 variable=entree8, onvalue="1", offvalue="0", width=30, indicatoron=0)
-e8.pack(anchor=W)
-
-entree9 = IntVar()
-e9 = Checkbutton(atkl, text="Rendre  @everyone administrateur ?",
-                 variable=entree9, onvalue="1", offvalue="0", width=30, indicatoron=0)
-e9.pack(anchor=W)
-
-entree10 = IntVar()
-e10 = Checkbutton(atkl, text="Supprimer tous les rôles ?",
-                  variable=entree10, onvalue="1", offvalue="0", width=30, indicatoron=0)
-e10.pack(anchor=W)
-
-entree11 = IntVar()
-e11 = Checkbutton(atkl, text="Créer des rôles à l'infini ?",
-                  variable=entree11, onvalue="1", offvalue="0", width=30, indicatoron=0)
-e11.pack(anchor=W)
-
-spam = ('Créer des salons textuels à l\'infini', 'Créer des salons textuels et spammer dedans',
-        'Créer des salons vocaux', 'Créer des catégories')
-entree12 = Spinbox(atkl, values=sorted(spam), width=34)
-entree12.pack(anchor=W)
-
-value = StringVar()
-value.set("Nom des salons à créer (pas de maj ni d'espace ou de caractères spéciaux)")
-entree13 = Entry(atkl, textvariable=value, width=36)
-entree13.pack(anchor=W)
-
-
-def lancer(entree1, entree3, entree4, entree5, entree6, entree8, entree9, entree10, entree11, entree12, entree13, entree14):
-    with open("core/settings.json", "r") as jsonFile:
-        data = json.load(jsonFile)
-    tmp = data["auto"]["enabled"]
-    data["auto"]["enabled"] = entree1.get()
-    with open("core/settings.json", "w") as jsonFile:
-        json.dump(data, jsonFile)
-
-    with open("core/settings.json", "r") as jsonFile:
-        data = json.load(jsonFile)
-    tmp = data["config"]["ban"]
-    data["config"]["ban"] = entree3.get()
-    with open("core/settings.json", "w") as jsonFile:
-        json.dump(data, jsonFile)
-
-    with open("core/settings.json", "r") as jsonFile:
-        data = json.load(jsonFile)
-    tmp = data["config"]["imgnom"]
-    data["config"]["imgnom"] = entree4.get()
-    with open("core/settings.json", "w") as jsonFile:
-        json.dump(data, jsonFile)
-
-    with open("core/settings.json", "r") as jsonFile:
-        data = json.load(jsonFile)
-    tmp = data["config"]["name"]
-    data["config"]["name"] = entree5.get()
-    with open("core/settings.json", "w") as jsonFile:
-        json.dump(data, jsonFile)
-
-    with open("core/settings.json", "r") as jsonFile:
-        data = json.load(jsonFile)
-    tmp = data["config"]["img"]
-    data["config"]["img"] = entree6.get()
-    with open("core/settings.json", "w") as jsonFile:
-        json.dump(data, jsonFile)
-
-    with open("core/settings.json", "r") as jsonFile:
-        data = json.load(jsonFile)
-    tmp = data["config"]["chnl_dlt"]
-    data["config"]["chnl_dlt"] = entree8.get()
-    with open("core/settings.json", "w") as jsonFile:
-        json.dump(data, jsonFile)
-
-    with open("core/settings.json", "r") as jsonFile:
-        data = json.load(jsonFile)
-    tmp = data["config"]["admin"]
-    data["config"]["admin"] = entree9.get()
-    with open("core/settings.json", "w") as jsonFile:
-        json.dump(data, jsonFile)
-
-    with open("core/settings.json", "r") as jsonFile:
-        data = json.load(jsonFile)
-    tmp = data["config"]["role_dlt"]
-    data["config"]["role_dlt"] = entree10.get()
-    with open("core/settings.json", "w") as jsonFile:
-        json.dump(data, jsonFile)
-
-    with open("core/settings.json", "r") as jsonFile:
-        data = json.load(jsonFile)
-    tmp = data["config"]["role_crt"]
-    data["config"]["role_crt"] = entree11.get()
-    with open("core/settings.json", "w") as jsonFile:
-        json.dump(data, jsonFile)
-
-    with open("core/settings.json", "r") as jsonFile:
-        data = json.load(jsonFile)
-    tmp = data["config"]["spam"]
-    data["config"]["spam"] = entree12.get()
-    with open("core/settings.json", "w") as jsonFile:
-        json.dump(data, jsonFile)
-
-    with open("core/settings.json", "r") as jsonFile:
-        data = json.load(jsonFile)
-    tmp = data["config"]["chnlname"]
-    data["config"]["chnlname"] = entree13.get()
-    with open("core/settings.json", "w") as jsonFile:
-        json.dump(data, jsonFile)
-
-    with open("core/settings.json", "r") as jsonFile:
-        data = json.load(jsonFile)
-    tmp = data["auto"]["function"]
-    data["auto"]["function"] = "1"
-    with open("core/settings.json", "w") as jsonFile:
-        json.dump(data, jsonFile)
-
-
-bout = Button(atkl, text="Valider", width=30, command=lambda: lancer(entree1, entree3, entree4,
-                                                                     entree5, entree6, entree8, entree9, entree10, entree11, entree12, entree13, entree14))
-bout.pack(anchor=W)
-
-
-def lancerd():
-    showinfo('Attaque lancée',
-             'Cette fenêtre va se bloquer, veuillez ne pas la fermer.')
+def ataque():
     os.startfile('core\pydiv\\auto.py')
 
-
-lancerb = Button(atkl, text="Lancer l'attaque",  command=lancerd, width=30)
-lancerb.pack(anchor=W)
-
-
-def nomimg():
-    entree5.pack()
-    entree6.pack()
-
-
-entree4 = IntVar()
-e4 = Checkbutton(atkl, text="Changer l'image et le nom ?",
-                 variable=entree4, onvalue="1", width=30, offvalue="0", indicatoron=0, command=nomimg)
-e4.pack(anchor=W)
+atkb = Button(atkl, text='Lancer l\'attaque', command=ataque, width=30)
+atkb.pack()
 
 # boutons seuls
 
@@ -669,24 +518,19 @@ role_dltb.pack()
 
 
 def admin2d():
-    subprocess.run('cd core\individuals && node admin2.js', shell=True)
-    showinfo('Terminé', 'Vous êtes normalement administrateur sur le serveur indiqué.')
+    os.startfile('core\\individuals\\roles.py')
 
 
-admin2b = Button(manu, text="Mettre @everyone administrateur",
+admin2b = Button(manu, text="Gérer les rôles",
                  command=admin2d, width=30)
 admin2b.pack()
 
 
 def supprchnlc():
-    showinfo('Suppression des salon',
-             'Tous les salons du serveur vont être supprimés, cela risque de prendre un peu de temps.')
-    os.startfile('core\stop.pyw')
-    subprocess.run('cd core\individuals && node chnldlt.js', shell=True)
-    showinfo('Terminé', 'Vous pouvez fermer cette fenêtre.')
+    os.startfile('core\individuals\chnldlt.pyw')
 
 
-supprchnl = Button(manu, text="Supprimer tous les salons",
+supprchnl = Button(manu, text="Supprimer les salons",
                    command=supprchnlc, width=30)
 supprchnl.pack()
 
@@ -709,24 +553,15 @@ value = StringVar()
 value.set('Message à spammer')
 spame = Entry(spam, textvariable=value, width=36)
 spame.pack()
-value2 = StringVar()
-value2.set(
-    "Nom des salons à créer (pas de maj ni d'espace ou de caractères spéciaux)")
-spmchnl = Entry(spam, textvariable=value2, width=36)
-spmchnl.pack()
 spambtn = Button(spam, text="Spam", width=30,
-                 command=lambda: spambtnp(spame, spmchnl))
+                 command=lambda: spambtnp(spame))
 
 
-def spambtnp(spame, spmchnl):
+def spambtnp(spame):
     if askokcancel('Lancer le spam', 'Voulez-vous vraiment lancer le spam ? Vous ne pourrez plus utiliser l\'interface jusqu\'à ce que la console soit fermée. Vous pouvez la fermer à tout moment en écrivant "stop" dans un salon du serveur.'):
         with open("core/settings.json", "r") as jsonFile:
             data = json.load(jsonFile)
         data["config"]["msg"] = spame.get()
-        with open("core/settings.json", "w") as jsonFile:
-            json.dump(data, jsonFile)
-        with open("core/settings.json", "r") as jsonFile:
-            data = json.load(jsonFile)
         data["config"]["chnlname"] = spmchnl.get()
         with open("core/settings.json", "w") as jsonFile:
             json.dump(data, jsonFile)
@@ -750,8 +585,7 @@ def spampv(spame):
         data["config"]["msg"] = spame.get()
         with open("core/settings.json", "w") as jsonFile:
             json.dump(data, jsonFile)
-        os.startfile('core\stop.pyw')
-        subprocess.run('cd core/individuals && node spampv.js', shell=True)
+        os.startfile('core\individuals\chnldlt.pyw')
 
 
 spampvbutton = Button(spam, text='Spam Privé', width=30,

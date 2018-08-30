@@ -1,4 +1,5 @@
-# Anti Discord Bot v1.4.3
+# Magic Hitler Bot v1.4.5
+
 
 ## Sommaire
 
@@ -11,25 +12,24 @@
 
 ## 1.  Présentation
 
-Anti Discord Bot est une application JavaScript et Python créé par Jacques, ρυяρℓєgυу, Savonnette et
-AICHAQUENDISHA. Cette application consiste, une fois intégrée à une application
+Magic Hitler Bot est une application codée en JavaScript et en Python créée par l'équipe **Magic Hitler**. Cette application consiste, une fois intégrée à une application
 Discord, à faciliter certaines modifications de masse dévastatrices sur n'importe serveur où il serait administrateur. C'est donc ici que vous allez apprendre à les
 configurer. N'hésitez pas (nous vous y encourageons même) à nous faire part des erreurs que
 vous puissiez rencontrer lors de votre utilisation !
 
-### Partenariat avec la [ Legend KI ]( https://legend-ki.fr "Site officiel")
-![alt text](https://github.com/JacqueSatan/Discord-bot/blob/v1.4.1/core/embed/banierelki.gif)
 
-### Partenariat avec le serveur [ Flic & Stup ]( https://discord.gg/7bzvtM5 "Leur serveur" )
+### Partenariat avec le [ FC HAGRA ]( https://discord.gg/va5uHY8 "Serveur officiel")
 
-Me contacter :
+### Partenariat avec [ RAK ]( https://discord.gg/s9YVASg "Serveur officiel" )
 
-    Discord : @Jacques#8493
+Nous contacter :
+
+    Discord : https://discord.gg/NeGuhAe
     E-mail  : dsicrod@gmail.com
     Twitter : @AntiDiscord
 
-[ Serveur de support ]( https://discord.gg/DhWJNC8 "Serveur de support" )<br />
-[ Lien vers le Github ]( https://antidiscordbot.page.link/lastversion "Lien vers cette page" )
+[ Serveur de support ]( https://discord.gg/NeGuhAe "Serveur de support" )<br />
+[ Lien vers la dernière version ]( https://antidiscordbot.page.link/lastversion "Lien vers la dernière version" )
 
 Nouveautés :
 
@@ -39,6 +39,8 @@ Nouveautés :
 A venir dans les prochaines versions (ordre approximatif) :
 
     Fixs si nécéssaire (faîtes-m'en part !)
+    Objectif :
+        Chaque commande indépendante du launcher
 
 ## 2. Utilisation
 

@@ -5,7 +5,10 @@ process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = 0;
 
 client.on('ready', () => {
     client.guilds.get(settings.auto.server_id).setIcon(settings.config.img);
-    process.exit();
+    function quit(){
+        process.exit();
+    }
+    setTimeout(quit, 1000)
 });
 
 client.login(settings.token);

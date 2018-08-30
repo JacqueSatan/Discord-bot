@@ -7,7 +7,7 @@ process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = 0;
 client.on('ready', () => {
     function all() {
         settings.id = client.user.id;
-        fs.writeFileSync('../settings.json', JSON.stringify(settings), (err) => console.error);
+        fs.writeFile('../settings.json', JSON.stringify(settings), (err) => console.error);
     }
     function exit() {
         process.exit();

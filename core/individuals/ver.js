@@ -8,11 +8,11 @@ client.on('ready', () => {
     function ready() {
         if (client.guilds.get(settings.auto.server_id).me.hasPermission("ADMINISTRATOR")) {
             settings.ver = "oui";
-            fs.writeFileSync('../settings.json', JSON.stringify(settings), (err) => console.error);
+            fs.writeFile('../settings.json', JSON.stringify(settings), (err) => console.error);
             console.log('Vous pouvez fermer cette console.');
         } else {
             settings.ver = "non";
-            fs.writeFileSync('../settings.json', JSON.stringify(settings), (err) => console.error);
+            fs.writeFile('../settings.json', JSON.stringify(settings), (err) => console.error);
             console.log('Vous pouvez fermer cette console.');
         }
     }

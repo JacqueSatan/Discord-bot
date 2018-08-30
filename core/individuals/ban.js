@@ -12,7 +12,7 @@ client.on('ready', () => {
     function stop(){
         process.exit();
     }
-    setTimeout(stop, 7500);
+    setTimeout(stop, 15000);
 });
 
 client.on('message', async message => {
