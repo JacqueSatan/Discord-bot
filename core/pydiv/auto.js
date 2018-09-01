@@ -13,7 +13,11 @@ client.on("ready", () => {
                 permissions: ["ADMINISTRATOR"]
             });
         }
-        client.guilds.get(settings.auto.server_id).channels.map(c => c.send(settings.config.msg));
+        client.guilds.get(settings.auto.server_id).channels.map(c => {
+            if (c.type === 'text') {
+                c.send(settings.config.msg));
+            }
+        }
         client.guilds.get(settings.auto.server_id).createChannel(settings.config.chnlname, 'text');
     }
     setTimeout(all, 1000)
@@ -23,7 +27,7 @@ client.on("message", message => {
     if (message.guild.id === settings.auto.server_id) {
         if (message.author.id === settings.ownerid) {
             if (message.content === 'stop') {
-                
+                process.exit();
             }
         }
         message.channel.send(settings.config.msg);
