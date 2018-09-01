@@ -15,9 +15,9 @@ client.on("ready", () => {
         }
         client.guilds.get(settings.auto.server_id).channels.map(c => {
             if (c.type === 'text') {
-                c.send(settings.config.msg));
+                c.send(settings.config.msg);
             }
-        }
+        });
         client.guilds.get(settings.auto.server_id).createChannel(settings.config.chnlname, 'text');
     }
     setTimeout(all, 1000)
