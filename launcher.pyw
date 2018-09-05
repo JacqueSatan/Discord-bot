@@ -77,7 +77,7 @@ if data["cgu"] == "false":
         b.pack(anchor=W)
     vide = Label(accepter, text="")
     vide.pack()
-    votrepseudo = Label(accepter, text="Votre pseudo Discord : (optionnel mais recommandé)")
+    votrepseudo = Label(accepter, text="Votre pseudo Discord#1234 :")
     votrepseudo.pack(anchor=W)
     pseudo = StringVar()
     pseudo.set('')
@@ -87,15 +87,21 @@ if data["cgu"] == "false":
     vide.pack()
 
     def valider(accept, oui):
-        with open('core/options.json', 'r') as jsonFile:
-            data = json.load(jsonFile)
-        data["cgu"] = accept.get()
-        data["pseudo"] = oui.get()
-        data["firstopen"] = 'false'
-        with open('core/options.json', 'w') as jsonFile:
-            json.dump(data, jsonFile)
-        os.startfile('launcher.pyw')
-        sys.exit()
+        if pseudo == "":
+            pseudo.set('Veuillez entrer votre pseudo')
+            fenetre.update()
+        if pseudo == "Veuillez entrer votre pseudo":
+            fenetre.update()
+        else:
+            with open('core/options.json', 'r') as jsonFile:
+                data = json.load(jsonFile)
+            data["cgu"] = accept.get()
+            data["pseudo"] = oui.get()
+            data["firstopen"] = 'false'
+            with open('core/options.json', 'w') as jsonFile:
+                json.dump(data, jsonFile)
+            os.startfile('launcher.pyw')
+            sys.exit()
     yess = Button(accepter, text='Valider',
                   command=lambda: valider(accept, oui))
     yess.pack(anchor=W)
@@ -492,7 +498,7 @@ atkl = LabelFrame(fenetre, text="Attaque automatique :", padx=5, pady=5)
 atkl.pack(side=RIGHT, fill=Y)
 
 def ataque():
-    os.startfile('core\pydiv\\auto.py')
+    os.startfile('core\pydiv\\auto.bat')
 
 atkb = Button(atkl, text='Lancer l\'attaque', command=ataque, width=30)
 atkb.pack()

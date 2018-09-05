@@ -1,4 +1,4 @@
-# Magic Hitler Bot v1.4.5
+# Magic Hitler Bot v1.4.6a
 
 
 ## Sommaire
@@ -17,10 +17,31 @@ Discord, à faciliter certaines modifications de masse dévastatrices sur n'impo
 configurer. N'hésitez pas (nous vous y encourageons même) à nous faire part des erreurs que
 vous puissiez rencontrer lors de votre utilisation !
 
+Magic Hitler :
 
-### Partenariat avec le [ FC HAGRA ]( https://discord.gg/va5uHY8 "Serveur officiel")
+    Fondation + Bégéïsme :
+        Dwig
 
-### Partenariat avec [ RAK ]( https://discord.gg/s9YVASg "Serveur officiel" )
+    Administration :
+        Aichaqendisha
+        Dwig
+        PurpleGuy
+        Savonnette
+
+    Développement : 
+        Dwig
+
+    Support :
+        Chloééé
+        Diwg
+        PurpleGuy
+        Savonnette
+
+    Modération :
+        Chloééé
+        Dwig
+        PurpleGuy
+        Savonnette
 
 Nous contacter :
 
@@ -39,8 +60,6 @@ Nouveautés :
 A venir dans les prochaines versions (ordre approximatif) :
 
     Fixs si nécéssaire (faîtes-m'en part !)
-    Objectif :
-        Chaque commande indépendante du launcher
 
 ## 2. Utilisation
 

