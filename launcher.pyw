@@ -169,7 +169,7 @@ def uninstall_deps():
     showinfo('Terminé', 'Toutes les dépendances ont été désinstallées.')
 
 def serv():
-    os.startfile('core/serv.pyw')
+    os.startfile('core\\serv.pyw')
 
 menubar = Menu(fenetre)
 
