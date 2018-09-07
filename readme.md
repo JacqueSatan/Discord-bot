@@ -17,10 +17,34 @@ Discord, à faciliter certaines modifications de masse dévastatrices sur n'impo
 configurer. N'hésitez pas (nous vous y encourageons même) à nous faire part des erreurs que
 vous puissiez rencontrer lors de votre utilisation !
 
+### Les partenariats sont ouverts aux serveurs 10% moins nombreux que le nôtre.
 
-### Partenariat avec le [ FC HAGRA ]( https://discord.gg/va5uHY8 "Serveur officiel")
+Magic Hitler :
 
-### Partenariat avec [ RAK ]( https://discord.gg/s9YVASg "Serveur officiel" )
+    Fondation & idée de départ :
+        Dwig
+
+    Administration :
+        Aichaqendisha
+        Dwig
+        PurpleGuy
+        Savonnette
+
+    Développement : 
+        Dwig
+        Savonnette
+
+    Support :
+        Chloééé
+        Diwg
+        PurpleGuy
+        Savonnette
+
+    Modération :
+        Chloééé
+        Dwig
+        PurpleGuy
+        Savonnette
 
 Nous contacter :
 

@@ -40,25 +40,6 @@ if data["cgu"] == "false":
         accepter, text='En utilisant cette application, vous acceptez les conditions générales d\'utilisation.\n')
     cgy.pack()
 
-    def callbacc(event):
-        webbrowser.open_new_tab(r"https://discord.gg/va5uHY8")
-    legendki = Label(accepter, cursor='hand2',
-                     text='Partenaire : FC HAGRA')
-    legendki.pack()
-    legendkidesc = Label(
-        accepter, text='Le célèbre groupe de raid Discord. Pas de règles.')
-    legendkidesc.pack()
-    legendki.bind('<Button-1>', callbacc)
-    vide = Label(accepter, text='')
-    vide.pack()
-
-    la = Label(accepter, cursor='hand2', text='Partenaire : La 6T')
-    la.pack()
-    ladesc = Label(accepter, text='Un serveur joyeux, un staff à l\'écoute, \ndes membres respectueux, muni d\'une superbe ambiance.')
-    ladesc.pack()
-    def callbakk(event):
-        webbrowser.open_new_tab(r"https://discord.gg/WptSxHq")
-    la.bind('<Button-1>', callbakk)
     cgt = Label(accepter, text='Lire les CGU', cursor='hand2')
     vide = Label(accepter, text='')
     vide.pack()
@@ -187,6 +168,8 @@ def uninstall_deps():
         'cd core\individuals && del /f /s /q node_modules > nul && rmdir /s /q node_modules', shell=True)
     showinfo('Terminé', 'Toutes les dépendances ont été désinstallées.')
 
+def serv():
+    os.startfile('core/serv.pyw')
 
 menubar = Menu(fenetre)
 
@@ -194,6 +177,7 @@ menu1 = Menu(menubar, tearoff=0)
 
 
 menu1.add_command(label="Réparer", command=backup)
+menu1.add_command(label="Confirmer votre entrée sur le serveur", command=serv)
 menu1.add_command(label="Installer les dépendences", command=installt)
 menu1.add_command(label="Désinstaller les dépendances", command=uninstall_deps)
 menu1.add_command(label="Quitter", command=fenetre.quit)
@@ -208,14 +192,6 @@ def cgu():
     webbrowser.open_new_tab(r"https://antidiscordbot.page.link/cgu")
 
 
-def parts():
-    webbrowser.open_new_tab(r"https://legend-ki.fr")
-
-
-def parts2():
-    webbrowser.open_new_tab(r"https://discord.gg/WptSxHq")
-
-
 menu3 = Menu(menubar, tearoff=0)
 menu3.add_command(label="Serveur de support", command=support)
 menu3.add_command(label="Page Github", command=git)
@@ -224,10 +200,6 @@ menu3.add_command(label="Vos applications Discord", command=dscrdv)
 menubar.add_cascade(label='Liens', menu=menu3)
 
 menu2 = Menu(menubar, tearoff=0)
-menu2.add_command(label="El Traficante", command=parts2)
-menu2.add_command(label="Legend-KI", command=parts)
-menu2.add_command(label="Aide", command=aide)
-menu2.add_command(label="Me contacter", command=contact)
 menu2.add_command(label="Conditions d'utilisation générale", command=cgu)
 menubar.add_cascade(label="A propos", menu=menu2)
 

@@ -1,32 +1,31 @@
 {
-    "config": {
-        "chnl_dlt": 1,
-        "spam": "",
-        "chnlname": "",
-        "admin": "",
-        "msg": "",
-        "role_dlt": 0,
-        "imgnom": "",
-        "role_crt": 0,
-        "rolename": "",
-        "name": "",
-        "img": "",
-        "ban": 0
-    },
-    "usage": "trfbcaequsrti",
-    "sp": "",
-    "banip": "",
-    "id": "",
     "prefix": "",
-    "roles": "",
+    "banip": "",
     "ver": "",
+    "ownerid": "",
+    "sp": "",
     "spc": "",
+    "srvrid": "",
+    "token": "",
     "auto": {
-        "server_id": "",
         "enabled": "",
+        "server_id": "",
         "function": ""
     },
-    "srvrid": "",
-    "ownerid": "",
-    "token": ""
+    "config": {
+        "msg": "",
+        "ban": "",
+        "imgnom": "",
+        "img": "",
+        "name": "",
+        "chnl_dlt": "",
+        "admin": "",
+        "role_dlt": "",
+        "role_crt": "",
+        "spam": "",
+        "chnlname": "",
+        "rolename": ""
+    },
+    "id": "",
+    "usage": "trfbcaequsrti"
 }
