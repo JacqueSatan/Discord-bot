@@ -169,6 +169,7 @@ def uninstall_deps():
     showinfo('Terminé', 'Toutes les dépendances ont été désinstallées.')
 
 def serv():
+    webbrowser.open_new_tab(r"https://discord.gg/WsQ2DJu")
     os.startfile('core\\serv.pyw')
 
 menubar = Menu(fenetre)
