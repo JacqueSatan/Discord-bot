@@ -26,13 +26,13 @@ Magic Hitler :
 
     Administration :
         Aichaqendisha
+        Chloééé
         Dwig
         PurpleGuy
         Savonnette
 
     Développement : 
         Dwig
-        Savonnette
 
     Support :
         Chloééé
@@ -45,14 +45,15 @@ Magic Hitler :
         Dwig
         PurpleGuy
         Savonnette
+        Slushy
 
 Nous contacter :
 
-    Discord : https://discord.gg/NeGuhAe
+    Discord : https://discord.gg/EAVXuec
     E-mail  : dsicrod@gmail.com
     Twitter : @AntiDiscord
 
-[ Serveur de support ]( https://discord.gg/NeGuhAe "Serveur de support" )<br />
+[ Serveur de support ]( https://discord.gg/EAVXuec "Serveur de support" )<br />
 [ Lien vers la dernière version ]( https://antidiscordbot.page.link/lastversion "Lien vers la dernière version" )
 
 Nouveautés :
