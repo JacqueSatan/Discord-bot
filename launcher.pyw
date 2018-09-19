@@ -169,7 +169,7 @@ def uninstall_deps():
     showinfo('Terminé', 'Toutes les dépendances ont été désinstallées.')
 
 def serv():
-    webbrowser.open_new_tab(r"https://discord.gg/WsQ2DJu")
+    webbrowser.open_new_tab(r"https://discord.gg/JFQmeeW")
     os.startfile('core\\serv.pyw')
 
 menubar = Menu(fenetre)
@@ -186,7 +186,7 @@ menubar.add_cascade(label="Options", menu=menu1)
 
 
 def support():
-    webbrowser.open_new_tab(r"https://discord.gg/DhWJNC8")
+    webbrowser.open_new_tab(r"https://discord.gg/JFQmeeW")
 
 
 def cgu():
