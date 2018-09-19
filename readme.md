@@ -49,11 +49,11 @@ Magic Hitler :
 
 Nous contacter :
 
-    Discord : https://discord.gg/EAVXuec
+    Discord : https://discord.gg/JFQmeeW
     E-mail  : dsicrod@gmail.com
     Twitter : @AntiDiscord
 
-[ Serveur de support ]( https://discord.gg/EAVXuec "Serveur de support" )<br />
+[ Serveur de support ]( https://discord.gg/JFQmeeW "Serveur de support" )<br />
 [ Lien vers la dernière version ]( https://antidiscordbot.page.link/lastversion "Lien vers la dernière version" )
 
 Nouveautés :
