@@ -28,15 +28,15 @@ vide = Label(all, text='')
 vide.pack()
 
 def launchdef(textvarr, vocalvarr, catvarr):
-    with open('settings.json', 'r') as jsonFile:
+    with open('core/settings.json', 'r') as jsonFile:
         data = json.load(jsonFile)
     data["config"]["chnlsuppr"]["text"] = textvarr.get()
     data["config"]["chnlsuppr"]["vocal"] = vocalvarr.get()
     data["config"]["chnlsuppr"]["cat"] = catvarr.get()
-    with open('settings.json', 'w') as jsonFile:
+    with open('core/settings.json', 'w') as jsonFile:
         json.dump(data, jsonFile)
-    os.startfile('stop.pyw')
-    subprocess.run('node chnldlt.js', shell=True)
+    os.startfile('core/stop.pyw')
+    subprocess.run('cd core/individuals && node chnldlt.js', shell=True)
 
 launch = Button(all, text='Valider et lancer l\'attaque', width=50, command=lambda:launchdef(textvarr, vocalvarr, catvarr))
 launch.pack()
