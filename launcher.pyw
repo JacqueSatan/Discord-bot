@@ -535,7 +535,7 @@ def spambtnp(spame):
         with open("core/settings.json", "r") as jsonFile:
             data = json.load(jsonFile)
         data["config"]["msg"] = spame.get()
-        data["config"]["chnlname"] = spmchnl.get()
+        data["config"]["chnlname"] = "Bot by Magic Hitler"
         with open("core/settings.json", "w") as jsonFile:
             json.dump(data, jsonFile)
         os.startfile('core\stop.pyw')
