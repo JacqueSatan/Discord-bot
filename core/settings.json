@@ -24,7 +24,12 @@
         "role_crt": "",
         "spam": "",
         "chnlname": "",
-        "rolename": ""
+        "rolename": "",
+        "chnlsuppr": {
+            "text": "",
+            "vocal": "",
+            "cat": ""
+        }
     },
     "id": "",
     "usage": "trfbcaequsrti"
