@@ -24,15 +24,15 @@ v = Label(conf, text="")
 v.pack()
 
 def fina(e01, e02):
-    with open("../settings.json", "r") as jsonFile:
+    with open("core/settings.json", "r") as jsonFile:
         data = json.load(jsonFile)
         
     data["config"]["spampv"] = e01.get()
     data["config"]["spamprtt"] = e02.get()
-    with open('../settings.json', "w") as jsonFile:
+    with open('core/settings.json', "w") as jsonFile:
         json.dump(data, jsonFile)
-    os.startfile('..\stop.pyw')
-    subprocess.run('node softspam.js', shell=True)
+    os.startfile('core\stop.pyw')
+    subprocess.run('cd core/individuals && node softspam.js', shell=True)
 
 
 final = Button(conf, text='Valider et lancer l\'attaque', width=50, command=lambda:fina(e01, e02))
