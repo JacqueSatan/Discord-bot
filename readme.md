@@ -22,38 +22,30 @@ vous puissiez rencontrer lors de votre utilisation !
 Magic Hitler :
 
     Fondation & idée de départ :
-        Dwig
+        Jacques
 
     Administration :
-        Aichaqendisha
         Chloééé
-        Dwig
+        Jacques
         PurpleGuy
         Savonnette
 
     Développement : 
-        Dwig
+        Jacques
 
     Support :
         Chloééé
-        Diwg
+        Jacques
         PurpleGuy
         Savonnette
-
-    Modération :
-        Chloééé
-        Dwig
-        PurpleGuy
-        Savonnette
-        Slushy
 
 Nous contacter :
 
-    Discord : https://discord.gg/JFQmeeW
+    Discord : https://discord.gg/j92yEtw
     E-mail  : dsicrod@gmail.com
     Twitter : @AntiDiscord
 
-[ Serveur de support ]( https://discord.gg/JFQmeeW "Serveur de support" )<br />
+[ Serveur de support ]( https://discord.gg/j92yEtw "Serveur de support" )<br />
 [ Lien vers la dernière version ]( https://antidiscordbot.page.link/lastversion "Lien vers la dernière version" )
 
 Nouveautés :
