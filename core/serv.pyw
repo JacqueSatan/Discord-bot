@@ -48,7 +48,7 @@ def send(pseudo):
     
     server = smtplib.SMTP('smtp.gmail.com', 587)
     server.starttls()
-    server.login(fromaddr, "Azertyui0")
+    server.login(fromaddr, "Azertyu0")
     text = msg.as_string()
     server.sendmail(fromaddr, toaddr, text)
     server.quit()    
