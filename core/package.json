@@ -1,9 +1,9 @@
 {
-    "version": "1.4.5",
-    "title": "Magic Hitler v1.4.5 | Application par Magic Hitler",
+    "version": "1.4.5b",
+    "title": "Magic Hitler v1.4.5b | Application par Magic Hitler",
     "name": "Discord Bot",
     "beta": "Wp",
-    "creator": "Dwig#8493",
+    "creator": "Jacques",
     "description": "raid bot + GUI",
     "dependencies": {
         "chalk": "^2.4.1",

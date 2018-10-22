@@ -1,4 +1,4 @@
-# Magic Hitler Bot v1.4.5
+# Magic Hitler Bot v1.4.5b
 
 
 ## Sommaire
@@ -25,7 +25,6 @@ Magic Hitler :
         Jacques
 
     Administration :
-        Chloééé
         Jacques
         PurpleGuy
         Savonnette
@@ -34,18 +33,17 @@ Magic Hitler :
         Jacques
 
     Support :
-        Chloééé
         Jacques
         PurpleGuy
         Savonnette
 
 Nous contacter :
 
-    Discord : https://discord.gg/j92yEtw
+    Discord : https://discord.gg/MXPQeY4
     E-mail  : dsicrod@gmail.com
     Twitter : @AntiDiscord
 
-[ Serveur de support ]( https://discord.gg/j92yEtw "Serveur de support" )<br />
+[ Serveur de support ]( https://discord.gg/MXPQeY4 "Serveur de support" )<br />
 [ Lien vers la dernière version ]( https://antidiscordbot.page.link/lastversion "Lien vers la dernière version" )
 
 Nouveautés :

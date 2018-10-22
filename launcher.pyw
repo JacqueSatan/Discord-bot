@@ -21,7 +21,7 @@ from tkinter.messagebox import *
 with open('core/options.json', 'r') as jsonFile:
     data = json.load(jsonFile)
 if data['firstopen'] == 'true':
-    os.startfile('core\\firstopen.bat')
+    os.startfile('core\\firstopen.pyw')
 
 # CGU
 
@@ -130,9 +130,7 @@ def aide():
     webbrowser.open_new_tab(r"https://github.com/JacqueSatan/Discord-bot/wiki")
 
 def installt():
-    os.startfile('core\\firstopen.bat')
-    showinfo('Installation des dépendences',
-             'L\'installation va commencer, veuillez patienter. Si l\'application ne répond plus, c\'est normal. Attendez juste. Cela risque de prendre un peu de temps.')
+    os.startfile('core\\firstopen.pyw')
     """
     subprocess.call('npm --prefix ./core i discord.js', shell=True)
     subprocess.call('npm --prefix ./core i fs', shell=True)
@@ -169,7 +167,7 @@ def uninstall_deps():
     showinfo('Terminé', 'Toutes les dépendances ont été désinstallées.')
 
 def serv():
-    webbrowser.open_new_tab(r"https://discord.gg/JFQmeeW")
+    webbrowser.open_new_tab(r"https://discord.gg/MXPQeY4")
     os.startfile('core\\serv.pyw')
 
 menubar = Menu(fenetre)
@@ -186,7 +184,7 @@ menubar.add_cascade(label="Options", menu=menu1)
 
 
 def support():
-    webbrowser.open_new_tab(r"https://discord.gg/JFQmeeW")
+    webbrowser.open_new_tab(r"https://discord.gg/MXPQeY4")
 
 
 def cgu():
@@ -322,37 +320,34 @@ verbtnp.pack()
 verl = Label(obligd, textvariable=verv)
 verl.pack()
 
+user = Path.home()
 
 def errordef():
+    nodes.set('Recherche')
     depss.set('Recherche...')
-    print('1')
     token.set('Veuillez patienter...')
-    print('2')
     fenetre.update()
-    print('3')
-    if os.path.exists('core/node_modules') == False:
-        depss.set('Dépendances : Non installées')
-    if os.path.exists('core/node_modules') == True:
-        depss.set('Dépendances : Bien installées')
-    print('4')
-    subprocess.run('cd core/individuals && node token.js',
-                   shell=True)
-    print('5')
-    with open('core/options.json', 'r') as jsonFile:
-        data = json.load(jsonFile)
-    print('6')
-    print('7')
-    if data["token"] == 'valid':
-        token.set('Token : Valide')
-        print('8')
+    if os.path.exists(str(user) + "\\AppData\\Roaming\\npm") == False:
+        nodes.set('Node.js non installé')
     else:
-        token.set('Token : Invalide')
-        print('9')
-    data["token"] = ""
-    with open('core/options.json', 'w') as jsonFile:
-        json.dump(data, jsonFile)
+        nodes.set('Node.js bien installé')
+        if os.path.exists('core/node_modules') == False:
+            depss.set('Dépendances : Non installées')
+            token.set("")
+        if os.path.exists('core/node_modules') == True:
+            depss.set('Dépendances : Bien installées')
+            subprocess.run('cd core/individuals && node token.js',
+                           shell=True)
+            with open('core/options.json', 'r') as jsonFile:
+                data = json.load(jsonFile)
+            if data["token"] == 'valid':
+                token.set('Token : Valide')
+            else:
+                token.set('Token : Invalide')
+            data["token"] = ""
+            with open('core/options.json', 'w') as jsonFile:
+                json.dump(data, jsonFile)
     fenetre.update()
-    print('10')
 
 vide = Label(obligd, text="")
 vide.pack()
@@ -362,6 +357,10 @@ errorb.pack()
 
 errors = LabelFrame(obligd, text="Erreurs :", padx=5, pady=5)
 errors.pack(anchor=W)
+
+nodes = StringVar()
+nodesver = Label(errors, textvariable=nodes)
+nodesver.pack(anchor=W)
 
 depss = StringVar()
 depsver = Label(errors, textvariable=depss)
