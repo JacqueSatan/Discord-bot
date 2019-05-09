@@ -1,5 +1,3 @@
-haha
-
 import getpass
 import json
 import os
@@ -18,7 +16,6 @@ from tkinter import *
 from tkinter import ttk
 from tkinter.messagebox import *
 
-ie
 
 with open('core/options.json', 'r') as jsonFile:
     data = json.load(jsonFile)
