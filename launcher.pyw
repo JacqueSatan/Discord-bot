@@ -16,7 +16,6 @@ from tkinter import *
 from tkinter import ttk
 from tkinter.messagebox import *
 
-
 with open('core/options.json', 'r') as jsonFile:
     data = json.load(jsonFile)
 if data['firstopen'] == 'true':
