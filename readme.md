@@ -1,4 +1,5 @@
-# Magic Hitler Bot v1.4.5b
+# MH Bot v1.4.5b
+# Nouvelle version : https://github.com/magichitler/MHDesktop
 
 
 ## Sommaire
@@ -12,14 +13,14 @@
 
 ## 1.  Présentation
 
-Magic Hitler Bot est une application codée en JavaScript et en Python créée par l'équipe **Magic Hitler**. Cette application consiste, une fois intégrée à une application
+MH Bot est une application codée en JavaScript et en Python créée par l'équipe **MH**. Cette application consiste, une fois intégrée à une application
 Discord, à faciliter certaines modifications de masse dévastatrices sur n'importe serveur où il serait administrateur. C'est donc ici que vous allez apprendre à les
 configurer. N'hésitez pas (nous vous y encourageons même) à nous faire part des erreurs que
 vous puissiez rencontrer lors de votre utilisation !
 
 ### Les partenariats sont ouverts aux serveurs 10% moins nombreux que le nôtre.
 
-Magic Hitler :
+MH :
 
     Fondation & idée de départ :
         Jacques
