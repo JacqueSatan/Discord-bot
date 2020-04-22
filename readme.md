@@ -1,5 +1,6 @@
 # MH Bot v1.4.5b
-# Nouvelle version : https://github.com/magichitler/MHDesktop
+# Projet abandonné
+Il est peu probable qu'il fonctionne.
 
 
 ## Sommaire
